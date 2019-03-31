@@ -1,0 +1,17 @@
+*.vspscc
+*.vssscc
+*.pdb
+*.dll
+*.idb
+*.obj
+*.o
+*.a
+libs_src/
+includes/
+*.psess
+*.log
+*.gpState
+*.user
+*.tlog
+*.pch
+*.codeanalysis
