@@ -1,0 +1,675 @@
+Abaqus/Explicit 6.11-3                           DATE 27-May-2013  TIME 21:08:51
+-------------------------------------------------------------------------------
+ PREPROCESSOR WARNING MESSAGES
+-------------------------------------------------------------------------------
+
+
+***WARNING: There are 62 warning messages in the data (.dat) file.  Please
+            check the data file for possible errors in the input file.
+
+
+-------------------------------------------------------------------------------
+ MODEL INFORMATION (IN GLOBAL X-Y COORDINATES)
+-------------------------------------------------------------------------------
+
+   Total mass in model = 9.8125
+   Center of mass of model = ( 2.500000E-01, 2.500000E-02, 2.500000E-02)
+
+    Moments of Inertia :
+                 About Center of Mass              About Origin
+      I(XX)          1.226563E-02                  2.453125E-02
+      I(YY)          2.146485E-01                  8.340625E-01
+      I(ZZ)          2.146485E-01                  8.340625E-01
+      I(XY)          2.386514E-09                 -6.132813E-02
+      I(YZ)          3.637979E-10                 -6.132813E-03
+      I(ZX)          2.386514E-09                 -6.132813E-02
+
+-------------------------------------------------------------------------------
+ STABLE TIME INCREMENT INFORMATION
+-------------------------------------------------------------------------------
+
+
+  The stable time increment estimate for each element is based on
+  linearization about the initial state.
+
+
+   Initial time increment = 4.92926E-06
+
+   Statistics for all elements:
+      Mean = 4.92926E-06
+      Standard deviation = 1.98485E-09
+
+   Most critical elements:
+    Element number   Rank    Time increment   Increment ratio
+    (Instance name)
+   ----------------------------------------------------------
+           2          1       4.929261E-06      1.000000E+00
+    BEAM-1
+           4          2       4.929261E-06      1.000000E+00
+    BEAM-1
+           1          3       4.929262E-06      9.999998E-01
+    BEAM-1
+           3          4       4.929262E-06      9.999998E-01
+    BEAM-1
+           5          5       4.929262E-06      9.999998E-01
+    BEAM-1
+           6          6       4.929262E-06      9.999998E-01
+    BEAM-1
+           7          7       4.929262E-06      9.999998E-01
+    BEAM-1
+           8          8       4.929262E-06      9.999998E-01
+    BEAM-1
+           9          9       4.929262E-06      9.999998E-01
+    BEAM-1
+          10         10       4.929262E-06      9.999998E-01
+    BEAM-1
+
+
+  Instance name for the most critical element will be printed if the critical
+  element changes or at the beginning of a new page.
+
+
+
+Abaqus/Explicit 6.11-3                           DATE 27-May-2013  TIME 21:08:52
+
+The single precision Abaqus/Explicit executable will be used in this analysis.
+
+
+-------------------------------------------------------------------------------
+ SOLUTION PROGRESS
+-------------------------------------------------------------------------------
+
+ STEP 1  ORIGIN 0.0000
+
+  Total memory used for step 1 is approximately 227.4 kilobytes.
+  Direct time incrementation control will be used.
+  Variable mass scaling factor at zero increment: 1.0000
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+        0  0.000E+00 0.000E+00  00:00:00 1.000E-06           4  0.000E+00  0.000E+00
+INSTANCE WITH CRITICAL ELEMENT: BEAM-1
+ODB Field Frame Number      0 of    250 requested intervals at increment zero.
+        2  2.000E-06 2.000E-06  00:00:00 1.000E-06           4  0.000E+00  0.000E+00
+INSTANCE WITH CRITICAL ELEMENT: BEAM-1
+ODB Field Frame Number      1 of    250 requested intervals at  2.000000E-06
+        4  4.000E-06 4.000E-06  00:00:00 1.000E-06           4  0.000E+00  0.000E+00
+ODB Field Frame Number      2 of    250 requested intervals at  4.000000E-06
+        6  6.000E-06 6.000E-06  00:00:00 1.000E-06           4  0.000E+00  0.000E+00
+ODB Field Frame Number      3 of    250 requested intervals at  6.000000E-06
+        8  8.000E-06 8.000E-06  00:00:00 1.000E-06           4  0.000E+00  0.000E+00
+ODB Field Frame Number      4 of    250 requested intervals at  8.000000E-06
+       11  1.100E-05 1.100E-05  00:00:00 1.000E-06           4  4.076E-08  4.076E-08
+ODB Field Frame Number      5 of    250 requested intervals at  1.100000E-05
+       12  1.200E-05 1.200E-05  00:00:00 1.000E-06           4  3.602E-07  3.859E-08
+ODB Field Frame Number      6 of    250 requested intervals at  1.200000E-05
+       14  1.400E-05 1.400E-05  00:00:00 1.000E-06           4  1.796E-06  2.997E-08
+ODB Field Frame Number      7 of    250 requested intervals at  1.400000E-05
+       16  1.600E-05 1.600E-05  00:00:00 1.000E-06           4  3.837E-06  2.147E-08
+ODB Field Frame Number      8 of    250 requested intervals at  1.600000E-05
+       18  1.800E-05 1.800E-05  00:00:00 1.000E-06           4  5.971E-06  1.791E-08
+ODB Field Frame Number      9 of    250 requested intervals at  1.800000E-05
+       21  2.100E-05 2.100E-05  00:00:00 1.000E-06           4  8.902E-06  1.873E-08
+ODB Field Frame Number     10 of    250 requested intervals at  2.100000E-05
+       23  2.300E-05 2.300E-05  00:00:00 1.000E-06           4  1.069E-05  1.791E-08
+ODB Field Frame Number     11 of    250 requested intervals at  2.300000E-05
+       24  2.400E-05 2.400E-05  00:00:00 1.000E-06           4  1.153E-05  1.688E-08
+ODB Field Frame Number     12 of    250 requested intervals at  2.400000E-05
+       26  2.600E-05 2.600E-05  00:00:00 1.000E-06           4  1.301E-05  1.573E-08
+ODB Field Frame Number     13 of    250 requested intervals at  2.600000E-05
+       28  2.800E-05 2.800E-05  00:00:00 1.000E-06           4  1.421E-05  1.840E-08
+ODB Field Frame Number     14 of    250 requested intervals at  2.800000E-05
+       31  3.100E-05 3.100E-05  00:00:00 1.000E-06           4  1.590E-05  2.652E-08
+ODB Field Frame Number     15 of    250 requested intervals at  3.100000E-05
+       32  3.200E-05 3.200E-05  00:00:00 1.000E-06           4  1.660E-05  2.792E-08
+ODB Field Frame Number     16 of    250 requested intervals at  3.200000E-05
+       34  3.400E-05 3.400E-05  00:00:00 1.000E-06           4  1.833E-05  2.643E-08
+ODB Field Frame Number     17 of    250 requested intervals at  3.400000E-05
+       36  3.600E-05 3.600E-05  00:00:00 1.000E-06           4  2.042E-05  2.091E-08
+ODB Field Frame Number     18 of    250 requested intervals at  3.600000E-05
+       39  3.900E-05 3.900E-05  00:00:00 1.000E-06           4  2.352E-05  1.536E-08
+ODB Field Frame Number     19 of    250 requested intervals at  3.900000E-05
+       41  4.100E-05 4.100E-05  00:00:00 1.000E-06           4  2.523E-05  1.655E-08
+ODB Field Frame Number     20 of    250 requested intervals at  4.100000E-05
+       43  4.300E-05 4.300E-05  00:00:00 1.000E-06           4  2.670E-05  1.901E-08
+ODB Field Frame Number     21 of    250 requested intervals at  4.300000E-05
+       45  4.500E-05 4.500E-05  00:00:00 1.000E-06           4  2.806E-05  2.013E-08
+ODB Field Frame Number     22 of    250 requested intervals at  4.500000E-05
+       47  4.700E-05 4.700E-05  00:00:00 1.000E-06           4  2.938E-05  2.036E-08
+ODB Field Frame Number     23 of    250 requested intervals at  4.700000E-05
+       48  4.800E-05 4.800E-05  00:00:00 1.000E-06           4  3.004E-05  2.084E-08
+ODB Field Frame Number     24 of    250 requested intervals at  4.800000E-05
+       51  5.100E-05 5.100E-05  00:00:00 1.000E-06           4  3.212E-05  2.443E-08
+ODB Field Frame Number     25 of    250 requested intervals at  5.100000E-05
+       52  5.200E-05 5.200E-05  00:00:00 1.000E-06           4  3.291E-05  2.541E-08
+ODB Field Frame Number     26 of    250 requested intervals at  5.200000E-05
+       54  5.400E-05 5.400E-05  00:00:00 1.000E-06           4  3.472E-05  2.477E-08
+ODB Field Frame Number     27 of    250 requested intervals at  5.400000E-05
+       56  5.600E-05 5.600E-05  00:00:00 1.000E-06           4  3.678E-05  2.052E-08
+ODB Field Frame Number     28 of    250 requested intervals at  5.600000E-05
+       58  5.800E-05 5.800E-05  00:00:00 1.000E-06           4  3.884E-05  1.586E-08
+ODB Field Frame Number     29 of    250 requested intervals at  5.800000E-05
+       61  6.100E-05 6.100E-05  00:00:00 1.000E-06           4  4.138E-05  1.594E-08
+ODB Field Frame Number     30 of    250 requested intervals at  6.100000E-05
+       62  6.200E-05 6.200E-05  00:00:00 1.000E-06           4  4.206E-05  1.781E-08
+ODB Field Frame Number     31 of    250 requested intervals at  6.200000E-05
+       64  6.400E-05 6.400E-05  00:00:00 1.000E-06           4  4.333E-05  2.156E-08
+ODB Field Frame Number     32 of    250 requested intervals at  6.400000E-05
+       66  6.600E-05 6.600E-05  00:00:00 1.000E-06           4  4.465E-05  2.276E-08
+ODB Field Frame Number     33 of    250 requested intervals at  6.600000E-05
+       68  6.800E-05 6.800E-05  00:00:00 1.000E-06           4  4.610E-05  2.171E-08
+ODB Field Frame Number     34 of    250 requested intervals at  6.800000E-05
+       70  7.000E-05 7.000E-05  00:00:00 1.000E-06           4  4.763E-05  2.129E-08
+ODB Field Frame Number     35 of    250 requested intervals at  7.000000E-05
+       72  7.200E-05 7.200E-05  00:00:00 1.000E-06           4  4.922E-05  2.284E-08
+ODB Field Frame Number     36 of    250 requested intervals at  7.200000E-05
+       74  7.400E-05 7.400E-05  00:00:00 1.000E-06           4  5.096E-05  2.421E-08
+ODB Field Frame Number     37 of    250 requested intervals at  7.400000E-05
+       77  7.700E-05 7.700E-05  00:00:00 1.000E-06           4  5.226E-05  6.283E-08
+ODB Field Frame Number     38 of    250 requested intervals at  7.700000E-05
+       79  7.900E-05 7.900E-05  00:00:00 1.000E-06           4  5.303E-05  4.890E-08
+ODB Field Frame Number     39 of    250 requested intervals at  7.900000E-05
+
+ STEP 1  ORIGIN 0.0000
+
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+       81  8.100E-05 8.100E-05  00:00:00 1.000E-06           4  5.412E-05  3.695E-08
+ODB Field Frame Number     40 of    250 requested intervals at  8.100000E-05
+       82  8.200E-05 8.200E-05  00:00:00 1.000E-06           4  5.454E-05  3.341E-08
+ODB Field Frame Number     41 of    250 requested intervals at  8.200000E-05
+       85  8.500E-05 8.500E-05  00:00:00 1.000E-06           4  5.473E-05  3.394E-08
+ODB Field Frame Number     42 of    250 requested intervals at  8.500000E-05
+       86  8.600E-05 8.600E-05  00:00:00 1.000E-06           4  5.444E-05  3.679E-08
+ODB Field Frame Number     43 of    250 requested intervals at  8.600000E-05
+       89  8.900E-05 8.900E-05  00:00:00 1.000E-06           4  5.310E-05  4.662E-08
+ODB Field Frame Number     44 of    250 requested intervals at  8.900000E-05
+       90  9.000E-05 9.000E-05  00:00:00 1.000E-06           4  5.267E-05  4.911E-08
+ODB Field Frame Number     45 of    250 requested intervals at  9.000000E-05
+       93  9.300E-05 9.300E-05  00:00:00 1.000E-06           4  5.195E-05  5.234E-08
+ODB Field Frame Number     46 of    250 requested intervals at  9.300000E-05
+       94  9.400E-05 9.400E-05  00:00:00 1.000E-06           4  5.195E-05  5.203E-08
+ODB Field Frame Number     47 of    250 requested intervals at  9.400000E-05
+       96  9.600E-05 9.600E-05  00:00:00 1.000E-06           4  5.233E-05  4.951E-08
+ODB Field Frame Number     48 of    250 requested intervals at  9.600000E-05
+       99  9.900E-05 9.900E-05  00:00:00 1.000E-06           4  5.343E-05  4.171E-08
+ODB Field Frame Number     49 of    250 requested intervals at  9.900000E-05
+      101  1.010E-04 1.010E-04  00:00:00 1.000E-06           4  5.405E-05  3.556E-08
+ODB Field Frame Number     50 of    250 requested intervals at  1.010000E-04
+      103  1.030E-04 1.030E-04  00:00:00 1.000E-06           4  5.413E-05  3.128E-08
+ODB Field Frame Number     51 of    250 requested intervals at  1.030000E-04
+      104  1.040E-04 1.040E-04  00:00:00 1.000E-06           4  5.388E-05  3.058E-08
+ODB Field Frame Number     52 of    250 requested intervals at  1.040000E-04
+      107  1.070E-04 1.070E-04  00:00:00 1.000E-06           4  5.190E-05  3.537E-08
+ODB Field Frame Number     53 of    250 requested intervals at  1.070000E-04
+      108  1.080E-04 1.080E-04  00:00:00 1.000E-06           4  5.092E-05  3.871E-08
+ODB Field Frame Number     54 of    250 requested intervals at  1.080000E-04
+      111  1.110E-04 1.110E-04  00:00:00 1.000E-06           4  4.767E-05  4.832E-08
+ODB Field Frame Number     55 of    250 requested intervals at  1.110000E-04
+      112  1.120E-04 1.120E-04  00:00:00 1.000E-06           4  4.666E-05  4.989E-08
+ODB Field Frame Number     56 of    250 requested intervals at  1.120000E-04
+      115  1.150E-04 1.150E-04  00:00:00 1.000E-06           4  4.416E-05  4.648E-08
+ODB Field Frame Number     57 of    250 requested intervals at  1.150000E-04
+      116  1.160E-04 1.160E-04  00:00:00 1.000E-06           4  4.344E-05  4.302E-08
+ODB Field Frame Number     58 of    250 requested intervals at  1.160000E-04
+      119  1.190E-04 1.190E-04  00:00:00 1.000E-06           4  4.093E-05  3.119E-08
+ODB Field Frame Number     59 of    250 requested intervals at  1.190000E-04
+      121  1.210E-04 1.210E-04  00:00:00 1.000E-06           4  3.835E-05  2.689E-08
+ODB Field Frame Number     60 of    250 requested intervals at  1.210000E-04
+      123  1.230E-04 1.230E-04  00:00:00 1.000E-06           4  3.470E-05  2.833E-08
+ODB Field Frame Number     61 of    250 requested intervals at  1.230000E-04
+      124  1.240E-04 1.240E-04  00:00:00 1.000E-06           4  3.249E-05  3.125E-08
+ODB Field Frame Number     62 of    250 requested intervals at  1.240000E-04
+      126  1.260E-04 1.260E-04  00:00:00 1.000E-06           4  2.753E-05  4.021E-08
+ODB Field Frame Number     63 of    250 requested intervals at  1.260000E-04
+      128  1.280E-04 1.280E-04  00:00:00 1.000E-06           4  2.233E-05  5.057E-08
+ODB Field Frame Number     64 of    250 requested intervals at  1.280000E-04
+      131  1.310E-04 1.310E-04  00:00:00 1.000E-06           4  1.545E-05  6.147E-08
+ODB Field Frame Number     65 of    250 requested intervals at  1.310000E-04
+      132  1.320E-04 1.320E-04  00:00:00 1.000E-06           4  1.365E-05  6.278E-08
+ODB Field Frame Number     66 of    250 requested intervals at  1.320000E-04
+      134  1.340E-04 1.340E-04  00:00:00 1.000E-06           4  1.093E-05  6.169E-08
+ODB Field Frame Number     67 of    250 requested intervals at  1.340000E-04
+      136  1.360E-04 1.360E-04  00:00:00 1.000E-06           4  9.324E-06  5.684E-08
+ODB Field Frame Number     68 of    250 requested intervals at  1.360000E-04
+      139  1.390E-04 1.390E-04  00:00:00 1.000E-06           4  8.300E-06  4.763E-08
+ODB Field Frame Number     69 of    250 requested intervals at  1.390000E-04
+      140  1.400E-04 1.400E-04  00:00:00 1.000E-06           4  8.137E-06  4.529E-08
+ODB Field Frame Number     70 of    250 requested intervals at  1.400000E-04
+      142  1.420E-04 1.420E-04  00:00:00 1.000E-06           4  7.849E-06  4.315E-08
+ODB Field Frame Number     71 of    250 requested intervals at  1.420000E-04
+      144  1.440E-04 1.440E-04  00:00:00 1.000E-06           4  7.527E-06  4.508E-08
+ODB Field Frame Number     72 of    250 requested intervals at  1.440000E-04
+      146  1.460E-04 1.460E-04  00:00:00 1.000E-06           4  7.291E-06  5.070E-08
+ODB Field Frame Number     73 of    250 requested intervals at  1.460000E-04
+      148  1.480E-04 1.480E-04  00:00:00 1.000E-06           4  7.489E-06  5.816E-08
+ODB Field Frame Number     74 of    250 requested intervals at  1.480000E-04
+      151  1.510E-04 1.510E-04  00:00:00 1.000E-06           4  9.594E-06  6.640E-08
+ODB Field Frame Number     75 of    250 requested intervals at  1.510000E-04
+      153  1.530E-04 1.530E-04  00:00:00 1.000E-06           4  1.269E-05  6.596E-08
+ODB Field Frame Number     76 of    250 requested intervals at  1.530000E-04
+      155  1.550E-04 1.550E-04  00:00:00 1.000E-06           4  1.715E-05  5.965E-08
+ODB Field Frame Number     77 of    250 requested intervals at  1.550000E-04
+      157  1.570E-04 1.570E-04  00:00:00 1.000E-06           4  2.258E-05  4.912E-08
+ODB Field Frame Number     78 of    250 requested intervals at  1.570000E-04
+      159  1.590E-04 1.590E-04  00:00:00 1.000E-06           4  2.833E-05  3.790E-08
+ODB Field Frame Number     79 of    250 requested intervals at  1.590000E-04
+
+ STEP 1  ORIGIN 0.0000
+
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+      161  1.610E-04 1.610E-04  00:00:00 1.000E-06           4  3.370E-05  2.976E-08
+ODB Field Frame Number     80 of    250 requested intervals at  1.610000E-04
+      162  1.620E-04 1.620E-04  00:00:00 1.000E-06           4  3.608E-05  2.768E-08
+ODB Field Frame Number     81 of    250 requested intervals at  1.620000E-04
+      164  1.640E-04 1.640E-04  00:00:00 1.000E-06           4  4.004E-05  2.785E-08
+ODB Field Frame Number     82 of    250 requested intervals at  1.640000E-04
+      167  1.670E-04 1.670E-04  00:00:00 1.000E-06           4  4.416E-05  3.573E-08
+ODB Field Frame Number     83 of    250 requested intervals at  1.670000E-04
+      169  1.690E-04 1.690E-04  00:00:00 1.000E-06           4  4.617E-05  4.177E-08
+ODB Field Frame Number     84 of    250 requested intervals at  1.690000E-04
+      170  1.700E-04 1.700E-04  00:00:00 1.000E-06           4  4.709E-05  4.395E-08
+ODB Field Frame Number     85 of    250 requested intervals at  1.700000E-04
+      172  1.720E-04 1.720E-04  00:00:00 1.000E-06           4  4.894E-05  4.565E-08
+ODB Field Frame Number     86 of    250 requested intervals at  1.720000E-04
+      175  1.750E-04 1.750E-04  00:00:00 1.000E-06           4  5.185E-05  4.186E-08
+ODB Field Frame Number     87 of    250 requested intervals at  1.750000E-04
+      177  1.770E-04 1.770E-04  00:00:00 1.000E-06           4  5.364E-05  3.729E-08
+ODB Field Frame Number     88 of    250 requested intervals at  1.770000E-04
+      178  1.780E-04 1.780E-04  00:00:00 1.000E-06           4  5.439E-05  3.521E-08
+ODB Field Frame Number     89 of    250 requested intervals at  1.780000E-04
+      180  1.800E-04 1.800E-04  00:00:00 1.000E-06           4  5.545E-05  3.272E-08
+ODB Field Frame Number     90 of    250 requested intervals at  1.800000E-04
+      183  1.830E-04 1.830E-04  00:00:00 1.000E-06           4  5.571E-05  3.505E-08
+ODB Field Frame Number     91 of    250 requested intervals at  1.830000E-04
+      185  1.850E-04 1.850E-04  00:00:00 1.000E-06           4  5.515E-05  4.023E-08
+ODB Field Frame Number     92 of    250 requested intervals at  1.850000E-04
+      186  1.860E-04 1.860E-04  00:00:00 1.000E-06           4  5.476E-05  4.335E-08
+ODB Field Frame Number     93 of    250 requested intervals at  1.860000E-04
+      188  1.880E-04 1.880E-04  00:00:00 1.000E-06           4  5.398E-05  4.917E-08
+ODB Field Frame Number     94 of    250 requested intervals at  1.880000E-04
+      190  1.900E-04 1.900E-04  00:00:00 1.000E-06           4  5.352E-05  5.262E-08
+ODB Field Frame Number     95 of    250 requested intervals at  1.900000E-04
+      192  1.920E-04 1.920E-04  00:00:00 1.000E-06           4  5.358E-05  5.224E-08
+ODB Field Frame Number     96 of    250 requested intervals at  1.920000E-04
+      195  1.950E-04 1.950E-04  00:00:00 1.000E-06           4  5.453E-05  4.518E-08
+ODB Field Frame Number     97 of    250 requested intervals at  1.950000E-04
+      197  1.970E-04 1.970E-04  00:00:00 1.000E-06           4  5.532E-05  3.910E-08
+ODB Field Frame Number     98 of    250 requested intervals at  1.970000E-04
+      199  1.990E-04 1.990E-04  00:00:00 1.000E-06           4  5.581E-05  3.527E-08
+ODB Field Frame Number     99 of    250 requested intervals at  1.990000E-04
+      201  2.010E-04 2.010E-04  00:00:00 1.000E-06           4  5.576E-05  3.594E-08
+ODB Field Frame Number    100 of    250 requested intervals at  2.010000E-04
+      203  2.030E-04 2.030E-04  00:00:00 1.000E-06           4  5.522E-05  4.164E-08
+ODB Field Frame Number    101 of    250 requested intervals at  2.030000E-04
+      205  2.050E-04 2.050E-04  00:00:00 1.000E-06           4  5.455E-05  5.072E-08
+ODB Field Frame Number    102 of    250 requested intervals at  2.050000E-04
+      207  2.070E-04 2.070E-04  00:00:00 1.000E-06           4  5.430E-05  5.982E-08
+ODB Field Frame Number    103 of    250 requested intervals at  2.070000E-04
+      208  2.080E-04 2.080E-04  00:00:00 1.000E-06           4  5.451E-05  6.320E-08
+ODB Field Frame Number    104 of    250 requested intervals at  2.080000E-04
+      211  2.110E-04 2.110E-04  00:00:00 1.000E-06           4  5.709E-05  6.449E-08
+ODB Field Frame Number    105 of    250 requested intervals at  2.110000E-04
+      213  2.130E-04 2.130E-04  00:00:00 1.000E-06           4  6.041E-05  5.743E-08
+ODB Field Frame Number    106 of    250 requested intervals at  2.130000E-04
+      215  2.150E-04 2.150E-04  00:00:00 1.000E-06           4  6.456E-05  4.645E-08
+ODB Field Frame Number    107 of    250 requested intervals at  2.150000E-04
+      216  2.160E-04 2.160E-04  00:00:01 1.000E-06           4  6.673E-05  4.074E-08
+ODB Field Frame Number    108 of    250 requested intervals at  2.160000E-04
+      219  2.190E-04 2.190E-04  00:00:01 1.000E-06           4  7.265E-05  2.895E-08
+ODB Field Frame Number    109 of    250 requested intervals at  2.190000E-04
+      221  2.210E-04 2.210E-04  00:00:01 1.000E-06           4  7.551E-05  2.890E-08
+ODB Field Frame Number    110 of    250 requested intervals at  2.210000E-04
+      223  2.230E-04 2.230E-04  00:00:01 1.000E-06           4  7.743E-05  3.536E-08
+ODB Field Frame Number    111 of    250 requested intervals at  2.230000E-04
+      224  2.240E-04 2.240E-04  00:00:01 1.000E-06           4  7.816E-05  4.028E-08
+ODB Field Frame Number    112 of    250 requested intervals at  2.240000E-04
+      226  2.260E-04 2.260E-04  00:00:01 1.000E-06           4  7.952E-05  5.112E-08
+ODB Field Frame Number    113 of    250 requested intervals at  2.260000E-04
+      229  2.290E-04 2.290E-04  00:00:01 1.000E-06           4  8.256E-05  6.196E-08
+ODB Field Frame Number    114 of    250 requested intervals at  2.290000E-04
+      230  2.300E-04 2.300E-04  00:00:01 1.000E-06           4  8.408E-05  6.252E-08
+ODB Field Frame Number    115 of    250 requested intervals at  2.300000E-04
+      232  2.320E-04 2.320E-04  00:00:01 1.000E-06           4  8.798E-05  5.808E-08
+ODB Field Frame Number    116 of    250 requested intervals at  2.320000E-04
+      234  2.340E-04 2.340E-04  00:00:01 1.000E-06           4  9.273E-05  4.717E-08
+ODB Field Frame Number    117 of    250 requested intervals at  2.340000E-04
+      237  2.370E-04 2.370E-04  00:00:01 1.000E-06           4  9.992E-05  2.548E-08
+ODB Field Frame Number    118 of    250 requested intervals at  2.370000E-04
+      239  2.390E-04 2.390E-04  00:00:01 1.000E-06           4  1.034E-04  1.376E-08
+ODB Field Frame Number    119 of    250 requested intervals at  2.390000E-04
+
+ STEP 1  ORIGIN 0.0000
+
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+      241  2.410E-04 2.410E-04  00:00:01 1.000E-06           4  1.050E-04  8.826E-09
+ODB Field Frame Number    120 of    250 requested intervals at  2.410000E-04
+      243  2.430E-04 2.430E-04  00:00:01 1.000E-06           4  1.045E-04  1.255E-08
+ODB Field Frame Number    121 of    250 requested intervals at  2.430000E-04
+      245  2.450E-04 2.450E-04  00:00:01 1.000E-06           4  1.019E-04  2.388E-08
+ODB Field Frame Number    122 of    250 requested intervals at  2.450000E-04
+      246  2.460E-04 2.460E-04  00:00:01 1.000E-06           4  1.001E-04  3.125E-08
+ODB Field Frame Number    123 of    250 requested intervals at  2.460000E-04
+      248  2.480E-04 2.480E-04  00:00:01 1.000E-06           4  9.598E-05  4.596E-08
+ODB Field Frame Number    124 of    250 requested intervals at  2.480000E-04
+      250  2.500E-04 2.500E-04  00:00:01 1.000E-06           4  9.196E-05  5.609E-08
+ODB Field Frame Number    125 of    250 requested intervals at  2.500000E-04
+      252  2.520E-04 2.520E-04  00:00:01 1.000E-06           4  8.866E-05  5.802E-08
+ODB Field Frame Number    126 of    250 requested intervals at  2.520000E-04
+      254  2.540E-04 2.540E-04  00:00:01 1.000E-06           4  8.620E-05  5.185E-08
+ODB Field Frame Number    127 of    250 requested intervals at  2.540000E-04
+      256  2.560E-04 2.560E-04  00:00:01 1.000E-06           4  8.420E-05  4.119E-08
+ODB Field Frame Number    128 of    250 requested intervals at  2.560000E-04
+      259  2.590E-04 2.590E-04  00:00:01 1.000E-06           4  8.068E-05  2.809E-08
+ODB Field Frame Number    129 of    250 requested intervals at  2.590000E-04
+      261  2.610E-04 2.610E-04  00:00:01 1.000E-06           4  7.719E-05  2.664E-08
+ODB Field Frame Number    130 of    250 requested intervals at  2.610000E-04
+      263  2.630E-04 2.630E-04  00:00:01 1.000E-06           4  7.263E-05  3.166E-08
+ODB Field Frame Number    131 of    250 requested intervals at  2.630000E-04
+      264  2.640E-04 2.640E-04  00:00:01 1.000E-06           4  7.003E-05  3.601E-08
+ODB Field Frame Number    132 of    250 requested intervals at  2.640000E-04
+      266  2.660E-04 2.660E-04  00:00:01 1.000E-06           4  6.452E-05  4.666E-08
+ODB Field Frame Number    133 of    250 requested intervals at  2.660000E-04
+      268  2.680E-04 2.680E-04  00:00:01 1.000E-06           4  5.918E-05  5.752E-08
+ODB Field Frame Number    134 of    250 requested intervals at  2.680000E-04
+      271  2.710E-04 2.710E-04  00:00:01 1.000E-06           4  5.293E-05  6.866E-08
+ODB Field Frame Number    135 of    250 requested intervals at  2.710000E-04
+      272  2.720E-04 2.720E-04  00:00:01 1.000E-06           4  5.157E-05  6.987E-08
+ODB Field Frame Number    136 of    250 requested intervals at  2.720000E-04
+      275  2.750E-04 2.750E-04  00:00:01 1.000E-06           4  4.989E-05  6.381E-08
+ODB Field Frame Number    137 of    250 requested intervals at  2.750000E-04
+      277  2.770E-04 2.770E-04  00:00:01 1.000E-06           4  5.039E-05  5.297E-08
+ODB Field Frame Number    138 of    250 requested intervals at  2.770000E-04
+      279  2.790E-04 2.790E-04  00:00:01 1.000E-06           4  5.145E-05  4.095E-08
+ODB Field Frame Number    139 of    250 requested intervals at  2.790000E-04
+      280  2.800E-04 2.800E-04  00:00:01 1.000E-06           4  5.196E-05  3.613E-08
+ODB Field Frame Number    140 of    250 requested intervals at  2.800000E-04
+      282  2.820E-04 2.820E-04  00:00:01 1.000E-06           4  5.255E-05  3.158E-08
+ODB Field Frame Number    141 of    250 requested intervals at  2.820000E-04
+      284  2.840E-04 2.840E-04  00:00:01 1.000E-06           4  5.239E-05  3.484E-08
+ODB Field Frame Number    142 of    250 requested intervals at  2.840000E-04
+      287  2.870E-04 2.870E-04  00:00:01 1.000E-06           4  5.125E-05  4.779E-08
+ODB Field Frame Number    143 of    250 requested intervals at  2.870000E-04
+      288  2.880E-04 2.880E-04  00:00:01 1.000E-06           4  5.089E-05  5.153E-08
+ODB Field Frame Number    144 of    250 requested intervals at  2.880000E-04
+      291  2.910E-04 2.910E-04  00:00:01 1.000E-06           4  5.065E-05  5.403E-08
+ODB Field Frame Number    145 of    250 requested intervals at  2.910000E-04
+      292  2.920E-04 2.920E-04  00:00:01 1.000E-06           4  5.089E-05  5.187E-08
+ODB Field Frame Number    146 of    250 requested intervals at  2.920000E-04
+      294  2.940E-04 2.940E-04  00:00:01 1.000E-06           4  5.169E-05  4.515E-08
+ODB Field Frame Number    147 of    250 requested intervals at  2.940000E-04
+      296  2.960E-04 2.960E-04  00:00:01 1.000E-06           4  5.256E-05  3.851E-08
+ODB Field Frame Number    148 of    250 requested intervals at  2.960000E-04
+      298  2.980E-04 2.980E-04  00:00:01 1.000E-06           4  5.308E-05  3.446E-08
+ODB Field Frame Number    149 of    250 requested intervals at  2.980000E-04
+      301  3.010E-04 3.010E-04  00:00:01 1.000E-06           4  5.273E-05  3.340E-08
+ODB Field Frame Number    150 of    250 requested intervals at  3.010000E-04
+      303  3.030E-04 3.030E-04  00:00:01 1.000E-06           4  5.165E-05  3.485E-08
+ODB Field Frame Number    151 of    250 requested intervals at  3.030000E-04
+      305  3.050E-04 3.050E-04  00:00:01 1.000E-06           4  4.999E-05  3.803E-08
+ODB Field Frame Number    152 of    250 requested intervals at  3.050000E-04
+      307  3.070E-04 3.070E-04  00:00:01 1.000E-06           4  4.795E-05  4.317E-08
+ODB Field Frame Number    153 of    250 requested intervals at  3.070000E-04
+      309  3.090E-04 3.090E-04  00:00:01 1.000E-06           4  4.587E-05  4.899E-08
+ODB Field Frame Number    154 of    250 requested intervals at  3.090000E-04
+      310  3.100E-04 3.100E-04  00:00:01 1.000E-06           4  4.492E-05  5.115E-08
+ODB Field Frame Number    155 of    250 requested intervals at  3.100000E-04
+      313  3.130E-04 3.130E-04  00:00:01 1.000E-06           4  4.278E-05  4.943E-08
+ODB Field Frame Number    156 of    250 requested intervals at  3.130000E-04
+      314  3.140E-04 3.140E-04  00:00:01 1.000E-06           4  4.227E-05  4.559E-08
+ODB Field Frame Number    157 of    250 requested intervals at  3.140000E-04
+      317  3.170E-04 3.170E-04  00:00:01 1.000E-06           4  4.054E-05  2.950E-08
+ODB Field Frame Number    158 of    250 requested intervals at  3.170000E-04
+      318  3.180E-04 3.180E-04  00:00:01 1.000E-06           4  3.962E-05  2.527E-08
+ODB Field Frame Number    159 of    250 requested intervals at  3.180000E-04
+
+ STEP 1  ORIGIN 0.0000
+
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+      321  3.210E-04 3.210E-04  00:00:01 1.000E-06           4  3.495E-05  2.523E-08
+ODB Field Frame Number    160 of    250 requested intervals at  3.210000E-04
+      323  3.230E-04 3.230E-04  00:00:01 1.000E-06           4  3.036E-05  3.580E-08
+ODB Field Frame Number    161 of    250 requested intervals at  3.230000E-04
+      324  3.240E-04 3.240E-04  00:00:01 1.000E-06           4  2.781E-05  4.257E-08
+ODB Field Frame Number    162 of    250 requested intervals at  3.240000E-04
+      326  3.260E-04 3.260E-04  00:00:01 1.000E-06           4  2.276E-05  5.489E-08
+ODB Field Frame Number    163 of    250 requested intervals at  3.260000E-04
+      328  3.280E-04 3.280E-04  00:00:01 1.000E-06           4  1.837E-05  6.158E-08
+ODB Field Frame Number    164 of    250 requested intervals at  3.280000E-04
+      330  3.300E-04 3.300E-04  00:00:01 1.000E-06           4  1.506E-05  6.166E-08
+ODB Field Frame Number    165 of    250 requested intervals at  3.300000E-04
+      333  3.330E-04 3.330E-04  00:00:01 1.000E-06           4  1.208E-05  5.519E-08
+ODB Field Frame Number    166 of    250 requested intervals at  3.330000E-04
+      334  3.340E-04 3.340E-04  00:00:01 1.000E-06           4  1.150E-05  5.273E-08
+ODB Field Frame Number    167 of    250 requested intervals at  3.340000E-04
+      337  3.370E-04 3.370E-04  00:00:01 1.000E-06           4  1.044E-05  4.598E-08
+ODB Field Frame Number    168 of    250 requested intervals at  3.370000E-04
+      339  3.390E-04 3.390E-04  00:00:01 1.000E-06           4  9.945E-06  4.198E-08
+ODB Field Frame Number    169 of    250 requested intervals at  3.390000E-04
+      340  3.400E-04 3.400E-04  00:00:01 1.000E-06           4  9.664E-06  4.052E-08
+ODB Field Frame Number    170 of    250 requested intervals at  3.400000E-04
+      343  3.430E-04 3.430E-04  00:00:01 1.000E-06           4  8.472E-06  4.234E-08
+ODB Field Frame Number    171 of    250 requested intervals at  3.430000E-04
+      344  3.440E-04 3.440E-04  00:00:01 1.000E-06           4  7.992E-06  4.588E-08
+ODB Field Frame Number    172 of    250 requested intervals at  3.440000E-04
+      347  3.470E-04 3.470E-04  00:00:01 1.000E-06           4  7.069E-06  6.286E-08
+ODB Field Frame Number    173 of    250 requested intervals at  3.470000E-04
+      349  3.490E-04 3.490E-04  00:00:01 1.000E-06           4  7.784E-06  7.244E-08
+ODB Field Frame Number    174 of    250 requested intervals at  3.490000E-04
+      351  3.510E-04 3.510E-04  00:00:01 1.000E-06           4  1.026E-05  7.365E-08
+ODB Field Frame Number    175 of    250 requested intervals at  3.510000E-04
+      353  3.530E-04 3.530E-04  00:00:01 1.000E-06           4  1.458E-05  6.489E-08
+ODB Field Frame Number    176 of    250 requested intervals at  3.530000E-04
+      354  3.540E-04 3.540E-04  00:00:01 1.000E-06           4  1.727E-05  5.786E-08
+ODB Field Frame Number    177 of    250 requested intervals at  3.540000E-04
+      356  3.560E-04 3.560E-04  00:00:01 1.000E-06           4  2.320E-05  4.288E-08
+ODB Field Frame Number    178 of    250 requested intervals at  3.560000E-04
+      359  3.590E-04 3.590E-04  00:00:01 1.000E-06           4  3.178E-05  2.963E-08
+ODB Field Frame Number    179 of    250 requested intervals at  3.590000E-04
+      360  3.600E-04 3.600E-04  00:00:01 1.000E-06           4  3.425E-05  2.895E-08
+ODB Field Frame Number    180 of    250 requested intervals at  3.600000E-04
+      363  3.630E-04 3.630E-04  00:00:01 1.000E-06           4  4.029E-05  3.411E-08
+ODB Field Frame Number    181 of    250 requested intervals at  3.630000E-04
+      365  3.650E-04 3.650E-04  00:00:01 1.000E-06           4  4.347E-05  3.862E-08
+ODB Field Frame Number    182 of    250 requested intervals at  3.650000E-04
+      367  3.670E-04 3.670E-04  00:00:01 1.000E-06           4  4.629E-05  4.140E-08
+ODB Field Frame Number    183 of    250 requested intervals at  3.670000E-04
+      369  3.690E-04 3.690E-04  00:00:01 1.000E-06           4  4.893E-05  4.263E-08
+ODB Field Frame Number    184 of    250 requested intervals at  3.690000E-04
+      370  3.700E-04 3.700E-04  00:00:01 1.000E-06           4  5.021E-05  4.286E-08
+ODB Field Frame Number    185 of    250 requested intervals at  3.700000E-04
+      372  3.720E-04 3.720E-04  00:00:01 1.000E-06           4  5.271E-05  4.250E-08
+ODB Field Frame Number    186 of    250 requested intervals at  3.720000E-04
+      375  3.750E-04 3.750E-04  00:00:01 1.000E-06           4  5.622E-05  3.817E-08
+ODB Field Frame Number    187 of    250 requested intervals at  3.750000E-04
+      376  3.760E-04 3.760E-04  00:00:01 1.000E-06           4  5.724E-05  3.560E-08
+ODB Field Frame Number    188 of    250 requested intervals at  3.760000E-04
+      379  3.790E-04 3.790E-04  00:00:01 1.000E-06           4  5.930E-05  2.814E-08
+ODB Field Frame Number    189 of    250 requested intervals at  3.790000E-04
+      380  3.800E-04 3.800E-04  00:00:01 1.000E-06           4  5.953E-05  2.723E-08
+ODB Field Frame Number    190 of    250 requested intervals at  3.800000E-04
+      383  3.830E-04 3.830E-04  00:00:01 1.000E-06           4  5.868E-05  3.338E-08
+ODB Field Frame Number    191 of    250 requested intervals at  3.830000E-04
+      384  3.840E-04 3.840E-04  00:00:01 1.000E-06           4  5.799E-05  3.805E-08
+ODB Field Frame Number    192 of    250 requested intervals at  3.840000E-04
+      386  3.860E-04 3.860E-04  00:00:01 1.000E-06           4  5.641E-05  4.844E-08
+ODB Field Frame Number    193 of    250 requested intervals at  3.860000E-04
+      389  3.890E-04 3.890E-04  00:00:01 1.000E-06           4  5.469E-05  5.740E-08
+ODB Field Frame Number    194 of    250 requested intervals at  3.890000E-04
+      390  3.900E-04 3.900E-04  00:00:01 1.000E-06           4  5.449E-05  5.708E-08
+ODB Field Frame Number    195 of    250 requested intervals at  3.900000E-04
+      393  3.930E-04 3.930E-04  00:00:01 1.000E-06           4  5.501E-05  4.809E-08
+ODB Field Frame Number    196 of    250 requested intervals at  3.930000E-04
+      395  3.950E-04 3.950E-04  00:00:01 1.000E-06           4  5.576E-05  4.048E-08
+ODB Field Frame Number    197 of    250 requested intervals at  3.950000E-04
+      397  3.970E-04 3.970E-04  00:00:01 1.000E-06           4  5.631E-05  3.638E-08
+ODB Field Frame Number    198 of    250 requested intervals at  3.970000E-04
+      399  3.990E-04 3.990E-04  00:00:01 1.000E-06           4  5.640E-05  3.759E-08
+ODB Field Frame Number    199 of    250 requested intervals at  3.990000E-04
+
+ STEP 1  ORIGIN 0.0000
+
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+      401  4.010E-04 4.010E-04  00:00:01 1.000E-06           4  5.611E-05  4.329E-08
+ODB Field Frame Number    200 of    250 requested intervals at  4.010000E-04
+      402  4.020E-04 4.020E-04  00:00:01 1.000E-06           4  5.592E-05  4.707E-08
+ODB Field Frame Number    201 of    250 requested intervals at  4.020000E-04
+      405  4.050E-04 4.050E-04  00:00:01 1.000E-06           4  5.588E-05  5.770E-08
+ODB Field Frame Number    202 of    250 requested intervals at  4.050000E-04
+      406  4.060E-04 4.060E-04  00:00:01 1.000E-06           4  5.623E-05  5.995E-08
+ODB Field Frame Number    203 of    250 requested intervals at  4.060000E-04
+      409  4.090E-04 4.090E-04  00:00:01 1.000E-06           4  5.887E-05  6.029E-08
+ODB Field Frame Number    204 of    250 requested intervals at  4.090000E-04
+      411  4.110E-04 4.110E-04  00:00:01 1.000E-06           4  6.191E-05  5.507E-08
+ODB Field Frame Number    205 of    250 requested intervals at  4.110000E-04
+      413  4.130E-04 4.130E-04  00:00:01 1.000E-06           4  6.564E-05  4.683E-08
+ODB Field Frame Number    206 of    250 requested intervals at  4.130000E-04
+      415  4.150E-04 4.150E-04  00:00:01 1.000E-06           4  6.954E-05  3.792E-08
+ODB Field Frame Number    207 of    250 requested intervals at  4.150000E-04
+      416  4.160E-04 4.160E-04  00:00:01 1.000E-06           4  7.138E-05  3.412E-08
+ODB Field Frame Number    208 of    250 requested intervals at  4.160000E-04
+      418  4.180E-04 4.180E-04  00:00:01 1.000E-06           4  7.455E-05  2.954E-08
+ODB Field Frame Number    209 of    250 requested intervals at  4.180000E-04
+      421  4.210E-04 4.210E-04  00:00:01 1.000E-06           4  7.762E-05  3.348E-08
+ODB Field Frame Number    210 of    250 requested intervals at  4.210000E-04
+      422  4.220E-04 4.220E-04  00:00:01 1.000E-06           4  7.826E-05  3.767E-08
+ODB Field Frame Number    211 of    250 requested intervals at  4.220000E-04
+      425  4.250E-04 4.250E-04  00:00:01 1.000E-06           4  7.992E-05  5.413E-08
+ODB Field Frame Number    212 of    250 requested intervals at  4.250000E-04
+      427  4.270E-04 4.270E-04  00:00:01 1.000E-06           4  8.166E-05  6.252E-08
+ODB Field Frame Number    213 of    250 requested intervals at  4.270000E-04
+      429  4.290E-04 4.290E-04  00:00:01 1.000E-06           4  8.455E-05  6.372E-08
+ODB Field Frame Number    214 of    250 requested intervals at  4.290000E-04
+      431  4.310E-04 4.310E-04  00:00:01 1.000E-06           4  8.863E-05  5.604E-08
+ODB Field Frame Number    215 of    250 requested intervals at  4.310000E-04
+      432  4.320E-04 4.320E-04  00:00:01 1.000E-06           4  9.100E-05  4.939E-08
+ODB Field Frame Number    216 of    250 requested intervals at  4.320000E-04
+      435  4.350E-04 4.350E-04  00:00:01 1.000E-06           4  9.809E-05  2.584E-08
+ODB Field Frame Number    217 of    250 requested intervals at  4.350000E-04
+      437  4.370E-04 4.370E-04  00:00:01 1.000E-06           4  1.016E-04  1.457E-08
+ODB Field Frame Number    218 of    250 requested intervals at  4.370000E-04
+      439  4.390E-04 4.390E-04  00:00:01 1.000E-06           4  1.033E-04  1.163E-08
+ODB Field Frame Number    219 of    250 requested intervals at  4.390000E-04
+      441  4.410E-04 4.410E-04  00:00:01 1.000E-06           4  1.029E-04  1.711E-08
+ODB Field Frame Number    220 of    250 requested intervals at  4.410000E-04
+      443  4.430E-04 4.430E-04  00:00:01 1.000E-06           4  1.009E-04  2.790E-08
+ODB Field Frame Number    221 of    250 requested intervals at  4.430000E-04
+      445  4.450E-04 4.450E-04  00:00:01 1.000E-06           4  9.783E-05  3.968E-08
+ODB Field Frame Number    222 of    250 requested intervals at  4.450000E-04
+      447  4.470E-04 4.470E-04  00:00:01 1.000E-06           4  9.447E-05  4.882E-08
+ODB Field Frame Number    223 of    250 requested intervals at  4.470000E-04
+      448  4.480E-04 4.480E-04  00:00:01 1.000E-06           4  9.287E-05  5.168E-08
+ODB Field Frame Number    224 of    250 requested intervals at  4.480000E-04
+      451  4.510E-04 4.510E-04  00:00:01 1.000E-06           4  8.886E-05  5.226E-08
+ODB Field Frame Number    225 of    250 requested intervals at  4.510000E-04
+      452  4.520E-04 4.520E-04  00:00:01 1.000E-06           4  8.779E-05  4.989E-08
+ODB Field Frame Number    226 of    250 requested intervals at  4.520000E-04
+      455  4.550E-04 4.550E-04  00:00:02 1.000E-06           4  8.492E-05  3.747E-08
+ODB Field Frame Number    227 of    250 requested intervals at  4.550000E-04
+      457  4.570E-04 4.570E-04  00:00:02 1.000E-06           4  8.260E-05  2.853E-08
+ODB Field Frame Number    228 of    250 requested intervals at  4.570000E-04
+      459  4.590E-04 4.590E-04  00:00:02 1.000E-06           4  7.931E-05  2.366E-08
+ODB Field Frame Number    229 of    250 requested intervals at  4.590000E-04
+      460  4.600E-04 4.600E-04  00:00:02 1.000E-06           4  7.719E-05  2.384E-08
+ODB Field Frame Number    230 of    250 requested intervals at  4.600000E-04
+      463  4.630E-04 4.630E-04  00:00:02 1.000E-06           4  6.910E-05  3.587E-08
+ODB Field Frame Number    231 of    250 requested intervals at  4.630000E-04
+      464  4.640E-04 4.640E-04  00:00:02 1.000E-06           4  6.603E-05  4.273E-08
+ODB Field Frame Number    232 of    250 requested intervals at  4.640000E-04
+      467  4.670E-04 4.670E-04  00:00:02 1.000E-06           4  5.716E-05  6.303E-08
+ODB Field Frame Number    233 of    250 requested intervals at  4.670000E-04
+      468  4.680E-04 4.680E-04  00:00:02 1.000E-06           4  5.468E-05  6.746E-08
+ODB Field Frame Number    234 of    250 requested intervals at  4.680000E-04
+      471  4.710E-04 4.710E-04  00:00:02 1.000E-06           4  4.957E-05  6.898E-08
+ODB Field Frame Number    235 of    250 requested intervals at  4.710000E-04
+      473  4.730E-04 4.730E-04  00:00:02 1.000E-06           4  4.814E-05  6.179E-08
+ODB Field Frame Number    236 of    250 requested intervals at  4.730000E-04
+      475  4.750E-04 4.750E-04  00:00:02 1.000E-06           4  4.782E-05  5.231E-08
+ODB Field Frame Number    237 of    250 requested intervals at  4.750000E-04
+      477  4.770E-04 4.770E-04  00:00:02 1.000E-06           4  4.805E-05  4.446E-08
+ODB Field Frame Number    238 of    250 requested intervals at  4.770000E-04
+      478  4.780E-04 4.780E-04  00:00:02 1.000E-06           4  4.821E-05  4.192E-08
+ODB Field Frame Number    239 of    250 requested intervals at  4.780000E-04
+
+ STEP 1  ORIGIN 0.0000
+
+
+***WARNING: The direct user control is used in the current analysis step. In
+            this case, Abaqus/Explicit will not check that the computed
+            response is stable during the step. Please check carefully the
+            energy history and other response variables to ensure that a valid
+            and stable response has been obtained.
+
+              STEP     TOTAL       CPU      STABLE    CRITICAL    KINETIC      TOTAL
+INCREMENT     TIME      TIME      TIME   INCREMENT     ELEMENT     ENERGY     ENERGY
+      481  4.810E-04 4.810E-04  00:00:02 1.000E-06           4  4.840E-05  4.059E-08
+ODB Field Frame Number    240 of    250 requested intervals at  4.810000E-04
+      483  4.830E-04 4.830E-04  00:00:02 1.000E-06           4  4.827E-05  4.368E-08
+ODB Field Frame Number    241 of    250 requested intervals at  4.830000E-04
+      485  4.850E-04 4.850E-04  00:00:02 1.000E-06           4  4.812E-05  4.788E-08
+ODB Field Frame Number    242 of    250 requested intervals at  4.850000E-04
+      487  4.870E-04 4.870E-04  00:00:02 1.000E-06           4  4.821E-05  5.117E-08
+ODB Field Frame Number    243 of    250 requested intervals at  4.870000E-04
+      489  4.890E-04 4.890E-04  00:00:02 1.000E-06           4  4.874E-05  5.177E-08
+ODB Field Frame Number    244 of    250 requested intervals at  4.890000E-04
+      490  4.900E-04 4.900E-04  00:00:02 1.000E-06           4  4.919E-05  5.072E-08
+ODB Field Frame Number    245 of    250 requested intervals at  4.900000E-04
+      492  4.920E-04 4.920E-04  00:00:02 1.000E-06           4  5.037E-05  4.594E-08
+ODB Field Frame Number    246 of    250 requested intervals at  4.920000E-04
+      495  4.950E-04 4.950E-04  00:00:02 1.000E-06           4  5.221E-05  3.527E-08
+ODB Field Frame Number    247 of    250 requested intervals at  4.950000E-04
+      496  4.960E-04 4.960E-04  00:00:02 1.000E-06           4  5.261E-05  3.214E-08
+ODB Field Frame Number    248 of    250 requested intervals at  4.960000E-04
+      498  4.980E-04 4.980E-04  00:00:02 1.000E-06           4  5.283E-05  2.857E-08
+ODB Field Frame Number    249 of    250 requested intervals at  4.980000E-04
+      500  5.000E-04 5.000E-04  00:00:02 1.000E-06           4  5.208E-05  2.981E-08
+Restart Number  1 at 5.00000E-04
+ODB Field Frame Number    250 of    250 requested intervals at  5.000000E-04
+
+  THE ANALYSIS HAS COMPLETED SUCCESSFULLY
+

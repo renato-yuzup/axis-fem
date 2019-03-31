@@ -1,0 +1,464 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=100.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(0.5, 0.05))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['beam'].BaseSolidExtrude(depth=0.05, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='steel')
+mdb.models['Model-1'].materials['steel'].Density(table=((7850.0, ), ))
+mdb.models['Model-1'].materials['steel'].Elastic(table=((200000000000.0, 0.3), 
+    ))
+mdb.models['Model-1'].TabularAmplitude(data=((0.0, 0.0), (1e-05, 0.0), (
+    1.000001e-05, 1.0), (7.5e-05, 1.0), (7.500001e-05, 0.0), (100.0, 0.0)), 
+    name='load', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['Model-1'].ExplicitDynamicsStep(linearBulkViscosity=0.0, name=
+    'dynamic-explicit', nlgeom=OFF, previous='Initial', quadBulkViscosity=0.0, 
+    timeIncrementationMethod=FIXED_USER_DEFINED_INC, userDefinedInc=1e-06)
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].HomogeneousSolidSection(material='steel', name=
+    'beam-section', thickness=None)
+mdb.models['Model-1'].parts['beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['beam'].cells.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='beam-section', thicknessAssignment=
+    FROM_SECTION)
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.0125)
+mdb.models['Model-1'].parts['beam'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=CENTROID, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, elemDeletion=OFF, 
+    linearBulkViscosity=0, quadraticBulkViscosity=0), ElemType(elemCode=C3D6, 
+    elemLibrary=EXPLICIT), ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), 
+    regions=(mdb.models['Model-1'].parts['beam'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['beam'].generateMesh()
+mdb.models['Model-1'].parts['beam'].Set(name='lock', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#0:31 #ffffff00 #1 ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#1ffffff ]', ), ))
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='beam-1', part=
+    mdb.models['Model-1'].parts['beam'])
+mdb.models['Model-1'].steps['dynamic-explicit'].setValues(userDefinedInc=
+    2.5e-07)
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='dynamic-explicit', 
+    name='H-Output-2', numIntervals=250, rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load'], 
+    sectionPoints=DEFAULT, variables=('U1', 'U2', 'U3', 'V1', 'V2', 'V3', 'A1', 
+    'A2', 'A3', 'CF1'))
+mdb.models['Model-1'].parts['beam'].Set(name='load-edge', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#1100011 ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load-line', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#e8c62e ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load-inner', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#739c0 ]', ), ))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].ConcentratedForce(amplitude='load', cf1=-1000.0, 
+    createStepName='dynamic-explicit', distributionType=UNIFORM, field='', 
+    localCsys=None, name='load-tips', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load-edge'])
+mdb.models['Model-1'].ConcentratedForce(amplitude='load', cf1=-2000.0, 
+    createStepName='dynamic-explicit', distributionType=UNIFORM, field='', 
+    localCsys=None, name='load-edges', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load-line'])
+mdb.models['Model-1'].ConcentratedForce(amplitude='load', cf1=-4000.0, 
+    createStepName='dynamic-explicit', distributionType=UNIFORM, field='', 
+    localCsys=None, name='load-inner', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load-inner'])
+mdb.models['Model-1'].PinnedBC(createStepName='Initial', localCsys=None, name=
+    'encastre', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['lock'])
+mdb.Job(activateLoadBalancing=False, atTime=None, contactPrint=OFF, 
+    description='', echoPrint=OFF, explicitPrecision=DOUBLE_PLUS_PACK, 
+    historyPrint=OFF, model='Model-1', modelPrint=OFF, multiprocessingMode=
+    DEFAULT, name='Job-1', nodalOutputPrecision=FULL, numCpus=1, numDomains=1, 
+    parallelizationMethodExplicit=DOMAIN, queue=None, scratch='', type=ANALYSIS
+    , userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by Renato on Sat Jul 27 01:53:47 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'atlas', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'atlas', 'handle': 2988, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 2 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'atlas', 'handle': 9044, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0, 'totalEnergy': 0.0, 
+    'cpuTime': 0.0, 'jobName': 'Job-1', 'step': 1, 'increment': 0, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0500002375023157, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0500002375023157, 
+    'totalEnergy': 0.000261338107026887, 'cpuTime': 39.4000015258789, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 199999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.694810097530052})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.100000225002194, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.100000225002194, 
+    'totalEnergy': 0.000213431237328976, 'cpuTime': 78.6999969482422, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 399997, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.54656252647111})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.150000212502072, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.150000212502072, 
+    'totalEnergy': 0.000226636445225026, 'cpuTime': 118.099998474121, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 599995, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.10110998468429})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.20000020000195, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.20000020000195, 
+    'totalEnergy': 0.000213151926852007, 'cpuTime': 157.399993896484, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 799993, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.95139053334141})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.250000187501828, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.250000187501828, 
+    'totalEnergy': 0.000200777801612873, 'cpuTime': 197.100006103516, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 999991, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 2.37186497075774})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.300000175001706, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.300000175001706, 
+    'totalEnergy': 0.000222897543577183, 'cpuTime': 236.399993896484, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 1199989, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 2.05855517285915})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.350000162501584, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.350000162501584, 
+    'totalEnergy': 0.000168472838107725, 'cpuTime': 276.0, 'jobName': 'Job-1', 
+    'step': 1, 'increment': 1399987, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 1.38102964145519})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.400000150001463, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.400000150001463, 
+    'totalEnergy': 0.000219339193383128, 'cpuTime': 315.399993896484, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 1599985, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.935092607577229})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1'].setValues(activateLoadBalancing=False, numCpus=8, numDomains=
+    8)
+#* The job is running and cannot be modified at this point.
+mdb.jobs['Job-1']._Message(ERROR, {'phase': EXPLICIT_PHASE, 
+    'message': 'Process terminated by external request (SIGTERM or SIGINT received).', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(INTERRUPTED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Analysis terminated by external signal', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Abaqus/Explicit Analysis exited with an error - Please see the  status file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Explicit Analysis exited with an error - Please see the  status file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].setValues(activateLoadBalancing=False, numCpus=8, numDomains=
+    8)
+# Save by Renato on Sat Jul 27 01:59:58 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'atlas', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'atlas', 'handle': 10932, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 2 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable C:\\Program aborted with system error code 65533. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable C:\\Program aborted with system error code 65533. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].setValues(activateLoadBalancing=False, multiprocessingMode=
+    THREADS, numDomains=8)
+# Save by Renato on Sat Jul 27 02:00:27 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'atlas', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'atlas', 'handle': 10588, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 2 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'atlas', 'handle': 8060, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0, 'totalEnergy': 0.0, 
+    'cpuTime': 0.600000023841858, 'jobName': 'Job-1', 'step': 1, 
+    'increment': 0, 'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0244229881241342, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0244229881241342, 
+    'totalEnergy': 0.000232525449030518, 'cpuTime': 120.000003099442, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 97691, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 0.853582355890463})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0500002375023157, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0500002375023157, 
+    'totalEnergy': 0.000261338107021558, 'cpuTime': 239.899996995926, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 199999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.694810097530047})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0749389806550614, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0749389806550614, 
+    'totalEnergy': 0.000261548482590968, 'cpuTime': 359.800006151199, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 299753, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.02433833950195})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.100000225002194, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.100000225002194, 
+    'totalEnergy': 0.000213431237321871, 'cpuTime': 475.499987840652, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 399997, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.546562526471098})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.125106969792955, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.125106969792955, 
+    'totalEnergy': 0.000249420572461467, 'cpuTime': 595.400012254715, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 500423, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.851837260309985})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': EXPLICIT_PHASE, 
+    'message': 'Process terminated by external request (SIGTERM or SIGINT received).', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(INTERRUPTED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Analysis terminated by external signal', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Abaqus/Explicit Analysis exited with an error - Please see the  status file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Explicit Analysis exited with an error - Please see the  status file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].loads['load-tips'].setValues(cf1=-62.5, distributionType=
+    UNIFORM, field='')
+mdb.models['Model-1'].loads['load-edges'].setValues(cf1=-125.0, 
+    distributionType=UNIFORM, field='')
+mdb.models['Model-1'].loads['load-inner'].setValues(cf1=-250.0, 
+    distributionType=UNIFORM, field='')
+# Save by Renato on Sat Jul 27 02:03:24 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'atlas', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'atlas', 'handle': 13564, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 2 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'atlas', 'handle': 3912, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0, 'totalEnergy': 0.0, 
+    'cpuTime': 0.5, 'jobName': 'Job-1', 'step': 1, 'increment': 0, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0243032369565603, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0243032369565603, 
+    'totalEnergy': 1.00063674640313e-06, 'cpuTime': 120.000003099442, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 97212, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 0.00376250116072485})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0493817314718819, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0493817314718819, 
+    'totalEnergy': 7.67904906301409e-07, 'cpuTime': 240.000003099442, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 197525, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.00317201834079904})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0500002375023157, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0500002375023157, 
+    'totalEnergy': 1.02085198055296e-06, 'cpuTime': 244.099993944168, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 199999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.00271410194347674})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0743802252071958, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0743802252071958, 
+    'totalEnergy': 6.74612952595785e-07, 'cpuTime': 364.099993944168, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 297518, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0090841654413536})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0975994515946531, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.0975994515946531, 
+    'totalEnergy': 8.06827553920253e-07, 'cpuTime': 485.200000047684, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 390394, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.00467803317654454})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.100000225002194, 
+    'timeIncrement': 2.50002437523766e-07, 'stepTime': 0.100000225002194, 
+    'totalEnergy': 8.33715770788557e-07, 'cpuTime': 503.599993944168, 
+    'jobName': 'Job-1', 'step': 1, 'increment': 399997, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.00213500986902773})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+# Save by Renato on Sat Jul 27 02:04:58 2013
+# Save by Renato on Sat Jul 27 02:05:06 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].steps['dynamic-explicit'].setValues(timePeriod=0.0005)
+# Save by Renato on Sat Jul 27 02:06:43 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Detected lock file Job-1.lck. Please confirm that no other applications are attempting to write to the output database associated with this job before removing the lock file and resubmitting.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Detected lock file Job-1.lck. Please confirm that no other applications are attempting to write to the output database associated with this job before removing the lock file and resubmitting.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(ERROR, {
+# Save by Renato on Sat Jul 27 02:11:34 2013

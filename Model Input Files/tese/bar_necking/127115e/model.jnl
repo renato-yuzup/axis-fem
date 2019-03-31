@@ -1,0 +1,415 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 10.0), point2=(
+    3.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(3.0, 10.0), point2=(
+    3.0, 0.200509160757065))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(3.0, 
+    0.200509160757065), point2=(2.93643307685852, 0.000633090734481812))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(2.93643307685852, 
+    0.000633090734481812), point2=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].Spot(point=(3.0, 
+    0.200509160757065))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[5], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].Spot(point=(3.17320919036865, 
+    0.122229099273682))
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3], points=((3.0, 
+    0.200509160757065), (3.0, 0.200509160757065), (3.00451850891113, 
+    0.167295604944229), (3.00451850891113, 0.143576413393021), (
+    3.00214266777039, 0.122229158878326), (3.01164627075195, 0.10799765586853), 
+    (3.00689458847046, 0.0890223383903503), (2.99739074707031, 
+    0.0842784643173218), (2.99976682662964, 0.0771627426147461), (
+    2.99739074707031, 0.0629311800003052)))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidRevolve(angle=90.0, 
+    flipRevolveDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='steel')
+mdb.models['Model-1'].materials['steel'].Density(table=((7845.0, ), ))
+mdb.models['Model-1'].materials['steel'].Elastic(table=((200000000000.0, 0.29), 
+    ))
+mdb.models['Model-1'].materials['steel'].Plastic(table=((415000000.0, 0.0), (
+    620000000.0, 0.25)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='steel', name='steel', 
+    thickness=None)
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName='steel', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].TabularAmplitude(data=((0.0, 0.0), (0.001, 1.0)), name=
+    'displacement', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.saveAs(pathName='D:/Renato/Axis/Model Input Files/tese/bar_necking/base_model.cae')
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, linearBulkViscosity=0, 
+    quadraticBulkViscosity=0), ElemType(elemCode=C3D6, elemLibrary=EXPLICIT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, linearBulkViscosity=0, 
+    quadraticBulkViscosity=0), ElemType(elemCode=C3D6, elemLibrary=EXPLICIT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.02)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].parts['Part-1'].deleteMesh()
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.08)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+# Save by Renato on 2014_02_08-12.50.58; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['Part-1'].Set(name='simetriay', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#5400000 #0:30 #3fffff0 #0:7 #ff800000 #3ff #ffffffc0', 
+    ' #3 #0 #ff000000 #1fff #0:479 #ffc00000 #7ff', 
+    ' #0:2 #fffff000 #1 #0:2 #7ffffc #0:2 #ff000000', 
+    ' #1fff #0:2 #ffffc000 #7 #0:2 #1fffff0 #0:2', 
+    ' #fc000000 #7fff #0:2 #ffff0000 #1f #0:2 #7ffffc0', 
+    ' #0:2 #f0000000 #1ffff #0:2 #fffc0000 #3f #0:2', 
+    ' #fffff00 #0:2 #c0000000 #3ffff #0:2 #fff00000 #ff', 
+    ' #0:2 #3ffffc00 #0:3 #fffff #0:2 #ffc00000 #3ff', 
+    ' #0:2 #fffff000 #0:3 #3ffffc #0:2 #ff000000 #fff', 
+    ' #0:2 #ffffc000 #3 #0:2 #7ffff0 #0:2 #fc000000', 
+    ' #1fff #0:2 #ffff0000 #7 #0:2 #1ffffc0 #0:2', 
+    ' #f0000000 #7fff #0:2 #fffc0000 #1f #0:2 #7ffff00', 
+    ' #0:80 #f0000000 #ffffffff #3 ]', ), ))
+mdb.models['Model-1'].parts['Part-1'].Set(name='simetriay', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#7c3f000 #0:10 #1fff8 #c000 #7e000 #0:17 #fffffff0', 
+    ' #ffffffff:2 #3ffffff #0 #fff00000 #ffffffff:5 #80000003 #7ffffff', 
+    ' #ff000000 #ffffffff:3 #ffff #0:39 #3ffc000 #0:436 #ffc00000', 
+    ' #ffffffff:102 #3fffffff #0:77 #f0000000 #ffffffff:7 #ff ]', ), ))
+mdb.models['Model-1'].parts['Part-1'].Set(name='simetriaz', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#2cc0566 #1800000 #0 #180000 #80000000 #7ff #0', 
+    ' #7e00 #0:5 #fff80000 #ffffffff:7 #1 #0:8 #ffffff80', 
+    ' #ffffffff:4 #7fffff #0:6 #7ffffffc #0:9 #fff000 #0:35', 
+    ' #fc000000 #ffffffff:7 #3f #0:214 #fc000000 #ffffffff:106 #ffffff ]', ), 
+    ))
+mdb.models['Model-1'].parts['Part-1'].Set(name='simetriax', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#2005f00 #0:4 #fffff800 #ffffffff:2 #fff #fffffe00 #3f', 
+    ' #7e00 #0:30 #fffffffc #7ffffff #0:19 #ffffff00 #ffffffff:9', 
+    ' #3fffffff #0:605 #ffc00000 #ffffffff:25 #3 ]', ), ))
+mdb.models['Model-1'].parts['Part-1'].Set(name='tracao', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#57c0000 #0:16 #600 #0:6 #1800000 #0:3 #ffff8000', 
+    ' #ffffffff:2 #f #0:3 #ff800000 #fffff #0:4 #ffffffc0', 
+    ' #3 #f8000000 #3ffffff #0:58 #fffc0000 #ffffffff #3ff', 
+    ' #0:522 #c0000000 #ffffffff:25 #3ff #0:50 #fffffffc #fffffff ]', ), ))
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].ExplicitDynamicsStep(linearBulkViscosity=0.0, name=
+    'explicito', previous='Initial', quadBulkViscosity=0.0, timePeriod=0.001)
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ), name='Set-1')
+mdb.models['Model-1'].XsymmBC(createStepName='Initial', localCsys=None, name=
+    'simetriayz', region=mdb.models['Model-1'].rootAssembly.sets['Set-1'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-2')
+mdb.models['Model-1'].ZsymmBC(createStepName='Initial', localCsys=None, name=
+    'simetriaxy', region=mdb.models['Model-1'].rootAssembly.sets['Set-2'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Set-3')
+mdb.models['Model-1'].YsymmBC(createStepName='Initial', localCsys=None, name=
+    'simetriaxz', region=mdb.models['Model-1'].rootAssembly.sets['Set-3'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ), name='Set-4')
+mdb.models['Model-1'].DisplacementBC(amplitude='displacement', createStepName=
+    'explicito', distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=
+    None, name='tracao', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-4'], u1=UNSET, u2=0.05, u3=
+    UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.Job(activateLoadBalancing=False, atTime=None, contactPrint=OFF, 
+    description='', echoPrint=OFF, explicitPrecision=DOUBLE_PLUS_PACK, 
+    historyPrint=OFF, memory=90, memoryUnits=PERCENTAGE, model='Model-1', 
+    modelPrint=OFF, multiprocessingMode=THREADS, name='gran-test', 
+    nodalOutputPrecision=FULL, numCpus=8, numDomains=8, 
+    parallelizationMethodExplicit=DOMAIN, queue=None, scratch='', type=ANALYSIS
+    , userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by Renato on 2014_02_08-13.53.05; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['gran-test'].submit(consistencyChecking=OFF)
+mdb.jobs['gran-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 0, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '3859 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 5312, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 5300, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 3.45118566070272e-06, 'stepTime': 0.0, 
+    'totalEnergy': 2760477.60701234, 'cpuTime': 8.59999966621399, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 2760477.60701234})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 5.19532464872337e-05, 
+    'timeIncrement': 4.23853136553766e-06, 'stepTime': 5.19532464872337e-05, 
+    'totalEnergy': 2772683.09441723, 'cpuTime': 14.599999666214, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 15, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 15339885.0347563})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000104401490646215, 
+    'timeIncrement': 4.81646975461964e-06, 'stepTime': 0.000104401490646215, 
+    'totalEnergy': 2752730.84423011, 'cpuTime': 25.8000004291534, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 26, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 30364733.6005821})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000152295178866396, 
+    'timeIncrement': 4.59058673267059e-06, 'stepTime': 0.000152295178866396, 
+    'totalEnergy': 2738191.41076335, 'cpuTime': 37.4999992847443, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 36, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 43882869.1241085})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000203765847271394, 
+    'timeIncrement': 4.76016913404295e-06, 'stepTime': 0.000203765847271394, 
+    'totalEnergy': 2728190.82617709, 'cpuTime': 43.9999992847443, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 47, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 58026728.1324151})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000250933933860047, 
+    'timeIncrement': 4.37795225086281e-06, 'stepTime': 0.000250933933860047, 
+    'totalEnergy': 2718882.94278535, 'cpuTime': 53.7000000476837, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 57, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 70625901.5292505})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000301192432029135, 
+    'timeIncrement': 4.58326293554638e-06, 'stepTime': 0.000301192432029135, 
+    'totalEnergy': 2710889.26418802, 'cpuTime': 68.3999969959259, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 68, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 83504584.256398})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000352465859259468, 
+    'timeIncrement': 4.55124894805439e-06, 'stepTime': 0.000352465859259468, 
+    'totalEnergy': 2703110.31004256, 'cpuTime': 86.2999985218048, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 79, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 95979991.6850284})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000404023904991916, 
+    'timeIncrement': 4.67824375464566e-06, 'stepTime': 0.000404023904991916, 
+    'totalEnergy': 2697052.13048625, 'cpuTime': 93.3999969959259, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 90, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 107697040.473744})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000451049107246718, 
+    'timeIncrement': 4.63383339148754e-06, 'stepTime': 0.000451049107246718, 
+    'totalEnergy': 2692294.35418347, 'cpuTime': 100.100001573563, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 100, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 117535404.314696})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000500652691535024, 
+    'timeIncrement': 4.77473402296634e-06, 'stepTime': 0.000500652691535024, 
+    'totalEnergy': 2688171.54572001, 'cpuTime': 128.899996995926, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 111, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 126863832.590407})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000551509672191875, 
+    'timeIncrement': 4.69265287005838e-06, 'stepTime': 0.000551509672191875, 
+    'totalEnergy': 2684499.61709321, 'cpuTime': 137.800006151199, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 122, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 135040589.780502})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 11, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000602594291360604, 
+    'timeIncrement': 4.76667295910527e-06, 'stepTime': 0.000602594291360604, 
+    'totalEnergy': 2681420.41397768, 'cpuTime': 147.200000047684, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 133, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 141434734.829748})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 12, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000654628201863238, 
+    'timeIncrement': 4.76217427088113e-06, 'stepTime': 0.000654628201863238, 
+    'totalEnergy': 2678839.96234524, 'cpuTime': 153.700000047684, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 144, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 145655482.032622})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 13, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000702049224422361, 
+    'timeIncrement': 4.81778536286378e-06, 'stepTime': 0.000702049224422361, 
+    'totalEnergy': 2676999.41503319, 'cpuTime': 163.200000047684, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 154, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 147265350.280278})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 14, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000750227078049446, 
+    'timeIncrement': 4.80318319821025e-06, 'stepTime': 0.000750227078049446, 
+    'totalEnergy': 2675590.40346718, 'cpuTime': 169.200000047684, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 164, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 146727738.718934})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 15, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000803179439612603, 
+    'timeIncrement': 4.81778536239502e-06, 'stepTime': 0.000803179439612603, 
+    'totalEnergy': 2674507.54710627, 'cpuTime': 176.099993944168, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 175, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 143825442.159671})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 16, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000851357293236195, 
+    'timeIncrement': 4.81778536232444e-06, 'stepTime': 0.000851357293236195, 
+    'totalEnergy': 2673833.32292789, 'cpuTime': 181.899996995926, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 185, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 139396358.478567})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 17, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.000904352932221552, 
+    'timeIncrement': 4.81778536228708e-06, 'stepTime': 0.000904352932221552, 
+    'totalEnergy': 2673372.61760867, 'cpuTime': 190.099993944168, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 196, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 132978987.845666})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 18, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.00095253078584434, 
+    'timeIncrement': 4.81778536227087e-06, 'stepTime': 0.00095253078584434, 
+    'totalEnergy': 2673132.24256289, 'cpuTime': 196.500003099442, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 206, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 126142953.586083})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 19, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.001, 
+    'timeIncrement': 4.81778536226284e-06, 'stepTime': 0.001, 
+    'totalEnergy': 2673007.05300635, 'cpuTime': 203.500003099442, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 216, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 118864388.910629})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 20, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 08 13:54:17 2014', 'jobName': 'gran-test'})
+# Save by Renato on 2014_02_08-14.00.44; build 6.12-1 2012_03_13-20.23.18 119612

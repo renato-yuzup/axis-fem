@@ -1,0 +1,50 @@
+*HEADING
+PROBLEMA 1 : 1 CUBO UNITARIO, POISSON = 0, F = -50 kN
+*PREPRINT,ECHO=YES,HISTORY=NO,MODEL=NO
+*RESTART, WRITE
+*NODE
+ 1, 0.0, 0.0, 0.0
+ 2, 1.0, 0.0, 0.0
+ 3, 1.0, 1.0, 0.0
+ 4, 0.0, 1.0, 0.0
+ 5, 0.0, 0.0, 1.0
+ 6, 1.0, 0.0, 1.0
+ 7, 1.0, 1.0, 1.0
+ 8, 0.0, 1.0, 1.0
+*ELEMENT,TYPE=C3D8, ELSET=EALL
+ 1, 1,2,3,4,5,6,7,8
+*SOLID SECTION,MATERIAL=A1, ELSET=EALL
+*MATERIAL,NAME=A1
+*ELASTIC,TYPE=ISOTROPIC
+ 200E9,0.0
+*BOUNDARY
+ 1,1,6
+ 2,2,6
+ 3,3,6
+ 4,3,6
+*surface, name=side1485
+1,s6
+*STEP
+*STATIC
+*DLOAD,OP=NEW
+ 1, P2, -50000.0
+*NODE PRINT
+ U,COORD
+*NODE PRINT
+ RF,CF 
+*EL PRINT
+ S,
+ COORD,
+ E,
+ LOADS,
+*SECTION PRINT, NAME=side, surface=side1485,axes=local
+*SECTION FILE, NAME=side, surface=side1485,axes=local
+**analytical results
+**SOFM        SOF1        SOF2        SOF3        
+**3464.       2000.       2000.       2000.
+**SOMM        SOM1        SOM2        SOM3    
+**2828.       0.0         2000.      -2000.    
+**SOAREA      SOCF1       SOCF2       SOCF3   
+**2.000      0.6667      0.6667      0.1667    
+*ELEMENT MATRIX OUTPUT, ELSET=EALL, DLOAD=YES, STIFFNESS=YES, MASS=YES, OUTPUT FILE=USER DEFINED, FILE NAME=problema_1_rigidez
+*END STEP

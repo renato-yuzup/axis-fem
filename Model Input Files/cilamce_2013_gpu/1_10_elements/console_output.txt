@@ -1,0 +1,40 @@
+Starting application...
+Opening log files for write operation...
+Going to use settings file: test_settings.config...
+Going to read sample file: D:\Renato\Axis\Model Input Files\cilamce_2013_gpu\1_1
+0_elements\cilamce2013.axis...
+Read in 2.769 seconds.
+
+                       MEMORY STATISTICS AFTER PARSING
+=============================== MEMORY SUMMARY ===============================
+                         STRING MEMORY       MODEL MEMORY      GLOBAL MEMORY
+==============================================================================
+ Allocated size                5000 KB           80000 KB           40000 KB
+ Fragmentation count                 1                  1                  1
+ Max. contg. free space        4233 KB           79977 KB           39998 KB
+ Total free space              4233 KB           79977 KB           39998 KB
+------------------------------------------------------------------------------
+ Total used space               766 KB              22 KB               1 KB
+ Usage percentage               15.32%              0.02%              0.00%
+==============================================================================
+
+Starting analysis...
+Ran in 7.819 seconds.
+
+                       MEMORY STATISTICS AFTER ANALYSIS
+=============================== MEMORY SUMMARY ===============================
+                         STRING MEMORY       MODEL MEMORY      GLOBAL MEMORY
+==============================================================================
+ Allocated size                5000 KB           80000 KB           40000 KB
+ Fragmentation count                 1                  1                  1
+ Max. contg. free space        4130 KB           79937 KB           39998 KB
+ Total free space              4130 KB           79937 KB           39998 KB
+------------------------------------------------------------------------------
+ Total used space               869 KB              62 KB               1 KB
+ Usage percentage               17.38%              0.07%              0.00%
+==============================================================================
+
+Analysis finished!
+
+
+

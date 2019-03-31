@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="yuzu\foundation\memory\HeapBlockArena.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\memory\HeapBlockArena_Pimpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\memory\pointer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\common\gpu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\blas_basic_types.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\DenseMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\linear_algebra.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\matrix_compatibility.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\matrix_operations.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\RowVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\SubColumnVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\SubRowVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\SymmetricMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\vector_operations.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\VectorView.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\UpperTriangularMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\LowerTriangularMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\ColumnVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\elements\ReverseConnectivityList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\elements\Node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\elements\FiniteElement.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\elements\ElementGeometry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\elements\DoF.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\integration\IntegrationPoint.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\physics\InfinitesimalState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\physics\UpdatedPhysicalState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\memory\RelativePointer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\analyses\ReducedNumericalModel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\analyses\ModelDynamics.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\analyses\ModelKinematics.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\utils\kernel_utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\elements\ElementData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\boundary_conditions\BoundaryConditionData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\domain\curves\CurveData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\mechanics\continuum.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\AutoColumnVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\AutoRowVector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\AutoDenseMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\AutoSymmetricMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\AutoUpperTriangularMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yuzu\foundation\blas\AutoLowerTriangularMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\foundation\blas\ColumnVector.cu" />
+    <CustomBuild Include="yuzu\foundation\blas\DenseMatrix.cu" />
+    <CustomBuild Include="yuzu\foundation\blas\VectorView.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\UpperTriangularMatrix.cu" />
+    <CustomBuild Include="yuzu\foundation\blas\SymmetricMatrix.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\SubRowVector.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\SubColumnVector.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\RowVector.cu" />
+    <CustomBuild Include="yuzu\foundation\blas\LowerTriangularMatrix.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\memory\HeapBlockArena.cu" />
+    <CustomBuild Include="yuzu\foundation\memory\RelativePointer.cu" />
+    <CustomBuild Include="yuzu\zenbu.cu" />
+    <CustomBuild Include="yuzu\domain\elements\DoF.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\ElementGeometry.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\FiniteElement.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\Node.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\ReverseConnectivityList.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\integration\IntegrationPoint.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\physics\InfinitesimalState.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\physics\UpdatedPhysicalState.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\analyses\ModelDynamics.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\analyses\ModelKinematics.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\analyses\ReducedNumericalModel.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\utils\kernel_utils.cu" />
+    <CustomBuild Include="yuzu\domain\elements\ElementData.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\boundary_conditions\BoundaryConditionData.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\curves\CurveData.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\matrix_operations.cu" />
+    <CustomBuild Include="yuzu\mechanics\continuum.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

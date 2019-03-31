@@ -1,0 +1,6 @@
+# Save by Renato on 2014_02_08-17.54.16; build 6.12-1 2012_03_13-20.23.18 119612
+from abaqus import *
+upgradeMdb(
+    'D:/Renato/Axis/Model Input Files/tese/plasticity_test/steel-beam-6.11-3.cae'
+    , 'D:/Renato/Axis/Model Input Files/tese/plasticity_test/steel-beam.cae')
+# Save by Renato on 2014_02_08-17.54.16; build 6.12-1 2012_03_13-20.23.18 119612

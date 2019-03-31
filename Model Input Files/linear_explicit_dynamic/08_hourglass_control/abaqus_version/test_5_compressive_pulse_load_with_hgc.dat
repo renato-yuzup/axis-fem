@@ -1,0 +1,306 @@
+1
+
+   Abaqus 6.11-3                                  Date 27-May-2013   Time 19:30:24
+   For use by Team AWXS under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Simulia Corp.
+                                 Rising Sun Mills
+                                 166 Valley Street
+                           Providence, RI 02909-2499, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine atlas 
+                          you are authorized to run
+                          Abaqus/Explicit until 07-Jul-2028
+
+                          Your site id is: AE125930 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.simulia.com/about/locations.html
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                    Abaqus 6.11-3                        * 
+                *                                                         * 
+                *          BUILD ID: 2011_12_07-08.24.59 112213           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using release 6.11 manuals    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Node
+  *Element, type=C3D8R
+  *Nset, nset=ASSEMBLY_BEAM-1_BASE
+  *Nset, nset=ASSEMBLY_BEAM-1_FORCA
+  *Nset, nset=ASSEMBLY_BEAM-1_HOURGLASS_PROBE
+  *Nset, nset=ASSEMBLY_BEAM-1_MIDPOINT
+  *Nset, nset=ASSEMBLY_BEAM-1__PICKEDSET9
+  *Elset, elset=ASSEMBLY_BEAM-1_MEIO
+  *Elset, elset=ASSEMBLY_BEAM-1__PICKEDSET9
+  *material, name=ACO
+  *density
+  *elastic
+  *solidsection, elset=ASSEMBLY_BEAM-1__PICKEDSET9, controls=EC-1, material=ACO
+  *sectioncontrols, name=EC-1, distortioncontrol=NO, hourglass=STIFFNESS
+
+ ***WARNING: THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS 
+             RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED 
+             INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF 
+             THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.
+
+ ***WARNING: THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION 
+             IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING 
+             CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.
+  *solidsection, elset=ASSEMBLY_BEAM-1__PICKEDSET9, controls=EC-1, material=ACO
+  *solidsection, elset=ASSEMBLY_BEAM-1__PICKEDSET9, controls=EC-1, material=ACO
+  *elementoutput, directions=YES
+  *elementoutput, elset=ASSEMBLY_BEAM-1_MEIO
+  *amplitude, name=CURVA
+  *output, field, numberinterval=250
+  *output, history, variable=PRESELECT
+  *output, history, timeinterval=2e-06
+  *Step, name=dinamico, nlgeom=NO
+  *Step, name=dinamico, nlgeom=NO
+  *dynamic, explicit, directusercontrol
+  *output, field, numberinterval=250
+  *elementoutput, directions=YES
+  *output, history, variable=PRESELECT
+  *output, history, timeinterval=2e-06
+  *elementoutput, elset=ASSEMBLY_BEAM-1_MEIO
+  *endstep
+
+ ***WARNING: OUTPUT REQUEST LE IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST PEEQVAVG IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST PEVAVG IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SVAVG IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST BICURV IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST CTSHR IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST INV3 IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST PS IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST TRESC IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST VE IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST VS IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS
+
+ ***WARNING: OUTPUT REQUEST LE11 IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST LE12 IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST LE13 IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST LE22 IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST LE23 IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST LE33 IS NOT AVAILABLE IN A LINEAR STEP -- E (TOTAL 
+             STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST LEP IS NOT AVAILABLE IN A LINEAR STEP -- EP 
+             (PRINCIPAL TOTAL STRAIN) WILL BE OUTPUT INSTEAD.
+
+ ***WARNING: OUTPUT REQUEST NE11 IS ONLY VALID IN A NONLINEAR ANALYSIS. USE THE 
+             NLGEOM PARAMETER ON *STEP
+
+ ***WARNING: OUTPUT REQUEST NE12 IS ONLY VALID IN A NONLINEAR ANALYSIS. USE THE 
+             NLGEOM PARAMETER ON *STEP
+
+ ***WARNING: OUTPUT REQUEST NE13 IS ONLY VALID IN A NONLINEAR ANALYSIS. USE THE 
+             NLGEOM PARAMETER ON *STEP
+
+ ***WARNING: OUTPUT REQUEST NE22 IS ONLY VALID IN A NONLINEAR ANALYSIS. USE THE 
+             NLGEOM PARAMETER ON *STEP
+
+ ***WARNING: OUTPUT REQUEST NE23 IS ONLY VALID IN A NONLINEAR ANALYSIS. USE THE 
+             NLGEOM PARAMETER ON *STEP
+
+ ***WARNING: OUTPUT REQUEST NE33 IS ONLY VALID IN A NONLINEAR ANALYSIS. USE THE 
+             NLGEOM PARAMETER ON *STEP
+
+ ***WARNING: OUTPUT REQUEST TSHR13 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST TSHR23 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SE1 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SE2 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SE3 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SK1 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SK2 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SK3 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SSAVG1 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SSAVG2 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SSAVG3 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SSAVG4 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SSAVG5 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+
+ ***WARNING: OUTPUT REQUEST SSAVG6 IS NOT AVAILABLE FOR ELEMENT TYPE C3D8R
+  *boundary
+  *Step, name=dinamico, nlgeom=NO
+  *dynamic, explicit, directusercontrol
+  *cload, amplitude=CURVA
+  *output, field, numberinterval=250
+  *nodeoutput
+  *output, history, variable=PRESELECT
+  *output, history, timeinterval=2e-06
+  *nodeoutput, nset=ASSEMBLY_BEAM-1_FORCA
+  *nodeoutput, nset=ASSEMBLY_BEAM-1_HOURGLASS_PROBE
+  *endstep
+
+ ***WARNING: OUTPUT REQUEST AR1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST AR2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST AR3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST CM1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST CM2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST CM3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST RM1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST RM2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST RM3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST UR1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST UR2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST UR3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST VR1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST VR2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST VR3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST UR1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST UR2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST UR3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST VR1 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST VR2 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+ ***WARNING: OUTPUT REQUEST VR3 IS NOT VALID SINCE IT REQUESTS OUTPUT AT A DOF 
+             THAT IS NOT ACTIVE
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    10
+          NUMBER OF NODES IS                                       44
+          NUMBER OF NODES DEFINED BY THE USER                      44
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                  132
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =   0.0000    
+       WALLCLOCK TIME (SEC) =          0

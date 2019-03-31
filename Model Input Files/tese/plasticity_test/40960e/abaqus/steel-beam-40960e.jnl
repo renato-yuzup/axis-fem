@@ -1,0 +1,87 @@
+# -*- coding: mbcs -*-
+from abaqus import *
+upgradeMdb(
+    'D:/Renato/Axis/Model Input Files/tese/plasticity_test/steel-beam-6.11-3.cae'
+    , 'D:/Renato/Axis/Model Input Files/tese/plasticity_test/steel-beam.cae')
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.regenerate()
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['Model-1'].rootAssembly.features['beam-1']
+mdb.models['Model-1'].parts['beam'].deleteMesh()
+del mdb.models['Model-1'].steps['dynamic']
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.25)
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.025)
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.0125)
+mdb.models['Model-1'].parts['beam'].generateMesh()
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['beam'].deleteMesh()
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.0625)
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.00625)
+mdb.models['Model-1'].parts['beam'].generateMesh()
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['beam'].deleteMesh()
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.000125)
+#*mdb.models['Model-1'].parts['beam'].generateMesh()
+#* Command Interrupted
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.00125)
+mdb.models['Model-1'].parts['beam'].generateMesh()
+mdb.models['Model-1'].parts['beam'].deleteMesh()
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.003125)
+mdb.models['Model-1'].parts['beam'].generateMesh()
+# Save by Renato on 2014_02_08-18.08.58; build 6.12-1 2012_03_13-20.23.18 119612

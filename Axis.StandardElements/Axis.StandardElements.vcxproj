@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (Double)|Win32">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Double)|x64">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|Win32">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|x64">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|Win32">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|x64">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|Win32">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|x64">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|Win32">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|x64">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D87E7F00-38C5-43D2-BAE7-823A053D0D99}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AxisStandardElements</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 8.0.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(VCInstallDir)UnitTest\include;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(VCInstallDir)UnitTest\include;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(VCInstallDir)UnitTest\include;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(VCInstallDir)UnitTest\include;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>
+      </ShowProgress>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+    <CudaLink>
+      <LinkAdditionalInput>
+      </LinkAdditionalInput>
+    </CudaLink>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.Yuzu.lib;Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;Axis.Mint.lib;Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;AXISSTANDARDELEMENTS_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.Mint;$(SolutionDir)Axis.Physalis;$(SolutionDir)Axis.Yuzu;$(SolutionDir)includes\boost\v1_51;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.Yuzu.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.CommonLibrary.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.BLAS.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.SystemBase.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.Mint.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.Physalis.lib;cudart.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.SystemBase;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.BLAS.lib;Axis.SystemBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="application\factories\elements\HexahedronFactory.hpp" />
+    <ClInclude Include="application\factories\elements\LinearFlanaganBelytschkoHexaFactory.hpp" />
+    <ClInclude Include="application\factories\elements\LinearPusoHexahedronFactory.hpp" />
+    <ClInclude Include="application\factories\elements\LinearSimpleHexahedronFactory.hpp" />
+    <ClInclude Include="application\factories\elements\NonLinearFlanaganBelytschkoHexaFactory.hpp" />
+    <ClInclude Include="application\factories\parsers\LinearHexahedronFlaBelytschkoParserFactory.hpp" />
+    <ClInclude Include="application\factories\parsers\LinearHexahedronSimpleParserFactory.hpp" />
+    <ClInclude Include="application\factories\parsers\LinearHexahedronPusoParserFactory.hpp" />
+    <ClInclude Include="application\factories\elements\NonLinearSimpleHexahedronFactory.hpp" />
+    <ClInclude Include="application\factories\parsers\NonLinearHexahedronFlaBelytschkoParserFactory.hpp" />
+    <ClInclude Include="application\factories\parsers\NonLinearHexahedronSimpleParserFactory.hpp" />
+    <ClInclude Include="application\parsing\parsers\HexahedronElementParser.hpp" />
+    <ClInclude Include="domain\formulations\lhr_commands\gpu_lhr_kernel.hpp" />
+    <ClInclude Include="domain\formulations\lhr_commands\LhrInternalForceCommand.hpp" />
+    <ClInclude Include="domain\formulations\lhr_commands\LhrStrainCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhrfb_commands\gpu_nlhrfb_kernel.hpp" />
+    <ClInclude Include="domain\formulations\nlhrfb_commands\NlhrFBInternalForceCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhrfb_commands\NlhrFBStrainCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhrfb_commands\NlhrFBUpdateGeometryCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhr_commands\gpu_nlhr_kernel.hpp" />
+    <ClInclude Include="domain\formulations\nlhr_commands\NlhrInternalForceCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhr_commands\NlhrStrainCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhr_commands\NlhrUpdateGeometryCommand.hpp" />
+    <ClInclude Include="domain\formulations\nlhr_fb_gpu_data.hpp" />
+    <ClInclude Include="domain\formulations\nlhr_gpu_data.hpp" />
+    <ClInclude Include="domain\formulations\NonLinearHexaFBReducedStrategy.hpp" />
+    <ClInclude Include="domain\formulations\NonLinearHexaFlanaganBelytschkoFormulation.hpp" />
+    <ClInclude Include="domain\formulations\NonLinearHexaFlanaganBelytschkoHelper.hpp" />
+    <ClInclude Include="domain\formulations\NonLinearHexaFlanaganBelytschkoHelper_GPU.hpp" />
+    <ClInclude Include="domain\formulations\NonLinearHexaReducedFormulation.hpp" />
+    <ClInclude Include="domain\formulations\lhr_gpu_data.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexaFlanaganBelytschkoFormulation.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexaFlanaganBelytschkoHelper.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexaFullFormulation.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexahedralPusoFormulation.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexahedralPusoFormulationHelper.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexaReducedFormulation.hpp" />
+    <ClInclude Include="domain\formulations\LinearHexaReducedStrategy.hpp" />
+    <ClInclude Include="domain\formulations\NonLinearHexaReducedStrategy.hpp" />
+    <ClInclude Include="foundation\Axis.StandardElements.hpp" />
+    <ClInclude Include="CLoader_MyElements.hpp" />
+    <ClInclude Include="domain\formulations\LinearTetrahedronFormulation.hpp" />
+    <ClInclude Include="services\management\MyElementsHook.hpp" />
+    <ClInclude Include="services\management\MyElementsPluginLoader.hpp" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="unit_tests\LinearHexahedronTestFixture.hpp" />
+    <ClInclude Include="unit_tests\MockLinearMaterial.hpp" />
+    <ClInclude Include="unit_tests\MockMaterial.hpp" />
+    <ClInclude Include="unit_tests\unit_tests.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="application\factories\elements\HexahedronFactory.cpp" />
+    <ClCompile Include="application\factories\elements\LinearFlanaganBelytschkoHexaFactory.cpp" />
+    <ClCompile Include="application\factories\elements\LinearPusoHexahedronFactory.cpp" />
+    <ClCompile Include="application\factories\elements\LinearSimpleHexahedronFactory.cpp" />
+    <ClCompile Include="application\factories\elements\NonLinearFlanaganBelytschkoHexaFactory.cpp" />
+    <ClCompile Include="application\factories\parsers\LinearHexahedronFlaBelytschkoParserFactory.cpp" />
+    <ClCompile Include="application\factories\parsers\LinearHexahedronSimpleParserFactory.cpp" />
+    <ClCompile Include="application\factories\parsers\LinearHexahedronPusoParserFactory.cpp" />
+    <ClCompile Include="application\factories\elements\NonLinearSimpleHexahedronFactory.cpp" />
+    <ClCompile Include="application\factories\parsers\NonLinearHexahedronFlaBelytschkoParserFactory.cpp" />
+    <ClCompile Include="application\factories\parsers\NonLinearHexahedronSimpleParserFactory.cpp" />
+    <ClCompile Include="application\parsing\parsers\HexahedronElementParser.cpp" />
+    <ClCompile Include="CLoader_MyElements.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="domain\formulations\lhr_commands\LhrInternalForceCommand.cpp" />
+    <ClCompile Include="domain\formulations\lhr_commands\LhrStrainCommand.cpp" />
+    <ClCompile Include="domain\formulations\nlhrfb_commands\NlhrFBInternalForceCommand.cpp" />
+    <ClCompile Include="domain\formulations\nlhrfb_commands\NlhrFBStrainCommand.cpp" />
+    <ClCompile Include="domain\formulations\nlhrfb_commands\NlhrFBUpdateGeometryCommand.cpp" />
+    <ClCompile Include="domain\formulations\nlhr_commands\NlhrInternalForceCommand.cpp" />
+    <ClCompile Include="domain\formulations\nlhr_commands\NlhrStrainCommand.cpp" />
+    <ClCompile Include="domain\formulations\nlhr_commands\NlhrUpdateGeometryCommand.cpp" />
+    <ClCompile Include="domain\formulations\NonLinearHexaFBReducedStrategy.cpp" />
+    <ClCompile Include="domain\formulations\NonLinearHexaFlanaganBelytschkoFormulation.cpp" />
+    <ClCompile Include="domain\formulations\NonLinearHexaReducedFormulation.cpp" />
+    <ClCompile Include="domain\formulations\LinearHexaFlanaganBelytschkoFormulation.cpp" />
+    <ClCompile Include="domain\formulations\LinearHexaFullFormulation.cpp" />
+    <ClCompile Include="domain\formulations\LinearHexahedralPusoFormulation.cpp" />
+    <ClCompile Include="domain\formulations\LinearHexaReducedFormulation.cpp" />
+    <ClCompile Include="domain\formulations\LinearHexaReducedStrategy.cpp" />
+    <ClCompile Include="domain\formulations\LinearTetrahedronFormulation.cpp" />
+    <ClCompile Include="domain\formulations\NonLinearHexaReducedStrategy.cpp" />
+    <ClCompile Include="unit_tests\NonLinearHexaReducedIntegrationTestFixture.cpp" />
+    <CudaCompile Include="domain\formulations\lhr_commands\gpu_lhr_kernel.cu">
+      <FileType>CppCode</FileType>
+    </CudaCompile>
+    <CudaCompile Include="domain\formulations\nlhrfb_commands\gpu_nlhrfb_kernel.cu">
+      <FileType>CppCode</FileType>
+    </CudaCompile>
+    <CudaCompile Include="domain\formulations\nlhr_commands\gpu_nlhr_kernel.cu">
+      <FileType>CppCode</FileType>
+    </CudaCompile>
+    <CudaCompile Include="services\management\MyElementsHook.cpp" />
+    <ClCompile Include="services\management\MyElementsPluginLoader.cpp" />
+    <ClCompile Include="unit_tests\ElementParserFactoryTest.cpp" />
+    <ClCompile Include="unit_tests\LinearGaussLegendreQuadrature3DTest.cpp" />
+    <ClCompile Include="unit_tests\LinearHexaFlaBelytschkoTest.cpp" />
+    <ClCompile Include="unit_tests\LinearHexahedronTestFixture.cpp" />
+    <ClCompile Include="unit_tests\MockLinearMaterial.cpp" />
+    <ClCompile Include="unit_tests\MockMaterial.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 8.0.targets" />
+  </ImportGroup>
+</Project>

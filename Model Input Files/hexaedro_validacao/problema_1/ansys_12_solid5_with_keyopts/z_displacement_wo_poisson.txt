@@ -1,0 +1,9 @@
+ANSYS Node Number	Directional Deformation (m)
+1	-2,5e-007	
+2	0,	
+3	0,	
+4	-2,5e-007	
+5	-2,5e-007	
+6	0,	
+7	0,	
+8	-2,5e-007	

@@ -1,0 +1,1417 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(1.0, 1.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=1.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Density(table=((7850.0, ), ))
+mdb.models['Model-1'].materials['Material-1'].Hypoelastic(table=((
+    210000000000.0, 0.3, 0.0, 0.0, 0.0), ))
+mdb.models['Model-1'].materials['Material-1'].Plastic(table=((20000000.0, 0.0), 
+    (25000000.0, 0.01)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'cube', thickness=None)
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(
+    mask=('[#1 ]', ), )), sectionName='cube', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].materials['Material-1'].hypoelastic.setValues(table=((
+    210000000000.0, 0.0, 0.0, 0.0, 0.0), ))
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=CENTROID, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, elemDeletion=OFF, 
+    linearBulkViscosity=0, quadraticBulkViscosity=0), ElemType(elemCode=C3D6, 
+    elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, distortionControl=DEFAULT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    distortionControl=DEFAULT)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].parts['Part-1'].Set(name='base', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#aa ]', ), ))
+mdb.models['Model-1'].parts['Part-1'].Set(name='top', nodes=
+    mdb.models['Model-1'].parts['Part-1'].nodes.getSequenceFromMask(mask=(
+    '[#55 ]', ), ))
+mdb.models['Model-1'].parts['Part-1'].Set(elements=
+    mdb.models['Model-1'].parts['Part-1'].elements.getSequenceFromMask(mask=(
+    '[#1 ]', ), ), name='element')
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].YsymmBC(createStepName='Initial', localCsys=None, name=
+    'fix', region=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].sets['base'])
+mdb.models['Model-1'].ExplicitDynamicsStep(linearBulkViscosity=0.0, name=
+    'dynamic', previous='Initial', quadBulkViscosity=0.0, 
+    timeIncrementationMethod=FIXED_USER_DEFINED_INC, timePeriod=0.03, 
+    userDefinedInc=2e-07)
+mdb.models['Model-1'].TabularAmplitude(data=((0.0, 0.0), (0.003, 0.3)), name=
+    'displacement-curve', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['Model-1'].DisplacementBC(amplitude='displacement-curve', 
+    createStepName='dynamic', distributionType=UNIFORM, fieldName='', fixed=OFF
+    , localCsys=None, name='displacement', region=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].sets['top'], u1=
+    UNSET, u2=1.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='dynamic', name=
+    'H-Output-2', rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].sets['element'], 
+    sectionPoints=DEFAULT, variables=('S11', 'S22', 'S33', 'S12', 'S13', 'S23', 
+    'PE11', 'PE22', 'PE33', 'PE12', 'PE13', 'PE23', 'PEEQ', 'PEMAG'))
+# Save by renato.yamassaki on Fri Sep 20 18:30:21 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['Model-1'].materials['Material-1'].hypoelastic
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((210000000000.0, 
+    0.3), ))
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='dynamic', name=
+    'H-Output-3', rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].sets['top'], 
+    sectionPoints=DEFAULT, variables=('U1', 'U2', 'U3', 'V1', 'V2', 'V3', 'A1', 
+    'A2', 'A3'))
+mdb.models['Model-1'].materials['Material-1'].elastic.setValues(table=((
+    210000000000.0, 0.0), ))
+# Save by renato.yamassaki on Fri Sep 20 18:41:41 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(activateLoadBalancing=False, atTime=None, contactPrint=OFF, 
+    description='', echoPrint=OFF, explicitPrecision=DOUBLE_PLUS_PACK, 
+    historyPrint=OFF, model='Model-1', modelPrint=OFF, multiprocessingMode=
+    DEFAULT, name='cube_traction', nodalOutputPrecision=FULL, numCpus=1, 
+    numDomains=1, parallelizationMethodExplicit=DOMAIN, queue=None, scratch='', 
+    type=ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 9252, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 4740, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 19625000.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 19625000.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 19624948.3507684, 'cpuTime': 0.400000005960464, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 19640232.3256384})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 20802322.1846473, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 9626549.02474351})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 17662354.5585154, 'cpuTime': 1.39999997615814, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1298731.94029421})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 17662393.0590158, 'cpuTime': 1.79999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 8406993.73186539})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 17662358.281954, 'cpuTime': 2.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 503377.704946424})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 17662340.0890438, 'cpuTime': 2.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 4357687.24262872})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 17662366.7327797, 'cpuTime': 3.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 3272690.51278741})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 17662359.5705801, 'cpuTime': 3.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 488569.738559679})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 17662343.9372835, 'cpuTime': 3.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 3606562.43610951})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 17662358.583423, 'cpuTime': 4.30000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293568.728222748})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 17662359.806777, 'cpuTime': 4.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1420243.57812787})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 17662354.4027237, 'cpuTime': 5.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 90000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1197200.23713942})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 17662357.357643, 'cpuTime': 5.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 58465.0963746646})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 17662357.5549774, 'cpuTime': 6.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 807944.080427778})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 17662356.5491459, 'cpuTime': 6.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 112500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 132940.218126865})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 17662356.4360472, 'cpuTime': 7.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 93687.9652392819})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 17662356.3731362, 'cpuTime': 7.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 112478.876445258})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 17662356.3237222, 'cpuTime': 7.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 11672.2362215171})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 17662356.3093307, 'cpuTime': 8.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 3161.12565912509})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 17662356.3119744, 'cpuTime': 8.69999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 44.8862771520481})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Fri Sep 20 18:42:23 2013', 'jobName': 'cube_traction'})
+mdb.models['Model-1'].amplitudes['displacement-curve'].setValues(data=((0.0, 
+    0.0), (0.03, 0.3)), smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 3260, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 9444, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 196250.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196250.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 196249.655415433, 'cpuTime': 0.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196267.471258482})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 196249.294265102, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196250.741265719})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 196248.940793223, 'cpuTime': 1.29999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197194.376185252})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 196248.587692378, 'cpuTime': 1.79999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 206065.680908622})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 196248.212967594, 'cpuTime': 2.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 239480.545723523})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 196247.790834928, 'cpuTime': 2.70000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 306577.375097713})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 196247.376959311, 'cpuTime': 3.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 365964.899378475})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 196247.125157856, 'cpuTime': 3.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 337373.698516262})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 196246.986329602, 'cpuTime': 4.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 238314.20799508})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 196246.75148102, 'cpuTime': 4.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196263.730546761})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 196246.470274822, 'cpuTime': 4.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197641.102234581})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 196246.168159277, 'cpuTime': 5.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 90000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 222569.968952034})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 196245.714217444, 'cpuTime': 5.69999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 343708.216844974})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 196245.551344502, 'cpuTime': 6.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 286893.070709693})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 196245.417706989, 'cpuTime': 6.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 112500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196252.944201405})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 196245.169995451, 'cpuTime': 6.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196464.273042181})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 196244.798759125, 'cpuTime': 7.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 294727.537312345})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 196244.5648218, 'cpuTime': 7.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293937.83742985})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 196244.459872202, 'cpuTime': 8.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 198483.842840944})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 196244.235905846, 'cpuTime': 8.60000038146973, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 202893.337635737})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Fri Sep 20 18:43:34 2013', 'jobName': 'cube_traction'})
+# Save by renato.yamassaki on Fri Sep 20 20:21:13 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].materials['Material-1'].plastic.setValues(table=((
+    20000000.0, 0.0), (45000000.0, 0.5)))
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 9020, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 9416, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 196250.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196250.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 196249.698431331, 'cpuTime': 0.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196275.973579968})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 196249.393175405, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196250.002580336})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 196249.083864621, 'cpuTime': 1.29999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197148.133109121})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 196248.763947353, 'cpuTime': 1.79999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 205987.039814795})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 196248.411961032, 'cpuTime': 2.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 239546.346420239})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 196248.002520567, 'cpuTime': 2.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 307047.850401236})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 196247.592528978, 'cpuTime': 3.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 366693.002067183})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 196247.337648365, 'cpuTime': 3.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 337658.798600659})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 196247.187955347, 'cpuTime': 3.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 238063.112770822})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 196246.933794998, 'cpuTime': 4.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196256.22651709})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 196246.626727559, 'cpuTime': 4.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197680.334162178})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 196246.2920708, 'cpuTime': 5.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 90000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 222881.242163159})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 196245.798713343, 'cpuTime': 5.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 344635.719280565})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 196245.594366819, 'cpuTime': 6.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 286542.368734022})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 196245.41123799, 'cpuTime': 6.5, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 112500, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196261.460779315})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 196245.10981625, 'cpuTime': 6.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196454.622075923})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 196244.67836067, 'cpuTime': 7.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 295874.603179259})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 196244.384566301, 'cpuTime': 7.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293439.63385599})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 196244.212066351, 'cpuTime': 8.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 198660.508192083})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 196243.917846986, 'cpuTime': 8.69999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 203180.447907932})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Fri Sep 20 20:40:10 2013', 'jobName': 'cube_traction'})
+mdb.models['Model-1'].materials['Material-1'].plastic.setValues(table=((
+    20000000.0, 0.0), (32500000.0, 0.25), (45000000.0, 0.5)))
+# Save by renato.yamassaki on Fri Sep 20 20:49:02 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 8456, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 5964, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 196250.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196250.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 196249.698431331, 'cpuTime': 0.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196275.973579968})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 196249.393175404, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196250.002580336})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 196249.083864621, 'cpuTime': 1.29999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197148.133109121})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 196248.76394735, 'cpuTime': 1.79999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 205987.039814794})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 196248.411961033, 'cpuTime': 2.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 239546.346420238})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 196248.002520568, 'cpuTime': 2.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 307047.850401234})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 196247.592528978, 'cpuTime': 3.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 366693.002067182})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 196247.337648364, 'cpuTime': 3.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 337658.798600659})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 196247.187955348, 'cpuTime': 3.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 238063.112770823})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 196246.933794995, 'cpuTime': 4.30000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196256.22651709})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 196246.626727558, 'cpuTime': 4.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197680.334162178})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 196246.2920708, 'cpuTime': 5.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 90000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 222881.242163159})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 196245.798713344, 'cpuTime': 5.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 344635.719280561})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 196245.594366815, 'cpuTime': 6.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 286542.368734022})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 196245.411237993, 'cpuTime': 6.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 112500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196261.460779315})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 196245.109816242, 'cpuTime': 6.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196454.622075923})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 196244.678360647, 'cpuTime': 7.30000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 295874.603179255})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 196244.384566268, 'cpuTime': 7.69999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293439.633855987})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 196244.212066331, 'cpuTime': 8.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 198660.508192082})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 196243.917846977, 'cpuTime': 8.60000038146973, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 203180.447907932})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Fri Sep 20 20:49:24 2013', 'jobName': 'cube_traction'})
+mdb.models['Model-1'].steps['dynamic'].setValues(linearBulkViscosity=0.03, 
+    quadBulkViscosity=0.8)
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 4936, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'PERSEU', 'handle': 9056, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 196250.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196250.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 196249.698431331, 'cpuTime': 0.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196275.973579968})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 196249.393175404, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196250.002580336})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 196249.083864621, 'cpuTime': 1.39999997615814, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197148.133109121})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 196248.76394735, 'cpuTime': 1.79999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 205987.039814794})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 196248.411961033, 'cpuTime': 2.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 239546.346420238})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 196248.002520568, 'cpuTime': 2.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 307047.850401234})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 196247.592528978, 'cpuTime': 3.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 366693.002067182})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 196247.337648364, 'cpuTime': 3.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 337658.798600659})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 196247.187955348, 'cpuTime': 4.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 238063.112770823})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 196246.933794995, 'cpuTime': 4.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196256.22651709})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 196246.626727558, 'cpuTime': 4.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197680.334162178})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 196246.2920708, 'cpuTime': 5.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 90000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 222881.242163159})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 196245.798713344, 'cpuTime': 5.69999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 344635.719280561})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 196245.594366815, 'cpuTime': 6.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 286542.368734022})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 196245.411237993, 'cpuTime': 6.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 112500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196261.460779315})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 196245.109816242, 'cpuTime': 7.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196454.622075923})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 196244.678360647, 'cpuTime': 7.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 295874.603179255})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 196244.384566268, 'cpuTime': 7.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293439.633855987})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 196244.212066331, 'cpuTime': 8.30000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 198660.508192082})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 196243.917846977, 'cpuTime': 8.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 203180.447907932})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Fri Sep 20 20:54:56 2013', 'jobName': 'cube_traction'})
+# Save by renato.yamassaki on Fri Sep 20 22:16:26 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'atlas', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'atlas', 'handle': 2284, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'atlas', 'handle': 3600, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 196250.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196250.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 196249.698431331, 'cpuTime': 0.300000011920929, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196275.973579968})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 196249.393175404, 'cpuTime': 0.600000023841858, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196250.002580336})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 196249.083864621, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197148.133109121})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 196248.76394735, 'cpuTime': 1.10000002384186, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 205987.039814794})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 196248.411961033, 'cpuTime': 1.39999997615814, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 239546.346420238})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 196248.002520568, 'cpuTime': 1.70000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 307047.850401234})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 196247.592528978, 'cpuTime': 2.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 366693.002067182})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 196247.337648364, 'cpuTime': 2.29999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 337658.798600659})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 196247.187955348, 'cpuTime': 2.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 238063.112770823})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 196246.933794995, 'cpuTime': 2.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196256.22651709})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 196246.626727558, 'cpuTime': 3.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197680.334162178})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 196246.2920708, 'cpuTime': 3.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 90000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 222881.242163159})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 196245.798713344, 'cpuTime': 3.70000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 344635.719280561})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 196245.594366815, 'cpuTime': 4.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 286542.368734022})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 196245.411237993, 'cpuTime': 4.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 112500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196261.460779315})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 196245.109816242, 'cpuTime': 4.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196454.622075923})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 196244.678360647, 'cpuTime': 4.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 295874.603179255})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 196244.384566268, 'cpuTime': 5.09999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293439.633855987})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 196244.212066331, 'cpuTime': 5.40000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 198660.508192082})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 196243.917846977, 'cpuTime': 5.69999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 203180.447907932})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Sat Sep 21 11:05:06 2013', 'jobName': 'cube_traction'})
+mdb.models['Model-1'].historyOutputRequests['H-Output-2'].setValues(variables=(
+    'S11', 'S22', 'S33', 'S12', 'S13', 'S23', 'MISES', 'PE11', 'PE22', 'PE33', 
+    'PE12', 'PE13', 'PE23', 'PEEQ', 'PEMAG'))
+mdb.jobs['cube_traction'].submit(consistencyChecking=OFF)
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'atlas', 'handle': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST PEMAG IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'atlas', 'handle': 9868, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'atlas', 'handle': 9752, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0, 
+    'totalEnergy': 196250.0, 'cpuTime': 0.0, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 196250.0})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00150001000006667, 
+    'totalEnergy': 196249.698431331, 'cpuTime': 0.300000011920929, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 7500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196275.973579968})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00300002000013333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00300002000013333, 
+    'totalEnergy': 196249.393175404, 'cpuTime': 0.600000023841858, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 15000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196250.002580336})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0045000300002, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0045000300002, 
+    'totalEnergy': 196249.083864621, 'cpuTime': 0.899999976158142, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 22500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197148.133109121})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00600004000026667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00600004000026667, 
+    'totalEnergy': 196248.76394735, 'cpuTime': 1.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 30000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 205987.039814794})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.00750005000033334, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.00750005000033334, 
+    'totalEnergy': 196248.411961033, 'cpuTime': 1.39999997615814, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 37500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 239546.346420238})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0090000600004, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0090000600004, 
+    'totalEnergy': 196248.002520568, 'cpuTime': 1.70000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 45000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 307047.850401234})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0105000700004667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0105000700004667, 
+    'totalEnergy': 196247.592528978, 'cpuTime': 2.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 52500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 366693.002067182})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0120000800005333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0120000800005333, 
+    'totalEnergy': 196247.337648364, 'cpuTime': 2.29999995231628, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 60000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 337658.798600659})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0135000900006, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0135000900006, 
+    'totalEnergy': 196247.187955348, 'cpuTime': 2.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 67500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 238063.112770823})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0150001000006667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0150001000006667, 
+    'totalEnergy': 196246.933794995, 'cpuTime': 2.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 75000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196256.22651709})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0165001100007333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0165001100007333, 
+    'totalEnergy': 196246.626727558, 'cpuTime': 3.20000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 82500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 197680.334162178})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0180001200008, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0180001200008, 
+    'totalEnergy': 196246.2920708, 'cpuTime': 3.5, 'jobName': 'cube_traction', 
+    'step': 1, 'increment': 90000, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 222881.242163159})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0195001300008667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0195001300008667, 
+    'totalEnergy': 196245.798713344, 'cpuTime': 3.70000004768372, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 97500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 344635.719280561})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0210001400009333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0210001400009333, 
+    'totalEnergy': 196245.594366815, 'cpuTime': 4.0, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 105000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 286542.368734022})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.022500150001, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.022500150001, 
+    'totalEnergy': 196245.411237993, 'cpuTime': 4.30000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 112500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196261.460779315})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0240001600010667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0240001600010667, 
+    'totalEnergy': 196245.109816242, 'cpuTime': 4.59999990463257, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 120000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 196454.622075923})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0255001700011333, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0255001700011333, 
+    'totalEnergy': 196244.678360647, 'cpuTime': 4.90000009536743, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 127500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 295874.603179255})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0270001800012, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0270001800012, 
+    'totalEnergy': 196244.384566268, 'cpuTime': 5.19999980926514, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 135000, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 293439.633855987})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.0285001900012667, 
+    'timeIncrement': 2.00001333342222e-07, 'stepTime': 0.0285001900012667, 
+    'totalEnergy': 196244.212066331, 'cpuTime': 5.5, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 142500, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 198660.508192082})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(STATUS, {'totalTime': 0.03, 
+    'timeIncrement': 2.0000133334197e-07, 'stepTime': 0.03, 
+    'totalEnergy': 196243.917846977, 'cpuTime': 5.80000019073486, 
+    'jobName': 'cube_traction', 'step': 1, 'increment': 149999, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 203180.447907932})
+mdb.jobs['cube_traction']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'cube_traction'})
+mdb.jobs['cube_traction']._Message(JOB_COMPLETED, {
+    'time': 'Sat Sep 21 12:03:13 2013', 'jobName': 'cube_traction'})
+# Save by Renato on Sat Sep 21 18:12:24 2013

@@ -1,0 +1,7 @@
+# Save by Renato on 2014_02_05-18.02.25; build 6.12-1 2012_03_13-20.23.18 119612
+from abaqus import *
+upgradeMdb(
+    'D:/Renato/Axis/Model Input Files/linear_explicit_dynamic/01_cook_exercise/abaqus/01_cook_exercise-6.11-3.cae'
+    , 
+    'D:/Renato/Axis/Model Input Files/linear_explicit_dynamic/01_cook_exercise/abaqus/01_cook_exercise.cae')
+# Save by Renato on 2014_02_05-18.02.25; build 6.12-1 2012_03_13-20.23.18 119612

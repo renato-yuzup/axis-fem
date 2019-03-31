@@ -1,0 +1,90 @@
+# Analysis title (optional)
+TITLE "CILAMCE 2013 TEST: TEST 1 -- COMPRESSIVE PULSE LOAD, 10 ELEMENTS, dt = 1e-6"
+
+## General analysis settings
+BEGIN ANALYSIS
+	BEGIN STEP WITH NAME = "Transient analysis with no hourglass control",  # informative name (optional)
+					TYPE = EXPLICIT_STANDARD,             # solver type (required)
+					START_TIME = 0, END_TIME = 5E-4,      # start and end time (required)
+					DTIME_CONTROL_TYPE = DTIME_CONSTANT,  # how timestep is calculated (clockwork, required)
+					DTIME_CONTROL_PARAMS = (DTIME = 1e-6) # clockwork parameters (varies)
+
+		## Describes how data collection will occur
+		BEGIN SNAPSHOTS
+			DO 250 SNAPSHOTS ## Data collection will occur in evenly spaced intervals
+		END SNAPSHOTS
+		
+		## HYPERWORKS RESULT FILE: Describes a Hyperwork ASCII file for result output
+		/*BEGIN OUTPUT WITH FILE = "cilamce2013_test01", FORMAT = HYPERWORKS
+			RECORD NODAL DISPLACEMENT
+			RECORD NODAL LOAD
+			RECORD NODAL VELOCITY 
+			RECORD NODAL ACCELERATION 
+			RECORD ELEMENT STRESS 
+			RECORD ELEMENT STRAIN
+			RECORD NODAL REACTION
+		END OUTPUT*/
+
+		## MATLAB RESULT FILE: Describes a MATLAB m-file for result output
+		BEGIN OUTPUT WITH FILE = "cilamce2013_test01", 
+		                  FORMAT = MATLAB_DATASET, 
+						  FORMAT_PARAMS = (NAME = cilamce2013_01)
+			# Free end field output
+			RECORD AVERAGE NODAL DISPLACEMENT X ON SET load
+			RECORD AVERAGE NODAL LOAD X ON SET load
+		END OUTPUT
+
+		## Boundary conditions valid only in this analysis step
+		BEGIN LOADS
+			BEGIN NODAL_LOADS # concentrated loads
+				ON SET load BEHAVES AS load ON X DIRECTION SCALE = -1000
+			END NODAL_LOADS
+		END LOADS
+		BEGIN CONSTRAINTS     # prescribed behavior (locks, displacements, velocities...)
+			LOCK SET lock IN ALL DIRECTIONS
+		END CONSTRAINTS		
+	END STEP
+END ANALYSIS
+
+# Equivalent to the sectiond definition in DYNA, ABAQUS and others: glues the definition of
+# material, element type and element set altogether.
+BEGIN PARTS WITH ELEM_TYPE = LINEAR_HEXAHEDRON,             ## using a linear hexahedron
+                 PROPERTIES = (INTEGRATION_TYPE=REDUCED)    ## use one-point integration
+    SET all_elements IS LINEAR_ISO_ELASTIC WITH             ## A linear elastic, isotropic, material
+								POISSON = 0.3,              ## material properties, self-explanatory
+								ELASTIC_MODULUS = 200E9, 
+								LINEAR_DENSITY = 7850
+END PARTS
+
+# Declares mesh nodes
+BEGIN NODES WITH SET_ID = all_nodes           # mesh nodes
+    @include "cilamce2013_nodes.axis"
+END NODES
+
+# Declares element nodes
+BEGIN ELEMENTS WITH SET_ID = all_elements     # mesh elements
+    @include "cilamce2013_elements.axis"
+END ELEMENTS
+
+# Declares a node set
+BEGIN NODE_SET WITH ID = lock
+	41-44
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = load
+	1-4
+END NODE_SET
+
+# Declares curves that states how certain phenomena (like loads) will behave
+BEGIN CURVES
+	# A piecewise linear curve
+	BEGIN MULTILINE_CURVE WITH ID = load
+	#   X             | Y
+		0.              0.   # one point per line for convenience only
+		1e-05           0.
+		1.000001e-05    1.
+		7.5e-05         1.
+		7.500001e-05    0.
+		100.            0.
+	END MULTILINE_CURVE
+END CURVES

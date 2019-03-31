@@ -1,0 +1,54 @@
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['beam'].Set(elements=
+    mdb.models['Model-1'].parts['beam'].elements.getSequenceFromMask(mask=(
+    '[#1 ]', ), ), name='tip')
+mdb.models['Model-1'].parts['beam'].Set(elements=
+    mdb.models['Model-1'].parts['beam'].elements.getSequenceFromMask(mask=(
+    '[#20 ]', ), ), name='middle')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].historyOutputRequests['H-Output-2'].setValues(variables=(
+    'U1', 'U2', 'U3', 'UR1', 'UR2', 'UR3', 'V1', 'V2', 'V3', 'VR1', 'VR2', 
+    'VR3', 'A1', 'A2', 'A3', 'AR1', 'AR2', 'AR3', 'CF1', 'CF2', 'CF3'))
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='dynamic', name=
+    'H-Output-3', rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['tip'], 
+    sectionPoints=DEFAULT, variables=('S11', 'S22', 'S33', 'S12', 'S13', 'S23', 
+    'MISES', 'E11', 'E22', 'E33', 'E12', 'E13', 'E23'))
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='dynamic', name=
+    'middle', rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['middle'], 
+    sectionPoints=DEFAULT, variables=('S11', 'S22', 'S33', 'S12', 'S13', 'S23', 
+    'MISES'))
+mdb.models['Model-1'].historyOutputRequests['H-Output-3'].setValues(
+    numIntervals=500)
+mdb.models['Model-1'].historyOutputRequests['middle'].setValues(numIntervals=
+    500)
+del mdb.models['Model-1'].fieldOutputRequests['F-Output-2']
+# Save by Renato on Sat Aug 31 00:43:26 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].steps['dynamic'].setValues(scaleFactor=0.5)
+# Save by Renato on Sat Aug 31 00:44:06 2013

@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (Double)|Win32">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Double)|x64">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|Win32">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|x64">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|Win32">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|x64">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|Win32">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|x64">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|Win32">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|x64">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4B5185DA-7B08-4BD9-9BB7-C14E08392A7C}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AxisYuzu</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 8.0.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateRelocatableDeviceCode>
+    </CudaCompile>
+    <CudaCompile>
+      <CodeGeneration Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">compute_20,sm_20</CodeGeneration>
+    </CudaCompile>
+    <CudaCompile>
+      <GPUDebugInfo Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GPUDebugInfo>
+    </CudaCompile>
+    <CudaCompile>
+      <GenerateLineInfo Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateLineInfo>
+    </CudaCompile>
+    <CudaCompile>
+      <HostDebugInfo Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</HostDebugInfo>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -G -Xcompiler "/EHsc /MDd /Zi /W3 /nologo /Od /RTC1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 32 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DDEBUG -D_DEBUG</Command>
+    </PreLinkEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -G -Xcompiler "/EHsc /MDd /Zi /W3 /nologo /Od /RTC1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 64 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DDEBUG -D_DEBUG</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -G -Xcompiler "/EHsc /MDd /Zi /W3 /nologo /Od /RTC1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 32 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DAXIS_DOUBLEPRECISION -DDEBUG -D_DEBUG</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_30,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <HostDebugInfo>true</HostDebugInfo>
+    </CudaCompile>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Message>
+      </Message>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+      <LinkObjects>true</LinkObjects>
+    </CustomBuild>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>
+      </Message>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -G -Xcompiler "/EHsc /MDd /Zi /W3 /nologo /Od /RTC1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 64 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DAXIS_DOUBLEPRECISION -DDEBUG -D_DEBUG</Command>
+      <Message>Compiling...</Message>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateRelocatableDeviceCode>
+    </CudaCompile>
+    <CudaCompile>
+      <CodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">compute_20,sm_20</CodeGeneration>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -Xcompiler "/EHsc /MD /Zi /W3 /nologo /O2 /Oi /Ot /Oy /GT /arch:SSE2 /GS- /Qpar /openmp -DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 32 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS</Command>
+    </PreLinkEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -Xcompiler "/EHsc /MD /Zi /W3 /nologo /O2 /Oi /Ot /Oy /GT /arch:SSE2 /GS- /Qpar /openmp -DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 64 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -Xcompiler "/EHsc /MD /Zi /W3 /nologo /O2 /Oi /Ot /Oy /GT /arch:SSE2 /GS- /Qpar /openmp /Qfast_transcedentals /Qpar-report:1 /Qvec-report:1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 32 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DAXIS_DOUBLEPRECISION</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -Xcompiler "/EHsc /MD /Zi /W3 /nologo /O2 /Oi /Ot /Oy /GT /arch:AVX /GS- /Qpar /openmp" -gencode=arch=compute_20,code=sm_20 --machine 32 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DAXIS_DOUBLEPRECISION</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -Xcompiler "/EHsc /MD /Zi /W3 /nologo /O2 /Oi /Ot /Oy /GT /arch:SSE2 /GS- /Qpar /openmp /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1" -gencode=arch=compute_20,code=sm_20 -gencode=arch=compute_30,code=sm_30 -gencode=arch=compute_30,code=sm_35 --machine 64 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DAXIS_DOUBLEPRECISION</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <CudaCompile>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_20,sm_20;compute_30,sm_30;compute_35,sm_35</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+    <PreBuildEvent>
+      <Command>echo IMPORTANT NOTICE: Compilation will be done using only post-build step due to bug in CUDA compiler. Check that every source file is set to build using 'Custom Build Tool', NOT 'C++/CUDA'!
+echo Please wait while compilation proceeds. Nelson will tell you when it's done. Relax, take a coffee, sleep a little or do some exercises. You will probably feel better.</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo Nelson: AHUBA! &amp;&amp; $(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Done!</Message>
+    </PostBuildEvent>
+    <CustomBuild>
+      <Command>echo ZzZzZzZzZzZz....</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(OutDir)$(TargetFileName)</Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Message>Compiling...</Message>
+      <Command>nvcc --lib -o "$(OutDir)$(TargetFileName)" -rdc=true -G -Xcompiler "/EHsc /MD /Zi /W3 /nologo /O2 /Oi /Ot /Oy /GT /arch:AVX /GS- /Qpar /openmp" -gencode=arch=compute_20,code=sm_20 --machine 64 "$(ProjectDir)yuzu\zenbu.cu" -I"$(SolutionDir)Axis.Yuzu" -D_UNICODE -DWIN32 -DWINDOWS -DAXIS_DOUBLEPRECISION</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\foundation\blas\ColumnVector.cu">
+      <FileType>CppCode</FileType>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\DenseMatrix.cu">
+      <FileType>CppCode</FileType>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\RowVector.cu">
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\SubColumnVector.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\SubRowVector.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\SymmetricMatrix.cu">
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\LowerTriangularMatrix.cu">
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\VectorView.cu">
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\blas\UpperTriangularMatrix.cu">
+      <FileType>CppCode</FileType>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\foundation\memory\HeapBlockArena.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\foundation\memory\RelativePointer.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="yuzu\common\gpu.hpp" />
+    <ClInclude Include="yuzu\domain\analyses\ModelDynamics.hpp" />
+    <ClInclude Include="yuzu\domain\analyses\ModelKinematics.hpp" />
+    <ClInclude Include="yuzu\domain\analyses\ReducedNumericalModel.hpp" />
+    <ClInclude Include="yuzu\domain\boundary_conditions\BoundaryConditionData.hpp" />
+    <ClInclude Include="yuzu\domain\curves\CurveData.hpp" />
+    <ClInclude Include="yuzu\domain\elements\DoF.hpp" />
+    <ClInclude Include="yuzu\domain\elements\ElementData.hpp" />
+    <ClInclude Include="yuzu\domain\elements\ElementGeometry.hpp" />
+    <ClInclude Include="yuzu\domain\elements\FiniteElement.hpp" />
+    <ClInclude Include="yuzu\domain\elements\Node.hpp" />
+    <ClInclude Include="yuzu\domain\elements\ReverseConnectivityList.hpp" />
+    <ClInclude Include="yuzu\domain\integration\IntegrationPoint.hpp" />
+    <ClInclude Include="yuzu\domain\physics\InfinitesimalState.hpp" />
+    <ClInclude Include="yuzu\domain\physics\UpdatedPhysicalState.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\AutoColumnVector.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\AutoDenseMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\AutoLowerTriangularMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\AutoRowVector.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\AutoSymmetricMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\AutoUpperTriangularMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\blas_basic_types.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\ColumnVector.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\DenseMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\linear_algebra.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\matrix_compatibility.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\matrix_operations.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\RowVector.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\SubColumnVector.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\SubRowVector.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\SymmetricMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\LowerTriangularMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\UpperTriangularMatrix.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\VectorView.hpp" />
+    <ClInclude Include="yuzu\foundation\blas\vector_operations.hpp" />
+    <ClInclude Include="yuzu\foundation\memory\HeapBlockArena.hpp" />
+    <ClInclude Include="yuzu\foundation\memory\HeapBlockArena_Pimpl.hpp" />
+    <ClInclude Include="yuzu\foundation\memory\pointer.hpp" />
+    <ClInclude Include="yuzu\foundation\memory\RelativePointer.hpp" />
+    <ClInclude Include="yuzu\mechanics\continuum.hpp" />
+    <ClInclude Include="yuzu\utils\kernel_utils.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\zenbu.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\domain\elements\DoF.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\ElementGeometry.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\FiniteElement.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\Node.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\elements\ReverseConnectivityList.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\integration\IntegrationPoint.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\physics\InfinitesimalState.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\physics\UpdatedPhysicalState.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\domain\analyses\ModelDynamics.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\analyses\ModelKinematics.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+    <CustomBuild Include="yuzu\domain\analyses\ReducedNumericalModel.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\utils\kernel_utils.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\domain\elements\ElementData.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\domain\boundary_conditions\BoundaryConditionData.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\domain\curves\CurveData.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\foundation\blas\matrix_operations.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="yuzu\mechanics\continuum.cu">
+      <FileType>CppCode</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 8.0.targets" />
+  </ImportGroup>
+</Project>

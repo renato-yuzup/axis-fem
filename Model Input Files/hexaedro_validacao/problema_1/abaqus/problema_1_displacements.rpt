@@ -1,0 +1,38 @@
+********************************************************************************
+Field Output Report, written Wed May 23 16:12:44 2012
+
+Source 1
+---------
+
+   ODB: D:/Axis/Model Input Files/hexaedro_validacao/problema_1/abaqus/problema_1.odb
+   Step: Step-1
+   Frame: Increment      1: Step Time =    1.000
+
+Loc 1 : Nodal values from source 1
+
+Output sorted by column "Node Label".
+
+Field Output reported at nodes for part: PART-1-1
+
+            Node            U.U1            U.U2            U.U3
+           Label          @Loc 1          @Loc 1          @Loc 1
+-----------------------------------------------------------------
+               1              0.              0.        12.5E-33
+               2              0.             -0.        12.5E-33
+               3             -0.             -0.        12.5E-33
+               4              0.              0.        12.5E-33
+               5      25.801E-24     92.6442E-24        250.E-09
+               6     33.0872E-24     152.201E-24        250.E-09
+               7    -13.2349E-24     145.584E-24        250.E-09
+               8     26.4698E-24     92.6442E-24        250.E-09
+
+
+  Minimum           -13.2349E-24              0.        12.5E-33
+         At Node               7               4               4
+
+  Maximum            33.0872E-24     152.201E-24        250.E-09
+         At Node               6               6               8
+
+           Total     72.1231E-24     483.073E-24    1000.000E-09
+
+

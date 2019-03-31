@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (Double)|Win32">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Double)|x64">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|Win32">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|x64">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|Win32">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|x64">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|Win32">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|x64">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|Win32">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|x64">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3EADCAA9-84E2-441E-9B93-3C0B79BD034F}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AxisPhysalis</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.SystemBase.lib;$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.CommonLibrary.lib;$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.BLAS.lib;$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;_DEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;_DEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.SystemBase.lib;$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.CommonLibrary.lib;$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.BLAS.lib;$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)\Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Axis.CommonLibrary.lib;Axis.SystemBase.lib;Axis.BLAS.lib;Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;AXIS_DOUBLEPRECISION;NDEBUG;_WINDOWS;_USRDLL;AXISPHYSALIS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Axis.SystemBase;$(SolutionDir)Axis.CommonLibrary;$(SolutionDir)Axis.BLAS;$(SolutionDir)Axis.Mint;$(ProjectDir);$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.CommonLibrary.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.SystemBase.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.BLAS.lib;$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName)\Axis.Mint.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="application\factories\algorithms\ClockworkFactory.hpp" />
+    <ClInclude Include="application\factories\algorithms\SolverFactory.hpp" />
+    <ClInclude Include="application\factories\boundary_conditions\ConstraintFactory.hpp" />
+    <ClInclude Include="application\factories\collectors\CollectorBuildResult.hpp" />
+    <ClInclude Include="application\factories\collectors\CollectorFactory.hpp" />
+    <ClInclude Include="application\factories\collectors\CollectorParseResult.hpp" />
+    <ClInclude Include="application\factories\collectors\CollectorType.hpp" />
+    <ClInclude Include="application\factories\collectors\ElementCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\EntityType.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralElementCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralElementCollectorFactory.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralElementCollectorFactory_Pimpl.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralElementCollectorParser.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralNodeCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralNodeCollectorFactory.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralNodeCollectorFactory_Pimpl.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralNodeCollectorParser.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralSummaryElementCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralSummaryElementCollectorFactory.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralSummaryElementCollectorFactory_Pimpl.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralSummaryNodeCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralSummaryNodeCollectorFactory.hpp" />
+    <ClInclude Include="application\factories\collectors\GeneralSummaryNodeCollectorFactory_Pimpl.hpp" />
+    <ClInclude Include="application\factories\collectors\NodeCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\SummaryElementCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\collectors\SummaryNodeCollectorBuilder.hpp" />
+    <ClInclude Include="application\factories\materials\MaterialFactory.hpp" />
+    <ClInclude Include="application\output\ResultBucketConcrete.hpp" />
+    <ClInclude Include="application\output\ResultBucketConcrete_Pimpl.hpp" />
+    <ClInclude Include="application\factories\parsers\BlockProvider.hpp" />
+    <ClInclude Include="application\factories\parsers\ElementParserFactory.hpp" />
+    <ClInclude Include="application\factories\parsers\StepParserProvider.hpp" />
+    <ClInclude Include="application\factories\workbooks\WorkbookFactory.hpp" />
+    <ClInclude Include="application\fwd\locators_fwd.hpp" />
+    <ClInclude Include="application\fwd\parsing_fwd.hpp" />
+    <ClInclude Include="application\locators\ClockworkFactoryLocator.hpp" />
+    <ClInclude Include="application\locators\ClockworkFactoryLocator_Pimpl.hpp" />
+    <ClInclude Include="application\locators\CollectorFactoryLocator.hpp" />
+    <ClInclude Include="application\locators\CollectorFactoryLocator_Pimpl.hpp" />
+    <ClInclude Include="application\locators\ConstraintParserLocator.hpp" />
+    <ClInclude Include="application\locators\ConstraintParserLocator_Pimpl.hpp" />
+    <ClInclude Include="application\locators\ElementParserLocator.hpp" />
+    <ClInclude Include="application\locators\ElementParserLocator_Pimpl.hpp" />
+    <ClInclude Include="application\locators\MaterialFactoryLocator.hpp" />
+    <ClInclude Include="application\locators\MaterialFactoryLocator_Pimpl.hpp" />
+    <ClInclude Include="application\locators\SolverFactoryLocator.hpp" />
+    <ClInclude Include="application\locators\SolverFactoryLocator_Pimpl.hpp" />
+    <ClInclude Include="application\locators\WorkbookFactoryLocator.hpp" />
+    <ClInclude Include="application\locators\WorkbookFactoryLocator_Pimpl.hpp" />
+    <ClInclude Include="application\parsing\core\EntityLabeler.hpp" />
+    <ClInclude Include="application\parsing\core\EntityLabeler_Pimpl.hpp" />
+    <ClInclude Include="application\parsing\core\EventStatistic.hpp" />
+    <ClInclude Include="application\parsing\core\EventStatistic_Pimpl.hpp" />
+    <ClInclude Include="application\parsing\core\ParseContext.hpp" />
+    <ClInclude Include="application\parsing\core\ParseContext_Pimpl.hpp" />
+    <ClInclude Include="application\parsing\core\SectionDefinition.hpp" />
+    <ClInclude Include="application\parsing\core\Sketchbook.hpp" />
+    <ClInclude Include="application\parsing\core\Sketchbook_Pimpl.hpp" />
+    <ClInclude Include="application\parsing\core\SymbolTable.hpp" />
+    <ClInclude Include="application\parsing\core\SymbolTable_Pimpl.hpp" />
+    <ClInclude Include="application\parsing\error_messages.hpp" />
+    <ClInclude Include="application\parsing\parsers\BlockParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\ConstraintParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\ElementParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\EmptyBlockParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\ResultCollectorParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\SnapshotParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\StepParser.hpp" />
+    <ClInclude Include="application\parsing\parsers\VoidParser.hpp" />
+    <ClInclude Include="application\parsing\warning_messages.hpp" />
+    <ClInclude Include="foundation\Axis.Physalis.hpp" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="unit_tests\MockClockwork.hpp" />
+    <ClInclude Include="unit_tests\MockParseContext.hpp" />
+    <ClInclude Include="unit_tests\MockResultBucket.hpp" />
+    <ClInclude Include="unit_tests\MockSolver.hpp" />
+    <ClInclude Include="unit_tests\MockSolverFactory.hpp" />
+    <ClInclude Include="unit_tests\MockWorkbook.hpp" />
+    <ClInclude Include="unit_tests\MockWorkbookFactory.hpp" />
+    <ClInclude Include="unit_tests\unit_tests.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="application\factories\algorithms\ClockworkFactory.cpp" />
+    <ClCompile Include="application\factories\algorithms\SolverFactory.cpp" />
+    <ClCompile Include="application\factories\boundary_conditions\ConstraintFactory.cpp" />
+    <ClCompile Include="application\factories\collectors\CollectorBuildResult.cpp" />
+    <ClCompile Include="application\factories\collectors\CollectorFactory.cpp" />
+    <ClCompile Include="application\factories\collectors\CollectorParseResult.cpp" />
+    <ClCompile Include="application\factories\collectors\ElementCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralElementCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralElementCollectorFactory.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralElementCollectorFactory_Pimpl.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralElementCollectorParser.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralNodeCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralNodeCollectorFactory.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralNodeCollectorFactory_Pimpl.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralNodeCollectorParser.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralSummaryElementCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralSummaryElementCollectorFactory.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralSummaryElementCollectorFactory_Pimpl.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralSummaryNodeCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralSummaryNodeCollectorFactory.cpp" />
+    <ClCompile Include="application\factories\collectors\GeneralSummaryNodeCollectorFactory_Pimpl.cpp" />
+    <ClCompile Include="application\factories\collectors\NodeCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\SummaryElementCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\collectors\SummaryNodeCollectorBuilder.cpp" />
+    <ClCompile Include="application\factories\materials\MaterialFactory.cpp" />
+    <ClCompile Include="application\output\ResultBucketConcrete.cpp" />
+    <ClCompile Include="application\output\ResultBucketConcrete_Pimpl.cpp" />
+    <ClCompile Include="application\factories\parsers\BlockProvider.cpp" />
+    <ClCompile Include="application\factories\parsers\ElementParserFactory.cpp" />
+    <ClCompile Include="application\factories\parsers\StepParserProvider.cpp" />
+    <ClCompile Include="application\factories\workbooks\WorkbookFactory.cpp" />
+    <ClCompile Include="application\locators\ClockworkFactoryLocator.cpp" />
+    <ClCompile Include="application\locators\CollectorFactoryLocator.cpp" />
+    <ClCompile Include="application\locators\ConstraintParserLocator.cpp" />
+    <ClCompile Include="application\locators\ElementParserLocator.cpp" />
+    <ClCompile Include="application\locators\MaterialFactoryLocator.cpp" />
+    <ClCompile Include="application\locators\SolverFactoryLocator.cpp" />
+    <ClCompile Include="application\locators\WorkbookFactoryLocator.cpp" />
+    <ClCompile Include="application\parsing\core\EntityLabeler.cpp" />
+    <ClCompile Include="application\parsing\core\EventStatistic.cpp" />
+    <ClCompile Include="application\parsing\core\ParseContext.cpp" />
+    <ClCompile Include="application\parsing\core\SectionDefinition.cpp" />
+    <ClCompile Include="application\parsing\core\Sketchbook.cpp" />
+    <ClCompile Include="application\parsing\core\SymbolTable.cpp" />
+    <ClCompile Include="application\parsing\core\SymbolTable_Pimpl.cpp" />
+    <ClCompile Include="application\parsing\parsers\BlockParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\ConstraintParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\ElementParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\EmptyBlockParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\ResultCollectorParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\SnapshotParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\StepParser.cpp" />
+    <ClCompile Include="application\parsing\parsers\VoidParser.cpp" />
+    <ClCompile Include="Axis.Physalis.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="unit_tests\MockClockwork.cpp" />
+    <ClCompile Include="unit_tests\MockParseContext.cpp" />
+    <ClCompile Include="unit_tests\MockResultBucket.cpp" />
+    <ClCompile Include="unit_tests\MockSolver.cpp" />
+    <ClCompile Include="unit_tests\MockSolverFactory.cpp" />
+    <ClCompile Include="unit_tests\MockWorkbook.cpp" />
+    <ClCompile Include="unit_tests\MockWorkbookFactory.cpp" />
+    <ClCompile Include="unit_tests\ResultWorkbookTest.cpp" />
+    <ClCompile Include="unit_tests\SnapshotParserTest.cpp" />
+    <ClCompile Include="unit_tests\StandardElementCollectorParserTest.cpp" />
+    <ClCompile Include="unit_tests\StandardNodeCollectorParserTest.cpp" />
+    <ClCompile Include="unit_tests\StepParserTest.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

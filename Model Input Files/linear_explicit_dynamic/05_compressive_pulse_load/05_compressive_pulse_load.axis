@@ -1,0 +1,160 @@
+TITLE "LINEAR DYNAMIC EXPLICIT SOLVER TEST SERIES -- TEST 4: COMPRESSIVE PULSE LOAD"
+
+## Analysis settings
+BEGIN ANALYSIS
+	BEGIN STEP WITH NAME = "Transient analysis with no hourglass control",
+					TYPE = EXPLICIT_STANDARD, START_TIME = 0, END_TIME = 5E-4, 
+					DTIME_CONTROL_TYPE = DTIME_CONSTANT, 
+					DTIME_CONTROL_PARAMS = (DTIME = 1e-6)
+		BEGIN SNAPSHOTS
+			DO 250 SNAPSHOTS
+		END SNAPSHOTS
+		
+		## Defines another output file; you can define as many as you want :)
+		BEGIN OUTPUT WITH FILE = "compressive_pulse_load", FORMAT = HYPERWORKS   # a .hwascii file
+			RECORD NODAL DISPLACEMENT
+			RECORD ELEMENT STRESS 
+		END OUTPUT
+		
+		## MATLAB RESULT FILE
+		BEGIN OUTPUT WITH FILE = "compressive_pulse_load", 
+		                  FORMAT = MATLAB_DATASET, 
+						  FORMAT_PARAMS = (NAME = results_compressive_load)
+			# Free end field output
+			RECORD AVERAGE NODAL DISPLACEMENT X ON SET forca
+			RECORD AVERAGE NODAL LOAD X ON SET forca
+			RECORD AVERAGE NODAL VELOCITY X ON SET forca
+			RECORD AVERAGE NODAL ACCELERATION X ON SET forca
+			
+			# Midpoint state
+			RECORD AVERAGE ELEMENT STRESS XX ON SET meio 
+			RECORD AVERAGE NODAL REACTION X ON SET midpoint
+			# RECORD AVERAGE NODAL REACTION X ON SET forca # added
+			
+			# Hourglass probe
+			RECORD AVERAGE NODAL DISPLACEMENT Y ON SET hourglass_probe_1
+			RECORD AVERAGE NODAL DISPLACEMENT Y ON SET hourglass_probe_2
+			RECORD AVERAGE NODAL DISPLACEMENT Y ON SET hourglass_probe_3
+			RECORD AVERAGE NODAL DISPLACEMENT Y ON SET hourglass_probe_4
+			RECORD AVERAGE NODAL VELOCITY Y ON SET hourglass_probe_1
+			RECORD AVERAGE NODAL VELOCITY Y ON SET hourglass_probe_2
+			RECORD AVERAGE NODAL VELOCITY Y ON SET hourglass_probe_3
+			RECORD AVERAGE NODAL VELOCITY Y ON SET hourglass_probe_4
+		END OUTPUT
+		BEGIN LOADS
+			BEGIN NODAL_LOADS
+				ON SET forca BEHAVES AS pulso ON X DIRECTION SCALE = -100
+			END NODAL_LOADS
+		END LOADS
+		BEGIN CONSTRAINTS
+			LOCK SET base IN ALL DIRECTIONS
+		END CONSTRAINTS		
+	END STEP
+END ANALYSIS
+
+BEGIN NODES WITH SET_ID = all_nodes
+      1:          0.5, 0.0500000007, 0.0500000007
+      2:          0.5,           0., 0.0500000007
+      3:          0.5, 0.0500000007,           0.
+      4:          0.5,           0.,           0.
+      5:  0.449999988, 0.0500000007, 0.0500000007
+      6:  0.449999988,           0., 0.0500000007
+      7:  0.449999988, 0.0500000007,           0.
+      8:  0.449999988,           0.,           0.
+      9:  0.400000006, 0.0500000007, 0.0500000007
+     10:  0.400000006,           0., 0.0500000007
+     11:  0.400000006, 0.0500000007,           0.
+     12:  0.400000006,           0.,           0.
+     13:  0.349999994, 0.0500000007, 0.0500000007
+     14:  0.349999994,           0., 0.0500000007
+     15:  0.349999994, 0.0500000007,           0.
+     16:  0.349999994,           0.,           0.
+     17:  0.300000012, 0.0500000007, 0.0500000007
+     18:  0.300000012,           0., 0.0500000007
+     19:  0.300000012, 0.0500000007,           0.
+     20:  0.300000012,           0.,           0.
+     21:         0.25, 0.0500000007, 0.0500000007
+     22:         0.25,           0., 0.0500000007
+     23:         0.25, 0.0500000007,           0.
+     24:         0.25,           0.,           0.
+     25:  0.200000003, 0.0500000007, 0.0500000007
+     26:  0.200000003,           0., 0.0500000007
+     27:  0.200000003, 0.0500000007,           0.
+     28:  0.200000003,           0.,           0.
+     29:  0.150000006, 0.0500000007, 0.0500000007
+     30:  0.150000006,           0., 0.0500000007
+     31:  0.150000006, 0.0500000007,           0.
+     32:  0.150000006,           0.,           0.
+     33:  0.100000001, 0.0500000007, 0.0500000007
+     34:  0.100000001,           0., 0.0500000007
+     35:  0.100000001, 0.0500000007,           0.
+     36:  0.100000001,           0.,           0.
+     37: 0.0500000007, 0.0500000007, 0.0500000007
+     38: 0.0500000007,           0., 0.0500000007
+     39: 0.0500000007, 0.0500000007,           0.
+     40: 0.0500000007,           0.,           0.
+     41:           0., 0.0500000007, 0.0500000007
+     42:           0.,           0., 0.0500000007
+     43:           0., 0.0500000007,           0.
+     44:           0.,           0.,           0.
+END NODES
+
+BEGIN PARTS WITH ELEM_TYPE = LINEAR_HEXAHEDRON, PROPERTIES = (INTEGRATION_TYPE=REDUCED)
+	SET all_elements IS LINEAR_ISO_ELASTIC WITH POISSON = 0.3, ELASTIC_MODULUS = 200E9, LINEAR_DENSITY = 7850
+END PARTS
+
+BEGIN ELEMENTS WITH SET_ID = all_elements
+	 1:  5,  6,  8,  7,  1,  2,  4,  3
+	 2:  9, 10, 12, 11,  5,  6,  8,  7
+	 3: 13, 14, 16, 15,  9, 10, 12, 11
+	 4: 17, 18, 20, 19, 13, 14, 16, 15
+	 5: 21, 22, 24, 23, 17, 18, 20, 19
+	 6: 25, 26, 28, 27, 21, 22, 24, 23
+	 7: 29, 30, 32, 31, 25, 26, 28, 27
+	 8: 33, 34, 36, 35, 29, 30, 32, 31
+	 9: 37, 38, 40, 39, 33, 34, 36, 35
+	10: 41, 42, 44, 43, 37, 38, 40, 39
+END ELEMENTS
+
+
+BEGIN NODE_SET WITH ID = base
+	41-44
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = forca
+	1-4
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = midpoint
+	21-24
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = hourglass_probe_1
+	5
+END NODE_SET
+BEGIN NODE_SET WITH ID = hourglass_probe_2
+	6
+END NODE_SET
+BEGIN NODE_SET WITH ID = hourglass_probe_3
+	7
+END NODE_SET
+BEGIN NODE_SET WITH ID = hourglass_probe_4
+	8
+END NODE_SET
+
+BEGIN ELEMENT_SET WITH ID = meio
+	6
+END ELEMENT_SET
+
+BEGIN CURVES
+	BEGIN MULTILINE_CURVE WITH ID = pulso
+		0.              0.
+		1e-05           0.
+		1.000001e-05    1.
+		7.5e-05         1.
+		7.500001e-05    0.
+		100.            0.
+	END MULTILINE_CURVE
+END CURVES
+
+

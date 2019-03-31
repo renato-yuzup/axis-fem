@@ -1,0 +1,132 @@
+
+## Analysis settings
+BEGIN RUN_SETTINGS WITH ANALYSIS_TYPE = LINEAR_STATIC
+	BEGIN OUTPUT WITH FILE = "test_4", FORMAT = AXIS
+		RECORD DISPLACEMENT ALL ON top_face
+		RECORD DISPLACEMENT ALL ON intermediate_face
+		RECORD DISPLACEMENT ALL ON bottom_face
+		RECORD STRAIN AT NODES ON SET all_nodes
+		RECORD STRAIN AT ELEMENTS ON SET all_elements
+		RECORD STRESS AT NODES ON SET all_nodes
+		RECORD STRESS AT ELEMENTS ON SET all_elements
+	END OUTPUT
+END RUN_SETTINGS
+
+
+/* Our nodes and elements are declared apart in another file. */
+BEGIN NODES WITH SET_ID = all_nodes
+      1:  0, 0, 0
+      2:  1, 0, 0
+      3:  1, 1, 0
+      4:  0, 1, 0
+      5:  0, 0, 1
+      6:  1, 0, 1
+      7:  1, 1, 1
+      8:  0, 1, 1
+      9:  2, 0, 0
+     10:  2, 1, 0
+     11:  2, 0, 1
+     12:  2, 1, 1
+     13:  0, 0, 2
+     14:  1, 0, 2
+     15:  2, 0, 2
+     16:  2, 1, 2
+     17:  1, 1, 2
+     18:  0, 1, 2
+     19:  0, 2, 0
+     20:  1, 2, 0
+     21:  2, 2, 0
+     22:  2, 2, 1
+     23:  1, 2, 1
+     24:  0, 2, 1
+     25:  0, 2, 2
+     26:  1, 2, 2
+     27:  2, 2, 2
+END NODES
+
+BEGIN NODE_SET WITH ID = top_face
+	13-18
+	25-27
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = intermediate_face
+	5-8
+	11-12
+	22-24
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = bottom_face
+	1-4
+	9-10
+	19-21
+END NODE_SET
+
+BEGIN ELEMENTS WITH SET_ID = all_elements
+	 1:  1 2 3 4 5 6 7 8
+	 2:  2 9 10 3 6 11 12 7
+	 3:  5 6 7 8 13 14 17 18
+	 4:  6 11 12 7 14 15 16 17
+	 5:  4 3 20 19 8 7 23 24
+	 6:  3 10 21 20 7 12 22 23
+	 7:  8 7 23 24 18 17 26 25
+	 8:  7 12 22 23 17 16 27 26
+END ELEMENTS
+
+BEGIN NODE_SET WITH ID = clamped
+	1	
+END NODE_SET
+BEGIN NODE_SET WITH ID = support
+	2-4		
+	10 19-21
+END NODE_SET
+BEGIN NODE_SET WITH ID = constrained
+	9
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = carregamento1	# pontas
+	25 27 13 15
+END NODE_SET
+BEGIN NODE_SET WITH ID = carregamento2 # extremo meio
+	14 16 18 26
+END NODE_SET
+BEGIN NODE_SET WITH ID = carregamento3 # centro
+	17
+END NODE_SET
+
+BEGIN PARTS WITH ELEM_TYPE = LINEAR_HEXAHEDRON, PROPERTIES = ()
+	SET all_elements IS LINEAR_ISO_ELASTIC WITH POISSON = 0.3, ELASTIC_MODULUS = 200E9
+END PARTS
+
+BEGIN CONSTRAINTS
+	BLOCK MOVEMENT OF clamped ON ALL DIRECTIONS
+	BLOCK MOVEMENT OF constrained ON Y,Z DIRECTIONS
+	BLOCK MOVEMENT OF support ON Z DIRECTION
+END CONSTRAINTS
+
+BEGIN LOADS
+	BEGIN NODAL_LOADS
+		ON SET carregamento1 BEHAVES AS constant_curve1 ON Z DIRECTION
+		ON SET carregamento2 BEHAVES AS constant_curve2 ON Z DIRECTION
+		ON SET carregamento3 BEHAVES AS constant_curve3 ON Z DIRECTION
+	END NODAL_LOADS
+END LOADS
+
+BEGIN CURVES
+	BEGIN MULTILINE_CURVE WITH ID = constant_curve1
+		0 -10.0e3
+		1 -10.0e3
+	END MULTILINE_CURVE
+	BEGIN MULTILINE_CURVE WITH ID = constant_curve2
+		0 -20.0e3
+		1 -20.0e3
+	END MULTILINE_CURVE
+	BEGIN MULTILINE_CURVE WITH ID = constant_curve3
+		0 -40.0e3
+		1 -40.0e3
+	END MULTILINE_CURVE
+END CURVES
+
+
+
+
+ 

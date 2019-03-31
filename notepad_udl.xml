@@ -1,0 +1,36 @@
+<NotepadPlus>
+    <UserLang name="Axis FEM" ext="">
+        <Settings>
+            <Global caseIgnored="no" />
+            <TreatAsSymbol comment="no" commentLine="no" />
+            <Prefix words1="no" words2="no" words3="no" words4="no" />
+        </Settings>
+        <KeywordLists>
+            <Keywords name="Delimiters">&quot;00&quot;00</Keywords>
+            <Keywords name="Folder+">BEGIN</Keywords>
+            <Keywords name="Folder-">END</Keywords>
+            <Keywords name="Operators"></Keywords>
+            <Keywords name="Comment"> 1/* 2*/ 0#</Keywords>
+            <Keywords name="Words1">WITH AS</Keywords>
+            <Keywords name="Words2">NODES ELEMENTS PARTS</Keywords>
+            <Keywords name="Words3">#if defined not AND OR NOT #include #endif #else</Keywords>
+            <Keywords name="Words4">#exit #break</Keywords>
+        </KeywordLists>
+        <Styles>
+            <WordsStyle name="DEFAULT" styleID="11" fgColor="000000" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="FOLDEROPEN" styleID="12" fgColor="005279" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="FOLDERCLOSE" styleID="13" fgColor="005279" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="KEYWORD1" styleID="5" fgColor="0000FF" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="KEYWORD2" styleID="6" fgColor="8080C0" bgColor="FFFADD" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="KEYWORD3" styleID="7" fgColor="004080" bgColor="E1FFE1" fontName="Lucida Console" fontStyle="1" fontSize="8" />
+            <WordsStyle name="KEYWORD4" styleID="8" fgColor="004080" bgColor="FFD9D9" fontName="Lucida Console" fontStyle="1" fontSize="8" />
+            <WordsStyle name="COMMENT" styleID="1" fgColor="008000" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="COMMENT LINE" styleID="2" fgColor="008000" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="NUMBER" styleID="4" fgColor="000000" bgColor="FFFFFF" fontStyle="0" />
+            <WordsStyle name="OPERATOR" styleID="10" fgColor="000000" bgColor="FFFFFF" fontStyle="0" />
+            <WordsStyle name="DELIMINER1" styleID="14" fgColor="800000" bgColor="FFFFFF" fontName="Lucida Console" fontStyle="0" fontSize="8" />
+            <WordsStyle name="DELIMINER2" styleID="15" fgColor="000000" bgColor="FFFFFF" fontStyle="0" />
+            <WordsStyle name="DELIMINER3" styleID="16" fgColor="000000" bgColor="FFFFFF" fontStyle="0" />
+        </Styles>
+    </UserLang>
+</NotepadPlus>

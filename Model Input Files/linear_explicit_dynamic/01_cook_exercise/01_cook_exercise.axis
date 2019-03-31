@@ -1,0 +1,116 @@
+TITLE "LINEAR DYNAMIC EXPLICIT SOLVER TEST SERIES -- TEST 1: COOK SAMPLE EXERCISE"
+
+/***************************************************************************
+ ** ANALYSIS -- CONFIGURES GENERAL ANALYSIS SETTINGS                      **
+ ***************************************************************************/
+BEGIN ANALYSIS
+	## Analysis steps are executed consecutively, preserving
+	## previous model state between steps.
+	BEGIN STEP WITH START_TIME = 0, END_TIME = 2e-4,        # Time interval
+					TYPE = EXPLICIT_STANDARD,               # Solver identifier
+					DTIME_CONTROL_TYPE = DTIME_CONSTANT,    # How time control will be done
+					DTIME_CONTROL_PARAMS = (DTIME = 1e-6)   # Additional parameters for time control
+				
+		# Specifies when to collect data in this step.
+		BEGIN SNAPSHOTS
+			DO 200 SNAPSHOTS  # 200 points evenly spaced in time
+		END SNAPSHOTS
+
+		## Defines when, how and what to collect at every snapshot
+		BEGIN OUTPUT WITH FILE = "cook_exercise",             # Output file
+						FORMAT = MATLAB_DATASET,              # Output format
+						FORMAT_PARAMS = (NAME = results)      # Format parameters (in this case,
+															  # it tells the name of the workspace
+															  # variable to use in MATLAB)
+			# These values will be written, in order, in its own column (first column is time)
+			RECORD AVERAGE NODAL DISPLACEMENT X ON SET carga1
+			RECORD AVERAGE ELEMENT STRESS XX ON SET element20
+			RECORD AVERAGE NODAL REACTION X ON SET carga1
+			RECORD AVERAGE NODAL VELOCITY X ON SET carga1
+			RECORD AVERAGE NODAL ACCELERATION X ON SET carga1
+			RECORD AVERAGE NODAL REACTION X ON SET fixed_end_center_node
+
+			RECORD AVERAGE NODAL DISPLACEMENT X ON SET no_meio
+			RECORD AVERAGE NODAL VELOCITY X ON SET no_meio
+			RECORD AVERAGE NODAL ACCELERATION X ON SET no_meio
+		END OUTPUT
+		
+		## Defines another output file; you can define as many as you want :)
+		BEGIN OUTPUT WITH FILE = "cook_exercise", FORMAT = HYPERWORKS   # a .hwascii file
+			RECORD NODAL DISPLACEMENT
+			RECORD NODAL LOAD
+			RECORD NODAL VELOCITY 
+			RECORD NODAL ACCELERATION 
+			RECORD ELEMENT STRESS 
+			RECORD ELEMENT STRAIN
+			RECORD NODAL REACTION
+		END OUTPUT
+		
+		# Loads to be applied in this step
+		BEGIN LOADS
+			BEGIN NODAL_LOADS
+				ON SET carga1 BEHAVES AS constant_curve ON X DIRECTION SCALE = -6.25
+				ON SET carga2 BEHAVES AS constant_curve ON X DIRECTION SCALE = -12.5
+				ON SET carga4 BEHAVES AS constant_curve ON X DIRECTION SCALE = -25.0
+			END NODAL_LOADS
+		END LOADS
+		
+		# Essential boundary conditions (pinned, encastre, etc.)
+		BEGIN CONSTRAINTS
+			LOCK SET engaste IN ALL DIRECTIONS
+		END CONSTRAINTS		
+	END STEP
+END ANALYSIS
+
+BEGIN NODES WITH SET_ID = all_nodes
+	@include "cook_nodes.axis"  # Nodes are defined in another file
+END NODES
+
+# This is what would be called a section in FE commercial packages
+BEGIN PARTS WITH ELEM_TYPE = LINEAR_HEXAHEDRON, PROPERTIES = (INTEGRATION_TYPE=REDUCED)
+	SET all_elements IS LINEAR_ISO_ELASTIC WITH POISSON = 0.0, ELASTIC_MODULUS = 30e6, LINEAR_DENSITY = 7.4e-4
+END PARTS
+
+BEGIN ELEMENTS WITH SET_ID = all_elements
+	@include "cook_elements.axis"
+END ELEMENTS
+
+
+BEGIN NODE_SET WITH ID=engaste
+	361-369
+END NODE_SET
+
+BEGIN NODE_SET WITH ID=carga1
+	1 3 7 9
+END NODE_SET
+
+BEGIN NODE_SET WITH ID=carga2
+	2 4 6 8
+END NODE_SET
+
+BEGIN NODE_SET WITH ID=carga4
+	5
+END NODE_SET
+
+BEGIN NODE_SET WITH ID=fixed_end_center_node
+	365
+END NODE_SET
+
+BEGIN ELEMENT_SET WITH ID=element20
+	77-80
+END ELEMENT_SET
+
+BEGIN NODE_SET WITH ID=no_meio
+	181-189
+END NODE_SET
+
+# Functions that define the behavior of boundary conditions
+BEGIN CURVES
+	# A piecewise linear function
+	BEGIN MULTILINE_CURVE WITH ID = constant_curve
+		0		1
+		100		1
+	END MULTILINE_CURVE
+END CURVES
+
+

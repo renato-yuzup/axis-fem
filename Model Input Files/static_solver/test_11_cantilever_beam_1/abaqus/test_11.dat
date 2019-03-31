@@ -1,0 +1,524 @@
+1
+
+   Abaqus Version 6.8-1                                  Date 03-Jul-2012   Time 20:42:13
+   For use by Team oDDiTy under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Simulia Corp.
+                                 Rising Sun Mills
+                                 166 Valley Street
+                           Providence, RI 02909-2499, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine perseu 
+                          you are authorized to run
+                          Abaqus/Standard until 07-Jul-2012
+
+                          Your site id is: 305419896 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.simulia.com/about/locations.html
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                 Abaqus Version 6.8-1                    * 
+                *                                                         * 
+                *          BUILD ID: 2008_05_02-13.37.42 86896            * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using version 6.8 manuals     * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+1
+
+   Abaqus Version 6.8-1                                  Date 03-Jul-2012   Time 20:42:13
+   For use by Team oDDiTy under license from Dassault Systemes or its subsidiary.
+
+                                                                                     
+
+                                             A B A Q U S   I N P U T   E C H O
+
+
+                        5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
+                    --------------------------------------------------------------------------------
+                    *HEADING
+                    PROBLEMA 1 : 1 CUBO UNITARIO, POISSON = 0, F = -50 kN   
+                    *PREPRINT,ECHO=YES,HISTORY=NO,MODEL=NO  
+                    *RESTART, WRITE 
+     LINE     5     *NODE   
+                    	1,   0.0,  0.0,   0.0  
+                    	2,   0.0,  0.0,   0.1  
+                    	3,   1.0,  0.0,   0.1  
+                    	4,   1.0,  0.0,   0.0  
+     LINE    10     	5,   0.0,  0.2,   0.0  
+                    	6,   0.0,  0.2,   0.1  
+                    	7,   1.0,  0.2,   0.1  
+                    	8,   1.0,  0.2,   0.0  
+                    	9,   2.0,  0.0,   0.1  
+     LINE    15     	10,  2.0,  0.0,   0.0  
+                    	11,  2.0,  0.2,   0.1  
+                    	12,  2.0,  0.2,   0.0  
+                    	13,  3.0,  0.0,   0.1  
+                    	14,  3.0,  0.0,   0.0  
+     LINE    20     	15,  3.0,  0.2,   0.1  
+                    	16,  3.0,  0.2,   0.0  
+                    	17,  4.0,  0.0,   0.1  
+                    	18,  4.0,  0.0,   0.0  
+                    	19,  4.0,  0.2,   0.1  
+     LINE    25     	20,  4.0,  0.2,   0.0  
+                    *ELEMENT,TYPE=C3D8, ELSET=EALL  
+                    	1,   1 ,  2 ,  3 ,  4 ,  5 ,  6 ,  7 ,  8      
+                    	2,   4 ,  3 ,  9 ,  10,  8 ,  7 ,  11,  12     
+                    	3,   10,  9 ,  13,  14,  12,  11,  15,  16     
+     LINE    30     	4,   14,  13,  17,  18,  16,  15,  19,  20     
+                    *SOLID SECTION,MATERIAL=A1, ELSET=EALL  
+                    *MATERIAL,NAME=A1       
+                    *ELASTIC,TYPE=ISOTROPIC 
+                     1E7,0.3
+     LINE    35     *Nset, nset=loads       
+                    17,20,1 
+                    *BOUNDARY       
+                     1,1,6  
+                     2,1,6  
+     LINE    40      5,1,6  
+                     6,1,6  
+                    *STEP   
+                    *STATIC 
+                    *Cload  
+     LINE    45     loads, 1, 1.0   
+                    *NODE PRINT     
+                     U,COORD
+                    *NODE PRINT     
+                     RF,CF  
+     LINE    50     *EL PRINT       
+                     S,     
+                     COORD, 
+                     E,     
+                     LOADS, 
+     LINE    55     **analytical results    
+                    **SOFM        SOF1        SOF2        SOF3      
+                    **3464.       2000.       2000.       2000.     
+                    **SOMM        SOM1        SOM2        SOM3      
+                    **2828.       0.0         2000.      -2000.     
+     LINE    60     **SOAREA      SOCF1       SOCF2       SOCF3     
+                    **2.000      0.6667      0.6667      0.1667     
+                    *END STEP       
+                    --------------------------------------------------------------------------------
+                        5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
+                    --------------------------------------------------------------------------------
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *HEADING
+          PROBLEMA 1 : 1 CUBO UNITARIO, POISSON = 0, F = -50 kN                                                                                                                                                                                                           
+  *NODE
+  *ELEMENT,TYPE=C3D8, ELSET=EALL
+  *Nset, nset=loads
+  *MATERIAL,NAME=A1
+  *ELASTIC,TYPE=ISOTROPIC
+  *SOLID SECTION,MATERIAL=A1, ELSET=EALL
+  *BOUNDARY
+  *SOLID SECTION,MATERIAL=A1, ELSET=EALL
+  *STEP
+  *STEP
+  *STEP
+  *STATIC
+  *EL PRINT
+  *END STEP
+  *BOUNDARY
+
+ ***WARNING: DEGREE OF FREEDOM 4 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 5 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 6 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 4 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 5 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 6 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 4 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 5 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 6 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 4 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 5 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+
+ ***WARNING: DEGREE OF FREEDOM 6 IS NOT ACTIVE IN THIS MODEL AND CAN NOT BE 
+             RESTRAINED
+  *STEP
+  *STATIC
+  *Cload
+  *NODE PRINT
+  *NODE PRINT
+  *END STEP
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     4
+          NUMBER OF NODES IS                                       20
+          NUMBER OF NODES DEFINED BY THE USER                      20
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   60
+          (DEGREES OF FREEDOM PLUS ANY LAGRANGE MULTIPLIER VARIABLES)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =   0.0000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus Version 6.8-1                                  Date 03-Jul-2012   Time 20:42:14
+   For use by Team oDDiTy under license from Dassault Systemes or its subsidiary.
+
+     PROBLEMA 1 : 1 CUBO UNITARIO, POISSON = 0, F = -50 kN                                     STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            1.00    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-05
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION         (MBYTES)           (MBYTES)
+  
+     1         3.18E+004               18                 25
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                                INCREMENT     1 SUMMARY
+
+
+ TIME INCREMENT COMPLETED   1.00    ,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         1.00    
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE C3D8 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       S11         S22         S33         S12         S13         S23     
+                NOTE 
+
+           1   1          92.81       11.77       11.74       1.051      0.5510     -2.0093E-02
+           1   2          92.81       11.78       11.75       1.102     -0.5296     -2.0093E-02
+           1   3          107.2       4.627       4.510       1.020      0.4887     -7.4987E-02
+           1   4          107.2       4.632       4.515       1.133     -0.5920     -7.4987E-02
+           1   5          92.81       11.78       11.75      -1.102      0.5296     -2.0093E-02
+           1   6          92.81       11.77       11.74      -1.051     -0.5510     -2.0093E-02
+           1   7          107.2       4.632       4.515      -1.133      0.5920     -7.4987E-02
+           1   8          107.2       4.627       4.510      -1.020     -0.4887     -7.4987E-02
+           2   1          104.5      -6.862      -6.949     -0.5561     -0.4650     -4.9545E-03
+           2   2          104.6      -6.894      -6.982     -0.7954      0.2191     -4.9545E-03
+           2   3          95.43      -2.412      -2.334     -0.3124      2.2408E-02  0.2413
+           2   4          95.50      -2.444      -2.366      -1.039      0.7064      0.2413
+           2   5          104.6      -6.894      -6.982      0.7954     -0.2191     -4.9545E-03
+           2   6          104.5      -6.862      -6.949      0.5561      0.4650     -4.9545E-03
+           2   7          95.50      -2.444      -2.366       1.039     -0.7064      0.2413
+           2   8          95.43      -2.412      -2.334      0.3124     -2.2408E-02  0.2413
+           3   1          97.14       3.767       3.852     -0.3241       1.027      6.7697E-02
+           3   2          96.71       3.977       4.063       1.239      0.5619      6.7697E-02
+           3   3          103.3      0.7643      0.7041      -1.904      -2.134     -0.6527
+           3   4          102.9      0.9750      0.9148       2.820      -2.599     -0.6527
+           3   5          96.71       3.977       4.063      -1.239     -0.5619      6.7697E-02
+           3   6          97.14       3.767       3.852      0.3241      -1.027      6.7697E-02
+           3   7          102.9      0.9750      0.9148      -2.820       2.599     -0.6527
+           3   8          103.3      0.7643      0.7041       1.904       2.134     -0.6527
+           4   1          101.1      -1.243      -1.311       4.658      -5.178     -0.4425
+           4   2          103.8      -2.577      -2.645      -5.381      -4.811     -0.4425
+           4   3          96.23       1.126       1.184       14.66       14.83      0.8523
+           4   4          98.90     -0.2082     -0.1506      -15.39       15.20      0.8523
+           4   5          103.8      -2.577      -2.645       5.381       4.811     -0.4425
+           4   6          101.1      -1.243      -1.311      -4.658       5.178     -0.4425
+           4   7          98.90     -0.2082     -0.1506       15.39      -15.20      0.8523
+           4   8          96.23       1.126       1.184      -14.66      -14.83      0.8523
+
+ MAXIMUM                 107.2       11.78       11.75       15.39       15.20      0.8523                                        
+ ELEMENT                     1           1           1           4           4           4                                     
+
+ MINIMUM                 92.81      -6.894      -6.982      -15.39      -15.20     -0.6527                                        
+ ELEMENT                     1           2           2           4           4           3                                     
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE C3D8 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       COORD1      COORD2      COORD3  
+                NOTE 
+
+           1   1         0.2113      4.2265E-02  2.1132E-02
+           1   2         0.2113      4.2265E-02  7.8868E-02
+           1   3         0.7887      4.2265E-02  2.1132E-02
+           1   4         0.7887      4.2265E-02  7.8868E-02
+           1   5         0.2113      0.1577      2.1132E-02
+           1   6         0.2113      0.1577      7.8868E-02
+           1   7         0.7887      0.1577      2.1132E-02
+           1   8         0.7887      0.1577      7.8868E-02
+           2   1          1.211      4.2265E-02  2.1132E-02
+           2   2          1.211      4.2265E-02  7.8868E-02
+           2   3          1.789      4.2265E-02  2.1132E-02
+           2   4          1.789      4.2265E-02  7.8868E-02
+           2   5          1.211      0.1577      2.1132E-02
+           2   6          1.211      0.1577      7.8868E-02
+           2   7          1.789      0.1577      2.1132E-02
+           2   8          1.789      0.1577      7.8868E-02
+           3   1          2.211      4.2265E-02  2.1132E-02
+           3   2          2.211      4.2265E-02  7.8868E-02
+           3   3          2.789      4.2265E-02  2.1132E-02
+           3   4          2.789      4.2265E-02  7.8868E-02
+           3   5          2.211      0.1577      2.1132E-02
+           3   6          2.211      0.1577      7.8868E-02
+           3   7          2.789      0.1577      2.1132E-02
+           3   8          2.789      0.1577      7.8868E-02
+           4   1          3.211      4.2265E-02  2.1132E-02
+           4   2          3.211      4.2265E-02  7.8868E-02
+           4   3          3.789      4.2265E-02  2.1132E-02
+           4   4          3.789      4.2265E-02  7.8868E-02
+           4   5          3.211      0.1577      2.1132E-02
+           4   6          3.211      0.1577      7.8868E-02
+           4   7          3.789      0.1577      2.1132E-02
+           4   8          3.789      0.1577      7.8868E-02
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE C3D8 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       E11         E22         E33         E12         E13         E23     
+                NOTE 
+
+           1   1         8.5759E-06 -1.9593E-06 -1.9633E-06  2.7324E-07  1.4326E-07 -5.2241E-09
+           1   2         8.5748E-06 -1.9587E-06 -1.9628E-06  2.8645E-07 -1.3771E-07 -5.2241E-09
+           1   3         1.0445E-05 -2.8884E-06 -2.9036E-06  2.6514E-07  1.2705E-07 -1.9497E-08
+           1   4         1.0444E-05 -2.8879E-06 -2.9031E-06  2.9456E-07 -1.5391E-07 -1.9497E-08
+           1   5         8.5748E-06 -1.9587E-06 -1.9628E-06 -2.8645E-07  1.3771E-07 -5.2241E-09
+           1   6         8.5759E-06 -1.9593E-06 -1.9633E-06 -2.7324E-07 -1.4326E-07 -5.2241E-09
+           1   7         1.0444E-05 -2.8879E-06 -2.9031E-06 -2.9456E-07  1.5391E-07 -1.9497E-08
+           1   8         1.0445E-05 -2.8884E-06 -2.9036E-06 -2.6514E-07 -1.2705E-07 -1.9497E-08
+           2   1         1.0864E-05 -3.6127E-06 -3.6241E-06 -1.4460E-07 -1.2090E-07 -1.2882E-09
+           2   2         1.0873E-05 -3.6169E-06 -3.6283E-06 -2.0680E-07  5.6954E-08 -1.2882E-09
+           2   3         9.6859E-06 -3.0342E-06 -3.0241E-06 -8.1236E-08  5.8260E-09  6.2730E-08
+           2   4         9.6943E-06 -3.0384E-06 -3.0283E-06 -2.7016E-07  1.8368E-07  6.2730E-08
+           2   5         1.0873E-05 -3.6169E-06 -3.6283E-06  2.0680E-07 -5.6954E-08 -1.2882E-09
+           2   6         1.0864E-05 -3.6127E-06 -3.6241E-06  1.4460E-07  1.2090E-07 -1.2882E-09
+           2   7         9.6943E-06 -3.0384E-06 -3.0283E-06  2.7016E-07 -1.8368E-07  6.2730E-08
+           2   8         9.6859E-06 -3.0342E-06 -3.0241E-06  8.1236E-08 -5.8260E-09  6.2730E-08
+           3   1         9.4850E-06 -2.6530E-06 -2.6419E-06 -8.4254E-08  2.6696E-07  1.7601E-08
+           3   2         9.4302E-06 -2.6256E-06 -2.6145E-06  3.2222E-07  1.4608E-07  1.7601E-08
+           3   3         1.0285E-05 -3.0433E-06 -3.0511E-06 -4.9511E-07 -5.5475E-07 -1.6971E-07
+           3   4         1.0230E-05 -3.0159E-06 -3.0237E-06  7.3307E-07 -6.7562E-07 -1.6971E-07
+           3   5         9.4302E-06 -2.6256E-06 -2.6145E-06 -3.2222E-07 -1.4608E-07  1.7601E-08
+           3   6         9.4850E-06 -2.6530E-06 -2.6419E-06  8.4254E-08 -2.6696E-07  1.7601E-08
+           3   7         1.0230E-05 -3.0159E-06 -3.0237E-06 -7.3307E-07  6.7562E-07 -1.6971E-07
+           3   8         1.0285E-05 -3.0433E-06 -3.0511E-06  4.9511E-07  5.5475E-07 -1.6971E-07
+           4   1         1.0186E-05 -3.1179E-06 -3.1267E-06  1.2111E-06 -1.3464E-06 -1.1505E-07
+           4   2         1.0533E-05 -3.2913E-06 -3.3001E-06 -1.3991E-06 -1.2508E-06 -1.1505E-07
+           4   3         9.5541E-06 -2.8099E-06 -2.8025E-06  3.8126E-06  3.8566E-06  2.2159E-07
+           4   4         9.9010E-06 -2.9834E-06 -2.9759E-06 -4.0006E-06  3.9522E-06  2.2159E-07
+           4   5         1.0533E-05 -3.2913E-06 -3.3001E-06  1.3991E-06  1.2508E-06 -1.1505E-07
+           4   6         1.0186E-05 -3.1179E-06 -3.1267E-06 -1.2111E-06  1.3464E-06 -1.1505E-07
+           4   7         9.9010E-06 -2.9834E-06 -2.9759E-06  4.0006E-06 -3.9522E-06  2.2159E-07
+           4   8         9.5541E-06 -2.8099E-06 -2.8025E-06 -3.8126E-06 -3.8566E-06  2.2159E-07
+
+ MAXIMUM                1.0873E-05 -1.9587E-06 -1.9628E-06  4.0006E-06  3.9522E-06  2.2159E-07                                    
+ ELEMENT                     2           1           1           4           4           4                                     
+
+ MINIMUM                8.5748E-06 -3.6169E-06 -3.6283E-06 -4.0006E-06 -3.9522E-06 -1.6971E-07                                    
+ ELEMENT                     1           2           2           4           4           3                                     
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE C3D8
+
+    ELEMENT  FOOT-   LOADTYPE    LOAD    
+             NOTE 
+
+
+ ALL VALUES IN THIS TABLE ARE ZERO
+
+
+
+
+                                       N O D E   O U T P U T
+
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   U1          U2          U3          COOR1       COOR2       COOR3    
+            NOTE
+  
+          1       0.000       0.000       0.000       0.000       0.000       0.000     
+          2       0.000       0.000       0.000       0.000       0.000      0.1000     
+          3      9.5076E-06  4.9102E-07 -2.2824E-07   1.000       0.000      0.1000     
+          4      9.5125E-06  4.7841E-07  2.5840E-07   1.000       0.000       0.000     
+          5       0.000       0.000       0.000       0.000      0.2000       0.000     
+          6       0.000       0.000       0.000       0.000      0.2000      0.1000     
+          7      9.5125E-06 -4.7841E-07 -2.5840E-07   1.000      0.2000      0.1000     
+          8      9.5076E-06 -4.9102E-07  2.2824E-07   1.000      0.2000       0.000     
+          9      1.9806E-05  1.4870E-07 -1.6132E-07   2.000       0.000      0.1000     
+         10      1.9773E-05  2.1210E-07  1.7278E-08   2.000       0.000       0.000     
+         11      1.9773E-05 -2.1210E-07 -1.7278E-08   2.000      0.2000      0.1000     
+         12      1.9806E-05 -1.4870E-07  1.6132E-07   2.000      0.2000       0.000     
+         13      2.9540E-05  6.1211E-07  2.8109E-07   3.000       0.000      0.1000     
+         14      2.9753E-05  1.6086E-07  6.6905E-07   3.000       0.000       0.000     
+         15      2.9753E-05 -1.6086E-07 -6.6905E-07   3.000      0.2000      0.1000     
+         16      2.9540E-05 -6.1211E-07 -2.8109E-07   3.000      0.2000       0.000     
+         17      4.0364E-05 -1.2287E-06 -3.0503E-06   4.000       0.000      0.1000     
+         18      3.9017E-05  1.6760E-06 -2.8280E-06   4.000       0.000       0.000     
+         19      3.9017E-05 -1.6760E-06  2.8280E-06   4.000      0.2000      0.1000     
+         20      4.0364E-05  1.2287E-06  3.0503E-06   4.000      0.2000       0.000     
+
+ MAXIMUM         4.0364E-05  1.6760E-06  3.0503E-06   4.000      0.2000      0.1000    
+ AT NODE                20          18          20          17           5           2
+
+ MINIMUM          0.000     -1.6760E-06 -3.0503E-06   0.000       0.000       0.000    
+ AT NODE                 1          19          17           1           1           1
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   RF1         RF2         RF3         CF1         CF2         CF3      
+            NOTE
+  
+          1      -1.499     -0.2581     -0.5115       1.000       0.000       0.000     
+          2     -0.5005     -0.2615      0.5132       0.000       0.000       0.000     
+          5     -0.5005      0.2615     -0.5132       0.000       0.000       0.000     
+          6     -0.4995      0.2581      0.5115       0.000       0.000       0.000     
+         17       0.000       0.000       0.000       1.000       0.000       0.000     
+         20       0.000       0.000       0.000       1.000       0.000       0.000     
+
+ MAXIMUM          0.000      0.2615      0.5132       1.000       0.000       0.000    
+ AT NODE                 3           5           2           1           1           1
+
+ MINIMUM         -1.499     -0.2615     -0.5132       0.000       0.000       0.000    
+ AT NODE                 1           2           5           2           1           1
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH    12 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.10000    
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          1

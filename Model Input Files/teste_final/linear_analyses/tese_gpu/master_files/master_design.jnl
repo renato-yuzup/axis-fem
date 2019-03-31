@@ -1,0 +1,147 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=100.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(0.5, 0.05))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='beam', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['beam'].BaseSolidExtrude(depth=0.05, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='steel')
+mdb.models['Model-1'].materials['steel'].Density(table=((7850.0, ), ))
+mdb.models['Model-1'].materials['steel'].Elastic(table=((200000000000.0, 0.3), 
+    ))
+mdb.models['Model-1'].TabularAmplitude(data=((0.0, 0.0), (1e-05, 0.0), (
+    1.000001e-05, 1.0), (7.5e-05, 1.0), (7.500001e-05, 0.0), (100.0, 0.0)), 
+    name='load', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['Model-1'].ExplicitDynamicsStep(linearBulkViscosity=0.0, name=
+    'dynamic-explicit', nlgeom=OFF, previous='Initial', quadBulkViscosity=0.0, 
+    timeIncrementationMethod=FIXED_USER_DEFINED_INC, userDefinedInc=1e-06)
+# Save by Renato on Sat Jul 27 01:18:28 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].steps['dynamic-explicit'].setValues(timePeriod=0.0005)
+mdb.models['Model-1'].HomogeneousSolidSection(material='steel', name=
+    'beam-section', thickness=None)
+mdb.models['Model-1'].parts['beam'].SectionAssignment(offset=0.0, offsetField=
+    '', offsetType=MIDDLE_SURFACE, region=Region(
+    cells=mdb.models['Model-1'].parts['beam'].cells.getSequenceFromMask(mask=(
+    '[#1 ]', ), )), sectionName='beam-section', thicknessAssignment=
+    FROM_SECTION)
+# Save by Renato on Sat Jul 27 02:05:57 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['beam'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=CENTROID, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, elemDeletion=OFF, 
+    linearBulkViscosity=0, quadraticBulkViscosity=0), ElemType(elemCode=C3D6, 
+    elemLibrary=EXPLICIT), ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), 
+    regions=(mdb.models['Model-1'].parts['beam'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['beam'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.003125)
+mdb.models['Model-1'].parts['beam'].generateMesh()
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='beam-1', part=
+    mdb.models['Model-1'].parts['beam'])
+mdb.models['Model-1'].parts['beam'].Set(name='lock', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#0:1445 #ffffffff:9 #1 ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#ffffffff:9 #1 ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load-tip', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#10001 #0:7 #10000 #1 ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load-edge', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#2fffe #c0006 #300018 #c00060 #3000180 #c000600 #30001800', 
+    ' #c0006000 #fffe8000 ]', ), ))
+mdb.models['Model-1'].parts['beam'].Set(name='load-inner', nodes=
+    mdb.models['Model-1'].parts['beam'].nodes.getSequenceFromMask(mask=(
+    '[#fffc0000 #fff3fff9 #ffcfffe7 #ff3fff9f #fcfffe7f #f3fff9ff #cfffe7ff', 
+    ' #3fff9fff #7fff ]', ), ))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].PinnedBC(createStepName='Initial', localCsys=None, name=
+    'encastre', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['lock'])
+mdb.models['Model-1'].ConcentratedForce(amplitude='load', cf1=-3.90625, 
+    createStepName='dynamic-explicit', distributionType=UNIFORM, field='', 
+    localCsys=None, name='load-tips', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load-tip'])
+mdb.models['Model-1'].ConcentratedForce(amplitude='load', cf1=-7.8125, 
+    createStepName='dynamic-explicit', distributionType=UNIFORM, field='', 
+    localCsys=None, name='load-edges', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load-edge'])
+mdb.models['Model-1'].ConcentratedForce(cf1=-15.625, createStepName=
+    'dynamic-explicit', distributionType=UNIFORM, field='', localCsys=None, 
+    name='load-inner', region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load-inner'])
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='dynamic-explicit', 
+    name='H-Output-2', numIntervals=250, rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['beam-1'].sets['load'], 
+    sectionPoints=DEFAULT, variables=('U1', 'U2', 'U3', 'V1', 'V2', 'V3', 'A1', 
+    'A2', 'A3', 'CF1'))
+# Save by Renato on Sat Jul 27 02:37:46 2013
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['beam'].deleteMesh()
+del mdb.models['Model-1'].parts['beam'].sets['load']
+del mdb.models['Model-1'].parts['beam'].sets['load-edge']
+del mdb.models['Model-1'].parts['beam'].sets['load-inner']
+del mdb.models['Model-1'].parts['beam'].sets['load-tip']
+del mdb.models['Model-1'].parts['beam'].sets['lock']
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].loads['load-edges']
+del mdb.models['Model-1'].loads['load-inner']
+del mdb.models['Model-1'].loads['load-tips']
+del mdb.models['Model-1'].boundaryConditions['encastre']
+del mdb.models['Model-1'].historyOutputRequests['H-Output-2']
+# Save by Renato on Sat Jul 27 02:50:04 2013

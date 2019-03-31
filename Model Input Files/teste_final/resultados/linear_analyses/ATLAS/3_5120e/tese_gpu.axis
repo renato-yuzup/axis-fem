@@ -1,0 +1,108 @@
+# Analysis title (optional)
+TITLE "FINAL TEST: LINEAR TEST 3 -- COMPRESSIVE PULSE LOAD, 5120 ELEMENTS, dt = 1.25e-7"
+
+## General analysis settings
+BEGIN ANALYSIS
+	BEGIN STEP WITH NAME = "Transient analysis with no hourglass control",  # informative name (optional)
+					TYPE = EXPLICIT_STANDARD,                # solver type (required)
+					START_TIME = 0, END_TIME = 5E-4,         # start and end time (required)
+					DTIME_CONTROL_TYPE = DTIME_CONSTANT,     # how timestep is calculated (clockwork, required)
+					DTIME_CONTROL_PARAMS = (DTIME = 1.25e-7) # clockwork parameters (varies)
+
+		## Describes how data collection will occur
+		BEGIN SNAPSHOTS
+			DO 250 SNAPSHOTS ## Data collection will occur in evenly spaced intervals
+		END SNAPSHOTS
+		
+		## HYPERWORKS RESULT FILE: Describes a Hyperwork ASCII file for result output
+		/*BEGIN OUTPUT WITH FILE = "tese_gpu_test03", FORMAT = HYPERWORKS
+			RECORD NODAL DISPLACEMENT
+			RECORD NODAL LOAD
+			RECORD NODAL VELOCITY 
+			RECORD NODAL ACCELERATION 
+			RECORD ELEMENT STRESS 
+			RECORD ELEMENT STRAIN
+			RECORD NODAL REACTION
+		END OUTPUT*/
+
+		## MATLAB RESULT FILE: Describes a MATLAB m-file for result output
+		BEGIN OUTPUT WITH FILE = "tese_gpu_test03", 
+		                  FORMAT = MATLAB_DATASET, 
+						  FORMAT_PARAMS = (NAME = gpu_03)
+			# Free end field output
+			RECORD AVERAGE NODAL DISPLACEMENT X ON SET load
+			RECORD AVERAGE NODAL LOAD X ON SET load
+		END OUTPUT
+
+		## Boundary conditions valid only in this analysis step
+		BEGIN LOADS
+			BEGIN NODAL_LOADS # concentrated loads
+				ON SET load_tip   BEHAVES AS load ON X DIRECTION SCALE = -15.625
+				ON SET load_edge  BEHAVES AS load ON X DIRECTION SCALE = -31.25
+				ON SET load_inner BEHAVES AS load ON X DIRECTION SCALE = -62.5
+			END NODAL_LOADS
+		END LOADS
+		BEGIN CONSTRAINTS     # prescribed behavior (locks, displacements, velocities...)
+			LOCK SET lock IN ALL DIRECTIONS
+		END CONSTRAINTS		
+	END STEP
+END ANALYSIS
+
+# Equivalent to the sectiond definition in DYNA, ABAQUS and others: glues the definition of
+# material, element type and element set altogether.
+BEGIN PARTS WITH ELEM_TYPE = LINEAR_HEXAHEDRON,             ## using a linear hexahedron
+                 PROPERTIES = (INTEGRATION_TYPE=REDUCED)    ## use one-point integration
+    SET all_elements IS LINEAR_ISO_ELASTIC WITH             ## A linear elastic, isotropic, material
+								POISSON = 0.3,              ## material properties, self-explanatory
+								ELASTIC_MODULUS = 200E9, 
+								LINEAR_DENSITY = 7850
+END PARTS
+
+# Declares mesh nodes
+BEGIN NODES WITH SET_ID = all_nodes           # mesh nodes
+    @include "tese_gpu_nodes.axis"
+END NODES
+
+# Declares element nodes
+BEGIN ELEMENTS WITH SET_ID = all_elements     # mesh elements
+    @include "tese_gpu_elements.axis"
+END ELEMENTS
+
+# Declares a node set
+BEGIN NODE_SET WITH ID = lock
+	6481-6561
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = load
+	1-81
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = load_edge
+	2  3  4  5  6  7  8 10 18 19 27 28 36 37 45 46
+	54 55 63 64 72 74 75 76 77 78 79 80
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = load_inner
+	11 12 13 14 15 16 17 20 21 22 23 24 25 26 29 30
+	31 32 33 34 35 38 39 40 41 42 43 44 47 48 49 50
+	51 52 53 56 57 58 59 60 61 62 65 66 67 68 69 70
+	71
+END NODE_SET
+
+BEGIN NODE_SET WITH ID = load_tip
+	1  9 73 81
+END NODE_SET
+
+# Declares curves that states how certain phenomena (like loads) will behave
+BEGIN CURVES
+	# A piecewise linear curve
+	BEGIN MULTILINE_CURVE WITH ID = load
+	#   X             | Y
+		0.              0.   # one point per line for convenience only
+		1e-05           0.
+		1.000001e-05    1.
+		7.5e-05         1.
+		7.500001e-05    0.
+		100.            0.
+	END MULTILINE_CURVE
+END CURVES

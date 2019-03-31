@@ -1,0 +1,117 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 10.0), point2=(
+    3.0, 10.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(3.0, 10.0), point2=(
+    3.0, 0.200509160757065))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(3.0, 
+    0.200509160757065), point2=(2.93643307685852, 0.000633090734481812))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(2.93643307685852, 
+    0.000633090734481812), point2=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].Spot(point=(3.0, 
+    0.200509160757065))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[5], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].Spot(point=(3.17320919036865, 
+    0.122229099273682))
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].undo()
+mdb.models['Model-1'].sketches['__profile__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3], points=((3.0, 
+    0.200509160757065), (3.0, 0.200509160757065), (3.00451850891113, 
+    0.167295604944229), (3.00451850891113, 0.143576413393021), (
+    3.00214266777039, 0.122229158878326), (3.01164627075195, 0.10799765586853), 
+    (3.00689458847046, 0.0890223383903503), (2.99739074707031, 
+    0.0842784643173218), (2.99976682662964, 0.0771627426147461), (
+    2.99739074707031, 0.0629311800003052)))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidRevolve(angle=90.0, 
+    flipRevolveDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='steel')
+mdb.models['Model-1'].materials['steel'].Density(table=((7845.0, ), ))
+mdb.models['Model-1'].materials['steel'].Elastic(table=((200000000000.0, 0.29), 
+    ))
+mdb.models['Model-1'].materials['steel'].Plastic(table=((415000000.0, 0.0), (
+    620000000.0, 0.25)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='steel', name='steel', 
+    thickness=None)
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName='steel', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].TabularAmplitude(data=((0.0, 0.0), (0.001, 1.0)), name=
+    'displacement', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+# Save by Renato on 2014_02_08-12.40.47; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.saveAs(pathName='D:/Renato/Axis/Model Input Files/tese/bar_necking/base_model.cae')
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, linearBulkViscosity=0, 
+    quadraticBulkViscosity=0), ElemType(elemCode=C3D6, elemLibrary=EXPLICIT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, linearBulkViscosity=0, 
+    quadraticBulkViscosity=0), ElemType(elemCode=C3D6, elemLibrary=EXPLICIT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+# Save by Renato on 2014_02_08-12.41.37; build 6.12-1 2012_03_13-20.23.18 119612

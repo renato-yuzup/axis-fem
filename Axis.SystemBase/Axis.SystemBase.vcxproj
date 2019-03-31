@@ -1,0 +1,834 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (Double)|Win32">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Double)|x64">
+      <Configuration>Debug (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|Win32">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Single)|x64">
+      <Configuration>Debug (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|Win32">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (CPU), Debug (GPU)|x64">
+      <Configuration>Release (CPU), Debug (GPU)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|Win32">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Double)|x64">
+      <Configuration>Release (Double)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|Win32">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Single)|x64">
+      <Configuration>Release (Single)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8B63A13F-A6DD-414D-967A-5FE4B27875F8}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AxisSystemBase</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_68\debug\$(PlatformShortName);$(MKL_PATH)\ia32\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_68\debug\$(PlatformShortName);$(MKL_PATH)\ia32\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_68\debug\$(PlatformShortName);$(MKL_PATH)\em64t\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_68\debug\$(PlatformShortName);$(MKL_PATH)\em64t\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_51\release\$(PlatformShortName);$(MKL_PATH)\ia32\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_51\release\$(PlatformShortName);$(MKL_PATH)\ia32\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_51\release\$(PlatformShortName);$(MKL_PATH)\ia32\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_51\release\$(PlatformShortName);$(MKL_PATH)\em64t\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_51\release\$(PlatformShortName);$(MKL_PATH)\em64t\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)includes\tinyxml;$(SolutionDir)includes\boost\v1_68;$(MKL_PATH)\include;$(MPICH_PATH)\include;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\framework\$(Configuration)\$(PlatformShortName);$(SolutionDir)libs\boost\v1_51\release\$(PlatformShortName);$(MKL_PATH)\em64t\lib;$(MPICH_PATH)\lib;$(WindowsSDK_LibraryPath_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <BrowseInformation>true</BrowseInformation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <GPUDebugInfo>true</GPUDebugInfo>
+      <GenerateLineInfo>true</GenerateLineInfo>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1 /Qfast_transcedentals /Qvec-report:1 /Qpar-report:1</AdditionalOptions>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;AXISSYSTEMBASE_EXPORTS;AXIS_DOUBLEPRECISION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>-DPSAPI_VERSION=1</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LargeAddressAware>true</LargeAddressAware>
+      <AdditionalDependencies>psapi.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)\LibCopy.exe "$(OutDir)$(ProjectName).lib" "$(SolutionDir)libs\framework\$(ConfigurationName)\$(PlatformShortName)"</Command>
+      <Message>Copying '$(ProjectName).lib' to 'libs\framework'...</Message>
+    </PostBuildEvent>
+    <CudaCompile>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <Defines>AXISSYSTEMBASE_EXPORTS;WIN32;%(Defines)</Defines>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ApplicationEnvironment.hpp" />
+    <ClInclude Include="Dimension3D.hpp" />
+    <ClInclude Include="foundation\ArenaMemoryExhaustedException.hpp" />
+    <ClInclude Include="foundation\ArenaStackMismatchException.hpp" />
+    <ClInclude Include="foundation\AssertionFailedException.hpp" />
+    <ClInclude Include="foundation\assertion\assertion.hpp" />
+    <ClInclude Include="foundation\Axis.SystemBase.hpp" />
+    <ClInclude Include="foundation\AnalysisReadException.hpp" />
+    <ClInclude Include="foundation\ApplicationErrorException.hpp" />
+    <ClInclude Include="foundation\ArenaException.hpp" />
+    <ClInclude Include="foundation\ArgumentException.hpp" />
+    <ClInclude Include="foundation\AxisException.hpp" />
+    <ClInclude Include="foundation\AxisParserException.hpp" />
+    <ClInclude Include="AxisString.hpp" />
+    <ClInclude Include="foundation\BadPluginException.hpp" />
+    <ClInclude Include="foundation\basic_types.hpp" />
+    <ClInclude Include="foundation\collections\AssociationSet.hpp" />
+    <ClInclude Include="foundation\collections\AssociationSetImpl.hpp" />
+    <ClInclude Include="foundation\collections\Collectible.hpp" />
+    <ClInclude Include="foundation\collections\ObjectList.hpp" />
+    <ClInclude Include="foundation\collections\ObjectListImpl.hpp" />
+    <ClInclude Include="foundation\collections\ObjectMap.hpp" />
+    <ClInclude Include="foundation\collections\ObjectMapImpl.hpp" />
+    <ClInclude Include="foundation\collections\ObjectSet.hpp" />
+    <ClInclude Include="foundation\collections\ObjectSetImpl.hpp" />
+    <ClInclude Include="foundation\computing\KernelCommand.hpp" />
+    <ClInclude Include="foundation\computing\NullKernelCommand.hpp" />
+    <ClInclude Include="foundation\ConfigurationNotFoundException.hpp" />
+    <ClInclude Include="foundation\ConfigurationSectionNotFoundException.hpp" />
+    <ClInclude Include="foundation\CustomParserErrorException.hpp" />
+    <ClInclude Include="foundation\date_time\Date.hpp" />
+    <ClInclude Include="foundation\date_time\Time.hpp" />
+    <ClInclude Include="foundation\date_time\Timespan.hpp" />
+    <ClInclude Include="foundation\date_time\Timestamp.hpp" />
+    <ClInclude Include="foundation\DimensionMismatchException.hpp" />
+    <ClInclude Include="foundation\DuplicateKeyException.hpp" />
+    <ClInclude Include="foundation\ElementNotFoundException.hpp" />
+    <ClInclude Include="foundation\EOFException.hpp" />
+    <ClInclude Include="foundation\fwd\memory_fwd.hpp" />
+    <ClInclude Include="foundation\fwd\mirroring_fwd.hpp" />
+    <ClInclude Include="foundation\HandledException.hpp" />
+    <ClInclude Include="foundation\InputStackFullException.hpp" />
+    <ClInclude Include="foundation\InvalidCastException.hpp" />
+    <ClInclude Include="foundation\InvalidIdentifierException.hpp" />
+    <ClInclude Include="foundation\InvalidIncludeFileException.hpp" />
+    <ClInclude Include="foundation\InvalidOperationException.hpp" />
+    <ClInclude Include="foundation\InvalidPluginException.hpp" />
+    <ClInclude Include="foundation\InvalidPreProcessorDirectiveException.hpp" />
+    <ClInclude Include="foundation\InvalidSyntaxException.hpp" />
+    <ClInclude Include="foundation\IOException.hpp" />
+    <ClInclude Include="foundation\Level2ParserException.hpp" />
+    <ClInclude Include="foundation\memory\arena_helper.hpp" />
+    <ClInclude Include="foundation\memory\FixedStackArena.hpp" />
+    <ClInclude Include="foundation\memory\HeapBlockArena.hpp" />
+    <ClInclude Include="foundation\memory\HeapBlockArena_Pimpl.hpp" />
+    <ClInclude Include="foundation\memory\HeapStackArena.hpp" />
+    <ClInclude Include="foundation\mirroring\MemoryAllocator.hpp" />
+    <ClInclude Include="foundation\mirroring\MemoryReflector.hpp" />
+    <ClInclude Include="foundation\memory\pointer.hpp" />
+    <ClInclude Include="foundation\memory\RelativePointer.hpp" />
+    <ClInclude Include="foundation\memory\SyncedHeapArena.hpp" />
+    <ClInclude Include="foundation\memory\UnsyncHeapArena.hpp" />
+    <ClInclude Include="foundation\memory\UnsyncStackArena.hpp" />
+    <ClInclude Include="foundation\metaprogramming\Factorial.hpp" />
+    <ClInclude Include="foundation\metaprogramming\Operations.hpp" />
+    <ClInclude Include="foundation\metaprogramming\Power.hpp" />
+    <ClInclude Include="foundation\mirroring\HeapReflector.hpp" />
+    <ClInclude Include="foundation\MissingDelimiterException.hpp" />
+    <ClInclude Include="foundation\NotImplementedException.hpp" />
+    <ClInclude Include="foundation\NotSupportedException.hpp" />
+    <ClInclude Include="foundation\OpenCommentException.hpp" />
+    <ClInclude Include="foundation\OutOfBoundsException.hpp" />
+    <ClInclude Include="foundation\OutOfMemoryException.hpp" />
+    <ClInclude Include="foundation\OutOfRangeException.hpp" />
+    <ClInclude Include="foundation\OverflowException.hpp" />
+    <ClInclude Include="foundation\PermissionDeniedException.hpp" />
+    <ClInclude Include="foundation\PreProcessorException.hpp" />
+    <ClInclude Include="foundation\assertion\Ascertainable.hpp" />
+    <ClInclude Include="foundation\settings\ConfigurationFileSettings.hpp" />
+    <ClInclude Include="foundation\settings\SystemSettings.hpp" />
+    <ClInclude Include="foundation\SourceHintCollection.hpp" />
+    <ClInclude Include="foundation\SourceHintSet.hpp" />
+    <ClInclude Include="foundation\SourceTraceHint.hpp" />
+    <ClInclude Include="foundation\StandardTraceHints.hpp" />
+    <ClInclude Include="foundation\SymbolRedefinedException.hpp" />
+    <ClInclude Include="foundation\SyntaxMismatchException.hpp" />
+    <ClInclude Include="foundation\UnexpectedExpressionException.hpp" />
+    <ClInclude Include="foundation\units\DigitalUnit.hpp" />
+    <ClInclude Include="foundation\uuids\Uuid.hpp" />
+    <ClInclude Include="nocopy.hpp" />
+    <ClInclude Include="services\diagnostics\AxisDebug.hpp" />
+    <ClInclude Include="services\diagnostics\Process.hpp" />
+    <ClInclude Include="services\diagnostics\ProcessPimpl.hpp" />
+    <ClInclude Include="services\io\BoostRecursiveDirectoryNavigator.hpp" />
+    <ClInclude Include="services\io\BoostSingleDirectoryNavigator.hpp" />
+    <ClInclude Include="services\io\DirectoryNavigator.hpp" />
+    <ClInclude Include="services\io\FileSystem.hpp" />
+    <ClInclude Include="services\logging\categories.hpp" />
+    <ClInclude Include="services\logging\event_sources.hpp" />
+    <ClInclude Include="services\management\GlobalProviderCatalog.hpp" />
+    <ClInclude Include="services\management\PluginInfo.hpp" />
+    <ClInclude Include="services\management\PluginLink.hpp" />
+    <ClInclude Include="services\management\PluginLoader.hpp" />
+    <ClInclude Include="services\management\ProcessTime.hpp" />
+    <ClInclude Include="services\management\Provider.hpp" />
+    <ClInclude Include="services\management\ServiceLocator.hpp" />
+    <ClInclude Include="services\management\SystemHook.hpp" />
+    <ClInclude Include="services\messaging\Filters\DefaultMessageFilter.hpp" />
+    <ClInclude Include="services\messaging\Filters\EventLogMessageFilter.hpp" />
+    <ClInclude Include="services\messaging\Filters\MessageFilter.hpp" />
+    <ClInclude Include="services\messaging\Metadata\MetadataCollection.hpp" />
+    <ClInclude Include="services\messaging\Metadata\Metadatum.hpp" />
+    <ClInclude Include="services\messaging\Metadata\SourceFileMetadata.hpp" />
+    <ClInclude Include="services\messaging\ResultMessage.hpp" />
+    <ClInclude Include="services\messaging\CollectorEndpoint.hpp" />
+    <ClInclude Include="services\messaging\CollectorHub.hpp" />
+    <ClInclude Include="services\messaging\ErrorMessage.hpp" />
+    <ClInclude Include="services\messaging\EventMessage.hpp" />
+    <ClInclude Include="services\messaging\EventTag.hpp" />
+    <ClInclude Include="services\messaging\InfoMessage.hpp" />
+    <ClInclude Include="services\messaging\LogMessage.hpp" />
+    <ClInclude Include="services\messaging\Message.hpp" />
+    <ClInclude Include="services\messaging\MessageListener.hpp" />
+    <ClInclude Include="services\messaging\TraceInfo.hpp" />
+    <ClInclude Include="services\messaging\TraceInfoCollection.hpp" />
+    <ClInclude Include="services\messaging\TraceTag.hpp" />
+    <ClInclude Include="services\messaging\WarningMessage.hpp" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="string_traits.hpp" />
+    <ClInclude Include="System.hpp" />
+    <ClInclude Include="system_messages.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ApplicationEnvironment.cpp" />
+    <ClCompile Include="Dimension3D.cpp" />
+    <ClCompile Include="foundation\AnalysisReadException.cpp" />
+    <ClCompile Include="foundation\ApplicationErrorException.cpp" />
+    <ClCompile Include="foundation\ArenaException.cpp" />
+    <ClCompile Include="foundation\ArenaMemoryExhaustedException.cpp" />
+    <ClCompile Include="foundation\ArenaStackMismatchException.cpp" />
+    <ClCompile Include="foundation\ArgumentException.cpp" />
+    <ClCompile Include="foundation\AssertionFailedException.cpp" />
+    <ClCompile Include="foundation\AxisException.cpp" />
+    <ClCompile Include="foundation\AxisParserException.cpp" />
+    <ClCompile Include="AxisString.cpp" />
+    <ClCompile Include="foundation\BadPluginException.cpp" />
+    <ClCompile Include="foundation\collections\AssociationSet.cpp" />
+    <ClCompile Include="foundation\collections\AssociationSetImpl.cpp" />
+    <ClCompile Include="foundation\collections\Collectible.cpp" />
+    <ClCompile Include="foundation\collections\ObjectList.cpp" />
+    <ClCompile Include="foundation\collections\ObjectListImpl.cpp" />
+    <ClCompile Include="foundation\collections\ObjectMap.cpp" />
+    <ClCompile Include="foundation\collections\ObjectMapImpl.cpp" />
+    <ClCompile Include="foundation\collections\ObjectSet.cpp" />
+    <ClCompile Include="foundation\collections\ObjectSetImpl.cpp" />
+    <ClCompile Include="foundation\computing\KernelCommand.cpp" />
+    <ClCompile Include="foundation\computing\NullKernelCommand.cpp" />
+    <ClCompile Include="foundation\ConfigurationNotFoundException.cpp" />
+    <ClCompile Include="foundation\ConfigurationSectionNotFoundException.cpp" />
+    <ClCompile Include="foundation\CustomParserErrorException.cpp" />
+    <ClCompile Include="foundation\date_time\Date.cpp" />
+    <ClCompile Include="foundation\date_time\Time.cpp" />
+    <ClCompile Include="foundation\date_time\Timespan.cpp" />
+    <ClCompile Include="foundation\date_time\Timestamp.cpp" />
+    <ClCompile Include="foundation\DimensionMismatchException.cpp" />
+    <ClCompile Include="foundation\DuplicateKeyException.cpp" />
+    <ClCompile Include="foundation\ElementNotFoundException.cpp" />
+    <ClCompile Include="foundation\EOFException.cpp" />
+    <ClCompile Include="foundation\HandledException.cpp" />
+    <ClCompile Include="foundation\InputStackFullException.cpp" />
+    <ClCompile Include="foundation\InvalidCastException.cpp" />
+    <ClCompile Include="foundation\InvalidIdentifierException.cpp" />
+    <ClCompile Include="foundation\InvalidIncludeFileException.cpp" />
+    <ClCompile Include="foundation\InvalidOperationException.cpp" />
+    <ClCompile Include="foundation\InvalidPluginException.cpp" />
+    <ClCompile Include="foundation\InvalidPreProcessorDirectiveException.cpp" />
+    <ClCompile Include="foundation\InvalidSyntaxException.cpp" />
+    <ClCompile Include="foundation\IOException.cpp" />
+    <ClCompile Include="foundation\Level2ParserException.cpp" />
+    <ClCompile Include="foundation\memory\FixedStackArena.cpp" />
+    <ClCompile Include="foundation\memory\HeapBlockArena.cpp" />
+    <ClCompile Include="foundation\memory\HeapStackArena.cpp" />
+    <ClCompile Include="foundation\mirroring\MemoryAllocator.cpp" />
+    <ClCompile Include="foundation\mirroring\MemoryReflector.cpp" />
+    <ClCompile Include="foundation\memory\RelativePointer.cpp" />
+    <ClCompile Include="foundation\memory\SyncedHeapArena.cpp" />
+    <ClCompile Include="foundation\memory\UnsyncHeapArena.cpp" />
+    <ClCompile Include="foundation\memory\UnsyncStackArena.cpp" />
+    <ClCompile Include="foundation\mirroring\HeapReflector.cpp" />
+    <ClCompile Include="foundation\MissingDelimiterException.cpp" />
+    <ClCompile Include="foundation\NotImplementedException.cpp" />
+    <ClCompile Include="foundation\NotSupportedException.cpp" />
+    <ClCompile Include="foundation\OpenCommentException.cpp" />
+    <ClCompile Include="foundation\OutOfBoundsException.cpp" />
+    <ClCompile Include="foundation\OutOfMemoryException.cpp" />
+    <ClCompile Include="foundation\OutOfRangeException.cpp" />
+    <ClCompile Include="foundation\OverflowException.cpp" />
+    <ClCompile Include="foundation\PermissionDeniedException.cpp" />
+    <ClCompile Include="foundation\PreProcessorException.cpp" />
+    <ClCompile Include="foundation\assertion\Ascertainable.cpp" />
+    <ClCompile Include="foundation\settings\ConfigurationFileSettings.cpp" />
+    <ClCompile Include="foundation\settings\SystemSettings.cpp" />
+    <ClCompile Include="foundation\SourceHintCollection.cpp" />
+    <ClCompile Include="foundation\SourceHintSet.cpp" />
+    <ClCompile Include="foundation\SourceTraceHint.cpp" />
+    <ClCompile Include="foundation\StandardTraceHints.cpp" />
+    <ClCompile Include="foundation\SymbolRedefinedException.cpp" />
+    <ClCompile Include="foundation\SyntaxMismatchException.cpp" />
+    <ClCompile Include="foundation\UnexpectedExpressionException.cpp" />
+    <ClCompile Include="foundation\units\DigitalUnit.cpp" />
+    <ClCompile Include="foundation\uuids\Uuid.cpp" />
+    <ClCompile Include="services\diagnostics\AxisDebug.cpp" />
+    <ClCompile Include="services\diagnostics\Process.cpp" />
+    <ClCompile Include="services\io\BoostRecursiveDirectoryNavigator.cpp" />
+    <ClCompile Include="services\io\BoostSingleDirectoryNavigator.cpp" />
+    <ClCompile Include="services\io\DirectoryNavigator.cpp" />
+    <ClCompile Include="services\io\FileSystem.cpp" />
+    <ClCompile Include="services\management\GlobalProviderCatalog.cpp" />
+    <ClCompile Include="services\management\PluginInfo.cpp" />
+    <ClCompile Include="services\management\PluginLink.cpp" />
+    <ClCompile Include="services\management\PluginLoader.cpp" />
+    <ClCompile Include="services\management\ProcessTime.cpp" />
+    <ClCompile Include="services\management\Provider.cpp" />
+    <ClCompile Include="services\management\ServiceLocator.cpp" />
+    <ClCompile Include="services\management\SystemHook.cpp" />
+    <ClCompile Include="services\messaging\Filters\DefaultMessageFilter.cpp" />
+    <ClCompile Include="services\messaging\Filters\EventLogMessageFilter.cpp" />
+    <ClCompile Include="services\messaging\Filters\MessageFilter.cpp" />
+    <ClCompile Include="services\messaging\Metadata\MetadataCollection.cpp" />
+    <ClCompile Include="services\messaging\Metadata\Metadatum.cpp" />
+    <ClCompile Include="services\messaging\Metadata\SourceFileMetadata.cpp" />
+    <ClCompile Include="services\messaging\ResultMessage.cpp" />
+    <ClCompile Include="services\messaging\CollectorEndpoint.cpp" />
+    <ClCompile Include="services\messaging\CollectorHub.cpp" />
+    <ClCompile Include="services\messaging\ErrorMessage.cpp" />
+    <ClCompile Include="services\messaging\EventMessage.cpp" />
+    <ClCompile Include="services\messaging\EventTag.cpp" />
+    <ClCompile Include="services\messaging\InfoMessage.cpp" />
+    <ClCompile Include="services\messaging\LogMessage.cpp" />
+    <ClCompile Include="services\messaging\Message.cpp" />
+    <ClCompile Include="services\messaging\MessageListener.cpp" />
+    <ClCompile Include="services\messaging\TraceInfo.cpp" />
+    <ClCompile Include="services\messaging\TraceInfoCollection.cpp" />
+    <ClCompile Include="services\messaging\TraceTag.cpp" />
+    <ClCompile Include="services\messaging\WarningMessage.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Single)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Double)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Single)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Double)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (CPU), Debug (GPU)|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="System.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

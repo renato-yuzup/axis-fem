@@ -1,0 +1,39 @@
+Starting application...
+Opening log files for write operation...
+Going to use settings file: test_settings.config...
+Going to read sample file: D:\Renato\Axis\Model Input Files\cilamce_2013_cpu\2_6
+40_elements\cilamce2013.axis...
+Read in 9.588 seconds.
+
+                       MEMORY STATISTICS AFTER PARSING
+=============================== MEMORY SUMMARY ===============================
+                         STRING MEMORY       MODEL MEMORY      GLOBAL MEMORY
+==============================================================================
+ Allocated size               11000 KB           80000 KB           40000 KB
+ Fragmentation count                 4                  1                  1
+ Max. contg. free space        1597 KB           79120 KB           39928 KB
+ Total free space              1605 KB           79120 KB           39928 KB
+------------------------------------------------------------------------------
+ Total used space              9394 KB             879 KB              71 KB
+ Usage percentage               85.40%              1.09%              0.17%
+==============================================================================
+
+Starting analysis...
+Ran in 630.679 seconds.
+
+                       MEMORY STATISTICS AFTER ANALYSIS
+=============================== MEMORY SUMMARY ===============================
+                         STRING MEMORY       MODEL MEMORY      GLOBAL MEMORY
+==============================================================================
+ Allocated size               11000 KB           80000 KB           40000 KB
+ Fragmentation count                 4                  1                  1
+ Max. contg. free space        1590 KB           77213 KB           39928 KB
+ Total free space              1598 KB           77213 KB           39928 KB
+------------------------------------------------------------------------------
+ Total used space              9401 KB            2786 KB              71 KB
+ Usage percentage               85.46%              3.48%              0.17%
+==============================================================================
+
+Analysis finished!
+
+

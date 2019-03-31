@@ -1,0 +1,866 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.0, 200.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 200.0), point2=
+    (15.0, 200.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, 200.0), 
+    point2=(15.0, 0.3))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, 0.3), point2=(
+    14.7, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(14.7, 0.0), point2=(
+    0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[7])
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='corpo_prova', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['corpo_prova'].BaseSolidRevolve(angle=90.0, 
+    flipRevolveDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+del mdb.models['Model-1'].parts['corpo_prova']
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 100.0), point2=
+    (100.0, 15.0))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(100.0, 15.0), 
+    point2=(15.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, 0.0), point2=(
+    3.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[6])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 100.0), point2=
+    (15.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, 100.0), 
+    point2=(15.0, 0.3))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(15.0, 0.3), point2=(
+    14.7, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(14.7, 0.0), point2=(
+    0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[7])
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='corpo_prova', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['corpo_prova'].BaseSolidRevolve(angle=90.0, 
+    flipRevolveDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='steel_aisi40')
+mdb.models['Model-1'].materials['steel_aisi40'].Density(table=((7845.0, ), ))
+mdb.models['Model-1'].materials['steel_aisi40'].Elastic(table=((200000000000.0, 
+    0.29), ))
+mdb.models['Model-1'].materials['steel_aisi40'].Plastic(table=((415000000.0, 
+    0.0), (620000000.0, 0.25)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='steel_aisi40', name=
+    'steel', thickness=None)
+mdb.models['Model-1'].parts['corpo_prova'].Set(cells=
+    mdb.models['Model-1'].parts['corpo_prova'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['corpo_prova'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['corpo_prova'].sets['Set-1'], sectionName=
+    'steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['corpo_prova'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=5.0)
+mdb.models['Model-1'].parts['corpo_prova'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=2.5)
+mdb.models['Model-1'].parts['corpo_prova'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.25)
+mdb.models['Model-1'].parts['corpo_prova'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, linearBulkViscosity=0, 
+    quadraticBulkViscosity=0), ElemType(elemCode=C3D6, elemLibrary=EXPLICIT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), regions=(
+    mdb.models['Model-1'].parts['corpo_prova'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['corpo_prova'].generateMesh()
+mdb.models['Model-1'].parts['corpo_prova'].deleteMesh()
+mdb.models['Model-1'].parts['corpo_prova'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.625)
+mdb.models['Model-1'].parts['corpo_prova'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=EXPLICIT, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=STIFFNESS, 
+    displacementHourglass=0, distortionControl=OFF, linearBulkViscosity=0, 
+    quadraticBulkViscosity=0), ElemType(elemCode=C3D6, elemLibrary=EXPLICIT), 
+    ElemType(elemCode=C3D4, elemLibrary=EXPLICIT)), regions=(
+    mdb.models['Model-1'].parts['corpo_prova'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['corpo_prova'].generateMesh()
+# Save by Renato on 2014_02_08-14.09.00; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='corpo_prova-1', 
+    part=mdb.models['Model-1'].parts['corpo_prova'])
+mdb.models['Model-1'].ExplicitDynamicsStep(linearBulkViscosity=0.0, name=
+    'explicito', previous='Initial', quadBulkViscosity=0.0, timePeriod=0.001)
+mdb.models['Model-1'].TabularAmplitude(data=((0.0, 0.0), (0.002, 2.0)), name=
+    'deslocamento', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['corpo_prova-1'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ), name='simetria_yz')
+mdb.models['Model-1'].XsymmBC(createStepName='Initial', localCsys=None, name=
+    'simetriayz', region=
+    mdb.models['Model-1'].rootAssembly.sets['simetria_yz'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['corpo_prova-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-2')
+mdb.models['Model-1'].ZsymmBC(createStepName='Initial', localCsys=None, name=
+    'simetriaxy', region=mdb.models['Model-1'].rootAssembly.sets['Set-2'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['corpo_prova-1'].faces.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Set-3')
+mdb.models['Model-1'].YsymmBC(createStepName='Initial', localCsys=None, name=
+    'simetriaxz', region=mdb.models['Model-1'].rootAssembly.sets['Set-3'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['corpo_prova-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ), name='Set-4')
+mdb.models['Model-1'].DisplacementBC(amplitude='deslocamento', createStepName=
+    'explicito', distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=
+    None, name='tracao', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-4'], u1=UNSET, u2=2.5, u3=
+    UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.Job(activateLoadBalancing=False, atTime=None, contactPrint=OFF, 
+    description='', echoPrint=OFF, explicitPrecision=DOUBLE_PLUS_PACK, 
+    historyPrint=OFF, memory=90, memoryUnits=PERCENTAGE, model='Model-1', 
+    modelPrint=OFF, multiprocessingMode=THREADS, name='gran-test', 
+    nodalOutputPrecision=FULL, numCpus=8, numDomains=8, 
+    parallelizationMethodExplicit=DOMAIN, queue=None, scratch='', type=ANALYSIS
+    , userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.models['Model-1'].parts['corpo_prova'].Set(elements=
+    mdb.models['Model-1'].parts['corpo_prova'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:2163 #1 ]', ), ), name='todos_elementos')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='explicito', name=
+    'plastificacao', rebar=EXCLUDE, region=
+    mdb.models['Model-1'].rootAssembly.instances['corpo_prova-1'].sets['todos_elementos']
+    , sectionPoints=DEFAULT, variables=('S11', 'S22', 'S33', 'S12', 'S13', 
+    'S23', 'SP', 'TRESC', 'PRESS', 'INV3', 'PE11', 'PE22', 'PE33', 'PE12', 
+    'PE13', 'PE23', 'PEP', 'PEEQ'))
+# Save by Renato on 2014_02_08-14.17.26; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['gran-test'].submit(consistencyChecking=OFF)
+mdb.jobs['gran-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 0, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST INV3 IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST TRESC IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '14777 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 1300, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 6 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(ERROR, {'phase': PACKAGER_PHASE, 
+    'message': "The number of history output requests (100001) in this analysis step has exceeded 10x the maximum value of 10000 specified by the Abaqus environment variable 'max_history_requests.' Reduce the number of requests, increase the value of this variable, or deactivate this test by setting 'max_history_requests=0' in the abaqus_v6.env file. Significant performance problems may occur if these requests are maintained.", 
+    'jobName': 'gran-test'})
+mdb.models['Model-1'].parts['corpo_prova'].Set(elements=
+    mdb.models['Model-1'].parts['corpo_prova'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:24 #3ffffff #0:3 #fff80000 #1fffff #0:3 #ffffc000', 
+    ' #ffff #0:3 #fffffe00 #7ff #0:3 #fffffff0 #1f', 
+    ' #0:2 #80000000 #ffffffff #0:3 #fc000000 #7ffffff #0:3', 
+    ' #ffe00000 #3fffff #0:3 #ffff0000 #1ffff #0:3 #fffff800', 
+    ' #7ff #0:3 #ffffffc0 #ff #0:3 #fffffffe #1', 
+    ' #0:2 #f0000000 #3fffffff #0:3 #ff800000 #3fffff #0:3', 
+    ' #fffc0000 #fffff #0:3 #ffffe000 #fff #0:3 #ffffff00', 
+    ' #3ff #0:3 #fffffff8 #1 #0:2 #c0000000 #ffffffff', 
+    ' #0:3 #fe000000 #7fffff #0:3 #fff00000 #3fffff #0:3', 
+    ' #ffff8000 #fff #0:3 #fffffc00 #fff #0:3 #ffffffe0', 
+    ' #3 #0:3 #ffffffff #3 #0:2 #f8000000 #7fffff', 
+    ' #0:3 #ffc00000 #ffffff #0:3 #fffe0000 #1fff #0:3', 
+    ' #fffff000 #3fff #0:3 #ffffff80 #3 #0:3 #fffffffc', 
+    ' #f #0:2 #e0000000 #ffffff #0:3 #ff000000 #3ffffff', 
+    ' #0:3 #fff80000 #1fff #0:3 #ffffc000 #ffff #0:3', 
+    ' #fffffe00 #7 #0:3 #fffffff0 #3f #0:2 #80000000', 
+    ' #ffffff #0:74 #ffe00000 #ffffffff:20 #7ffffff #0:70 #e0000000', 
+    ' #ffffffe7 #ffffffff:19 #fffffff #0:71 #ff7ff00f #ffffffff:19 #1fffffff', 
+    ' #0:71 #e0ff801e #fffff7ff #ffffffff:18 #3fffffff #0:71 #1fc0038', 
+    ' #7fff0ffe #ffffffff:18 #7fffffff #0:71 #3f00070 #fff01ff0 #fff7fff0', 
+    ' #ffffffff:18 #0:71 #7c000e0 #ffc03fc0 #ff8fff81 #ffffff7f #ffffffff:17', 
+    ' #1 #0:70 #f800180 #ff007f00 #fc1ffe03 #f7fff8ff #ffffffff:17', 
+    ' #3 #0:70 #1e000300 #fc00fe00 #f03ff807 #8fffc1ff #ffff7fff', 
+    ' #ffffffff:16 #7 #0:70 #3c000600 #f001f800 #807fe00f #1fff03ff', 
+    ' #fffcfffe #fffffff7 #ffffffff:15 #f #0:69 #1000000 #78000c00', 
+    ' #c003f000 #ff801f #3ffc07fe #ffe1fff8 #ff7fffcf #ffffffff:15 #1f', 
+    ' #0:69 #2000000 #f0001800 #8007c000 #1fe003f #7ff00ffc #ff83ffe0', 
+    ' #fcfffe1f #fffff7ff #ffffffff:14 #3f #0:69 #4000000 #c0003000', 
+    ' #f8001 #3fc007e #ffc01ff0 #fe07ff80 #e1fff83f #7fffcfff #ffffffff:14', 
+    ' #7f #0:69 #8000000 #80006000 #1f0003 #7f000fc #ff803fc0', 
+    ' #f80ffe01 #83ffe07f #ffff1fff #fff7fffc #ffffffff:13 #ff #0:69', 
+    ' #10000000 #c000 #3c0007 #fe001f8 #fe007f80 #e01ff803 #7ff80ff', 
+    ' #fffc3fff #ffcffff1 #ffffff7f #ffffffff:12 #1ff #0:69 #20000000', 
+    ' #18000 #78000e #1f8003e0 #fc00ff00 #c03ff007 #fff01ff #fff07ffc', 
+    ' #ff1fffc3 #f7fffcff #ffffbfff #ffffffff:11 #3ff #0:69 #40000000', 
+    ' #30000 #f0001c #3f0007c0 #f001fc00 #7fc00f #1ffc03ff #ffc0fff0', 
+    ' #fc3fff07 #cffff1ff #fffe7fff #fffffffb #ffffffff:10 #7ff #0:69', 
+    ' #80000000 #60000 #1e00038 #7e000f80 #e003f800 #ff801f #3ff807fe', 
+    ' #ff01ffc0 #f07ffc0f #1fffc3ff #fffcffff #ffbfffe7 #ffffffff:10 #fff', 
+    ' #0:70 #c0000 #3c00070 #fc001f00 #8007f000 #1fe003f #7fe00ff8', 
+    ' #fe03ff80 #c0fff81f #3fff07ff #fff1fffc #fe7fff8f #fffffbff #ffffffff:31', 
+    ' #7fffffff #0:141 #8000000 #fffc6000 #fffc0003 #ffc000ff #fc003fff', 
+    ' #800fffff #3ffffff #fffffff8 #ffffff80 #fffff03f #ffff0fff #ffe3ffff', 
+    ' #feffffff #ffffffff:30 #1 ]', ), ), name='todos_elementos')
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by Renato on 2014_02_08-14.20.44; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].materials['steel_aisi40'].density.setValues(table=((
+    7.845e-06, ), ))
+mdb.models['Model-1'].materials['steel_aisi40'].elastic.setValues(table=((
+    200.0, 0.29), ))
+mdb.models['Model-1'].materials['steel_aisi40'].plastic.setValues(table=((
+    0.415, 0.0), (0.62, 0.25)))
+mdb.models['Model-1'].steps['explicito'].setValues(timePeriod=1.0)
+mdb.models['Model-1'].amplitudes['deslocamento'].setValues(data=((0.0, 0.0), (
+    2.0, 2.0)), smooth=SOLVER_DEFAULT, timeSpan=STEP)
+# Save by Renato on 2014_02_08-14.23.32; build 6.12-1 2012_03_13-20.23.18 119612
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['gran-test'].submit(consistencyChecking=OFF)
+mdb.jobs['gran-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 0, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST INV3 IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST TRESC IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '14777 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 4004, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 6 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(ERROR, {'phase': PACKAGER_PHASE, 
+    'message': "The number of history output requests (100001) in this analysis step has exceeded 10x the maximum value of 10000 specified by the Abaqus environment variable 'max_history_requests.' Reduce the number of requests, increase the value of this variable, or deactivate this test by setting 'max_history_requests=0' in the abaqus_v6.env file. Significant performance problems may occur if these requests are maintained.", 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(ERROR, {
+    'message': 'Abaqus/Explicit Packager exited with an error - Please see the  status file for possible error messages if the file exists.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Explicit Packager exited with an error - Please see the  status file for possible error messages if the file exists.', 
+    'jobName': 'gran-test'})
+mdb.models['Model-1'].historyOutputRequests['plastificacao'].suppress()
+mdb.jobs['gran-test'].submit(consistencyChecking=OFF)
+mdb.jobs['gran-test']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 0, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER HOURGLASS ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID, MEMBRANE, AND SHELL ELEMENTS WITH REDUCED INTEGRATION WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO THESE ELEMENT TYPES ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE PARAMETER DISTORTION CONTROL ON THE *SECTION CONTROLS OPTION IS RELEVANT FOR SOLID ELEMENTS WHEREVER APPLICABLE. THIS WARNING CAN BE IGNORED IF THE FEATURE IS APPLIED TO SOLID ELEMENTS ONLY.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE OPTION *BOUNDARY,TYPE=DISPLACEMENT HAS BEEN USED; CHECK STATUS FILE BETWEEN STEPS FOR WARNINGS ON ANY JUMPS PRESCRIBED ACROSS THE STEPS IN DISPLACEMENT VALUES OF TRANSLATIONAL DOF. FOR ROTATIONAL DOF MAKE SURE THAT THERE ARE NO SUCH JUMPS. ALL JUMPS IN DISPLACEMENTS ACROSS STEPS ARE IGNORED', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '14777 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STARTED, {'phase': PACKAGER_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 4004, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(WARNING, {'phase': PACKAGER_PHASE, 
+    'message': 'There are 4 warning messages in the data (.dat) file.  Please check the data file for possible errors in the input file.', 
+    'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': PACKAGER_PHASE, 
+    'message': 'Phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STARTED, {'phase': EXPLICIT_PHASE, 
+    'clientHost': 'ATLAS', 'handle': 6028, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0, 
+    'timeIncrement': 1.6350492175769e-05, 'stepTime': 0.0, 
+    'totalEnergy': 0.00132663238120181, 'cpuTime': 4.29999995231628, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 0, 'phase': EXPLICIT_PHASE, 
+    'kineticEnergy': 0.00132663238120181})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0156893773644721, 
+    'timeIncrement': 1.80739539429331e-05, 'stepTime': 0.0156893773644721, 
+    'totalEnergy': 0.00133400832093344, 'cpuTime': 120.200000047684, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 869, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.336301664600699})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0320777142417268, 
+    'timeIncrement': 1.80658463948887e-05, 'stepTime': 0.0320777142417268, 
+    'totalEnergy': 0.00133629073615982, 'cpuTime': 240.300006151199, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 1776, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.156348963828803})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0484634337935789, 
+    'timeIncrement': 1.80658463948887e-05, 'stepTime': 0.0484634337935789, 
+    'totalEnergy': 0.00133976425359617, 'cpuTime': 360.400012254715, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 2683, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.179972570593351})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0500170965835394, 
+    'timeIncrement': 1.80658463948887e-05, 'stepTime': 0.0500170965835394, 
+    'totalEnergy': 0.0013396776507677, 'cpuTime': 373.099993944168, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 2769, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.249336670992403})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0660754682682843, 
+    'timeIncrement': 1.80581862532983e-05, 'stepTime': 0.0660754682682843, 
+    'totalEnergy': 0.00134464058479367, 'cpuTime': 492.499987840652, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 3658, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.288742897255688})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0824230535668792, 
+    'timeIncrement': 1.80123627232272e-05, 'stepTime': 0.0824230535668792, 
+    'totalEnergy': 0.00134914146169685, 'cpuTime': 612.600024461746, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 4564, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0468341851211305})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.0986746953995315, 
+    'timeIncrement': 1.80543637741115e-05, 'stepTime': 0.0986746953995315, 
+    'totalEnergy': 0.00135235734551031, 'cpuTime': 732.600024461746, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 5466, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0783197851531695})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.100007779575313, 
+    'timeIncrement': 1.80070279351947e-05, 'stepTime': 0.100007779575313, 
+    'totalEnergy': 0.00135258681092232, 'cpuTime': 743.600024461746, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 5540, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0779390579087553})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.11572031055535, 
+    'timeIncrement': 1.80570449926661e-05, 'stepTime': 0.11572031055535, 
+    'totalEnergy': 0.00135517187647061, 'cpuTime': 862.999987840652, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 6413, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.087350323604809})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.13151378698776, 
+    'timeIncrement': 1.79088825489853e-05, 'stepTime': 0.13151378698776, 
+    'totalEnergy': 0.00135720125225447, 'cpuTime': 982.999987840652, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 7294, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.0949613115726981})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.147166819008028, 
+    'timeIncrement': 1.78578275837357e-05, 'stepTime': 0.147166819008028, 
+    'totalEnergy': 0.00135837816156226, 'cpuTime': 1103.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 8169, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.10033619077927})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.150012579885598, 
+    'timeIncrement': 1.78101051860022e-05, 'stepTime': 0.150012579885598, 
+    'totalEnergy': 0.00135849049458514, 'cpuTime': 1126.50004887581, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 8328, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.104420906076921})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.165109052737766, 
+    'timeIncrement': 1.78081381202646e-05, 'stepTime': 0.165109052737766, 
+    'totalEnergy': 0.00135887801981482, 'cpuTime': 1246.10002446175, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 9173, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.1076157191118})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.176625646562033, 
+    'timeIncrement': 1.78564841872493e-05, 'stepTime': 0.176625646562033, 
+    'totalEnergy': 0.00135894457840635, 'cpuTime': 1370.39995121956, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 9819, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.1121541471133})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.185239099158437, 
+    'timeIncrement': 1.78320217759659e-05, 'stepTime': 0.185239099158437, 
+    'totalEnergy': 0.0013589275844943, 'cpuTime': 1487.29997563362, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 10301, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.115170453124684})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.198247521832729, 
+    'timeIncrement': 1.7840493197784e-05, 'stepTime': 0.198247521832729, 
+    'totalEnergy': 0.00135877358256309, 'cpuTime': 1607.29997563362, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 11029, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.123102219591117})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.200008343758971, 
+    'timeIncrement': 1.77658496547226e-05, 'stepTime': 0.200008343758971, 
+    'totalEnergy': 0.00135873475212733, 'cpuTime': 1625.29997563362, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 11128, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.124572752067193})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.214679205966337, 
+    'timeIncrement': 1.77169671919158e-05, 'stepTime': 0.214679205966337, 
+    'totalEnergy': 0.00135843821417581, 'cpuTime': 1745.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 11956, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.129330877759368})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.230103184690533, 
+    'timeIncrement': 1.7754907395784e-05, 'stepTime': 0.230103184690533, 
+    'totalEnergy': 0.00135801444189809, 'cpuTime': 1865.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 12825, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.139002626377731})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.245158565377429, 
+    'timeIncrement': 1.77529695044801e-05, 'stepTime': 0.245158565377429, 
+    'totalEnergy': 0.00135749424875087, 'cpuTime': 1985.29997563362, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 13673, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.147256724399786})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.250005028142626, 
+    'timeIncrement': 1.77524197159514e-05, 'stepTime': 0.250005028142626, 
+    'totalEnergy': 0.00135729837167275, 'cpuTime': 2024.00004887581, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 13946, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.14993636159788})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.265111448621898, 
+    'timeIncrement': 1.77503237876382e-05, 'stepTime': 0.265111448621898, 
+    'totalEnergy': 0.00135663386416951, 'cpuTime': 2143.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 14797, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.158217440157147})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.280304788366257, 
+    'timeIncrement': 1.77481308306926e-05, 'stepTime': 0.280304788366257, 
+    'totalEnergy': 0.00135580174701033, 'cpuTime': 2263.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 15653, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.168232636709749})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.295655773327622, 
+    'timeIncrement': 1.77454878798668e-05, 'stepTime': 0.295655773327622, 
+    'totalEnergy': 0.00135460436580104, 'cpuTime': 2383.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 16518, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.177708998510633})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.300003326993113, 
+    'timeIncrement': 1.77446962995802e-05, 'stepTime': 0.300003326993113, 
+    'totalEnergy': 0.0013541697295878, 'cpuTime': 2418.00004887581, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 16763, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.18008430603507})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.315191535230865, 
+    'timeIncrement': 1.77417467588014e-05, 'stepTime': 0.315191535230865, 
+    'totalEnergy': 0.00135220838052419, 'cpuTime': 2537.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 17619, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.189341125359866})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.330589952523664, 
+    'timeIncrement': 1.77383743040125e-05, 'stepTime': 0.330589952523664, 
+    'totalEnergy': 0.00134947533481267, 'cpuTime': 2657.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 18487, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.202263800451529})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.345985073728039, 
+    'timeIncrement': 1.7734089590797e-05, 'stepTime': 0.345985073728039, 
+    'totalEnergy': 0.00134591385523919, 'cpuTime': 2777.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 19355, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.216510757893909})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.350010578359941, 
+    'timeIncrement': 1.77328326700233e-05, 'stepTime': 0.350010578359941, 
+    'totalEnergy': 0.00134472780752048, 'cpuTime': 2810.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 19582, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.22116683792639})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.364964337791121, 
+    'timeIncrement': 1.7830555516431e-05, 'stepTime': 0.364964337791121, 
+    'totalEnergy': 0.00133934523400825, 'cpuTime': 2929.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 20424, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.240397800012297})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.380595359635511, 
+    'timeIncrement': 1.80567257331714e-05, 'stepTime': 0.380595359635511, 
+    'totalEnergy': 0.00133164731284552, 'cpuTime': 3049.89995121956, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 21295, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.270924196537892})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.396587547543905, 
+    'timeIncrement': 1.80282029327132e-05, 'stepTime': 0.396587547543905, 
+    'totalEnergy': 0.00132233738384002, 'cpuTime': 3169.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 22181, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.311924662803116})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.400012832608934, 
+    'timeIncrement': 1.80274829094232e-05, 'stepTime': 0.400012832608934, 
+    'totalEnergy': 0.00132032578083852, 'cpuTime': 3197.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 22371, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.322810244973269})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.415863696638995, 
+    'timeIncrement': 1.79444623049397e-05, 'stepTime': 0.415863696638995, 
+    'totalEnergy': 0.00131149051433965, 'cpuTime': 3316.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 23253, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.373796479458328})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.432083510368285, 
+    'timeIncrement': 1.79402279375598e-05, 'stepTime': 0.432083510368285, 
+    'totalEnergy': 0.00130471314334102, 'cpuTime': 3436.39995121956, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 24157, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.435774887633661})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.448398627719792, 
+    'timeIncrement': 1.79902913068555e-05, 'stepTime': 0.448398627719792, 
+    'totalEnergy': 0.0013008532588259, 'cpuTime': 3556.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 25066, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.472776047605924})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.450017738330536, 
+    'timeIncrement': 1.79899727270867e-05, 'stepTime': 0.450017738330536, 
+    'totalEnergy': 0.00130055126020068, 'cpuTime': 3569.39995121956, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 25156, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.472860069728488})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.465900842096416, 
+    'timeIncrement': 1.79854623914321e-05, 'stepTime': 0.465900842096416, 
+    'totalEnergy': 0.00129765363227818, 'cpuTime': 3689.39995121956, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 26039, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.428620476205029})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.482194076119072, 
+    'timeIncrement': 1.79816514531576e-05, 'stepTime': 0.482194076119072, 
+    'totalEnergy': 0.00129508810667289, 'cpuTime': 3809.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 26945, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.379907807720782})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.498624314680908, 
+    'timeIncrement': 1.80564116119337e-05, 'stepTime': 0.498624314680908, 
+    'totalEnergy': 0.00129306342680025, 'cpuTime': 3929.50004887581, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 27857, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.388747259176908})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.500014661342991, 
+    'timeIncrement': 1.805689475121e-05, 'stepTime': 0.500014661342991, 
+    'totalEnergy': 0.0012928867705142, 'cpuTime': 3941.09990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 27934, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.390179392628219})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.516083127596108, 
+    'timeIncrement': 1.805196282434e-05, 'stepTime': 0.516083127596108, 
+    'totalEnergy': 0.00129078984431885, 'cpuTime': 4060.39995121956, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 28824, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.392324293724963})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.53250836240735, 
+    'timeIncrement': 1.804764892277e-05, 'stepTime': 0.53250836240735, 
+    'totalEnergy': 0.00128877620086598, 'cpuTime': 4180.40019536018, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 29734, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.374939118766076})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.548875751053807, 
+    'timeIncrement': 1.8043577450194e-05, 'stepTime': 0.548875751053807, 
+    'totalEnergy': 0.00128695718112226, 'cpuTime': 4300.49980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 30641, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.39046618880833})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.55001248546917, 
+    'timeIncrement': 1.80432443365682e-05, 'stepTime': 0.55001248546917, 
+    'totalEnergy': 0.00128682727610396, 'cpuTime': 4309.59990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 30704, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.392312508015407})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 11, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.565744234481368, 
+    'timeIncrement': 1.80385639306564e-05, 'stepTime': 0.565744234481368, 
+    'totalEnergy': 0.00128493749960512, 'cpuTime': 4429.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 31576, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.410628024821603})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.582084948516439, 
+    'timeIncrement': 1.80336383093559e-05, 'stepTime': 0.582084948516439, 
+    'totalEnergy': 0.00128283636408355, 'cpuTime': 4549.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 32482, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.411010149219866})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.598331218418486, 
+    'timeIncrement': 1.80291774469425e-05, 'stepTime': 0.598331218418486, 
+    'totalEnergy': 0.0012808291166948, 'cpuTime': 4669.40019536018, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 33383, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.422412342237928})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.600007911995033, 
+    'timeIncrement': 1.8028723874967e-05, 'stepTime': 0.600007911995033, 
+    'totalEnergy': 0.00128062768791892, 'cpuTime': 4683.40019536018, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 33476, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.424019788863275})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 12, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.615817192353722, 
+    'timeIncrement': 1.80243300844794e-05, 'stepTime': 0.615817192353722, 
+    'totalEnergy': 0.00127878162025752, 'cpuTime': 4802.59990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 34353, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.438087711116342})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.631982861163634, 
+    'timeIncrement': 1.80194356997127e-05, 'stepTime': 0.631982861163634, 
+    'totalEnergy': 0.00127696839274449, 'cpuTime': 4922.59990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 35250, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.452619464609832})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.648071913913318, 
+    'timeIncrement': 1.80142536848155e-05, 'stepTime': 0.648071913913318, 
+    'totalEnergy': 0.00127527176849185, 'cpuTime': 5042.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 36143, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.473532987626741})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.65001741752702, 
+    'timeIncrement': 1.80136187142601e-05, 'stepTime': 0.65001741752702, 
+    'totalEnergy': 0.00127507702313778, 'cpuTime': 5058.09990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 36251, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.475792973130026})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 13, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.665849136900115, 
+    'timeIncrement': 1.80085280024962e-05, 'stepTime': 0.665849136900115, 
+    'totalEnergy': 0.0012736027229181, 'cpuTime': 5177.99980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 37130, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.492954226177792})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.681838499379699, 
+    'timeIncrement': 1.80035460515064e-05, 'stepTime': 0.681838499379699, 
+    'totalEnergy': 0.00127230992715965, 'cpuTime': 5298.09990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 38018, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.512801442071795})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.69753551697043, 
+    'timeIncrement': 1.79987843552167e-05, 'stepTime': 0.69753551697043, 
+    'totalEnergy': 0.00127123921153327, 'cpuTime': 5417.99980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 38890, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.536414621644159})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.700001299825759, 
+    'timeIncrement': 1.79980393024436e-05, 'stepTime': 0.700001299825759, 
+    'totalEnergy': 0.00127109027550887, 'cpuTime': 5438.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 39027, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.540273003594722})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 14, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.715513585966757, 
+    'timeIncrement': 1.79933254145495e-05, 'stepTime': 0.715513585966757, 
+    'totalEnergy': 0.00127027600581187, 'cpuTime': 5557.49980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 39889, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.565921157499969})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.731345602130123, 
+    'timeIncrement': 1.79885502329352e-05, 'stepTime': 0.731345602130123, 
+    'totalEnergy': 0.00126966566854492, 'cpuTime': 5677.49980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 40769, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.593318947745413})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.747083493660836, 
+    'timeIncrement': 1.79837871983585e-05, 'stepTime': 0.747083493660836, 
+    'totalEnergy': 0.0012692599316324, 'cpuTime': 5797.59990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 41644, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.62120851424527})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.750014782984608, 
+    'timeIncrement': 1.79829506635679e-05, 'stepTime': 0.750014782984608, 
+    'totalEnergy': 0.00126920473630321, 'cpuTime': 5821.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 41807, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.626472320057828})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 15, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.765388274754176, 
+    'timeIncrement': 1.79784750510932e-05, 'stepTime': 0.765388274754176, 
+    'totalEnergy': 0.00126901511367805, 'cpuTime': 5940.80009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 42662, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.653887937800455})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.781063585285947, 
+    'timeIncrement': 1.79741173817801e-05, 'stepTime': 0.781063585285947, 
+    'totalEnergy': 0.00126898518416851, 'cpuTime': 6060.90019536018, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 43534, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.681797124681613})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.796717217909959, 
+    'timeIncrement': 1.79699464781874e-05, 'stepTime': 0.796717217909959, 
+    'totalEnergy': 0.0012690953878689, 'cpuTime': 6180.99980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 44405, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.709781376884642})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.800005643113569, 
+    'timeIncrement': 1.79691247209879e-05, 'stepTime': 0.800005643113569, 
+    'totalEnergy': 0.00126913355640568, 'cpuTime': 6207.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 44588, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.715634891737317})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 16, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.8151879492679, 
+    'timeIncrement': 1.79653516008596e-05, 'stepTime': 0.8151879492679, 
+    'totalEnergy': 0.00126936649277809, 'cpuTime': 6327.09990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 45433, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.74280705668496})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.830708445501233, 
+    'timeIncrement': 1.79617295625433e-05, 'stepTime': 0.830708445501233, 
+    'totalEnergy': 0.00126967775440789, 'cpuTime': 6447.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 46297, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.770642628445544})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.846315686146588, 
+    'timeIncrement': 1.79582996175215e-05, 'stepTime': 0.846315686146588, 
+    'totalEnergy': 0.001270042400904, 'cpuTime': 6567.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 47166, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.79895167503315})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.850015018190034, 
+    'timeIncrement': 1.79575332748305e-05, 'stepTime': 0.850015018190034, 
+    'totalEnergy': 0.00127013354037331, 'cpuTime': 6597.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 47372, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.805590862429783})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 17, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.865026207380731, 
+    'timeIncrement': 1.79544459709229e-05, 'stepTime': 0.865026207380731, 
+    'totalEnergy': 0.00127051654442312, 'cpuTime': 6717.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 48208, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.832492232768601})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.880591391875533, 
+    'timeIncrement': 1.79514156241562e-05, 'stepTime': 0.880591391875533, 
+    'totalEnergy': 0.00127092088132486, 'cpuTime': 6837.40019536018, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 49075, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.860578488824883})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.895920669655934, 
+    'timeIncrement': 1.79485349015892e-05, 'stepTime': 0.895920669655934, 
+    'totalEnergy': 0.00127130803730324, 'cpuTime': 6957.20000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 49929, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.88904308024937})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.90001284640151, 
+    'timeIncrement': 1.79477391458767e-05, 'stepTime': 0.90001284640151, 
+    'totalEnergy': 0.00127140781933122, 'cpuTime': 6989.99980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 50157, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.896619200939312})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 18, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.915051887370112, 
+    'timeIncrement': 1.79449592239491e-05, 'stepTime': 0.915051887370112, 
+    'totalEnergy': 0.00127176614341806, 'cpuTime': 7109.30009770393, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 50995, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.925750508031735})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.930483345195151, 
+    'timeIncrement': 1.79421722369858e-05, 'stepTime': 0.930483345195151, 
+    'totalEnergy': 0.00127211039227859, 'cpuTime': 7229.49980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 51855, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.956747540810269})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.945984233862291, 
+    'timeIncrement': 1.79395564282324e-05, 'stepTime': 0.945984233862291, 
+    'totalEnergy': 0.00127242271949513, 'cpuTime': 7349.40019536018, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 52719, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.989109544403752})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.950002622712042, 
+    'timeIncrement': 1.79389110167007e-05, 'stepTime': 0.950002622712042, 
+    'totalEnergy': 0.00127249780476291, 'cpuTime': 7381.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 52943, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 0.997539147002499})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 19, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.965231776030981, 
+    'timeIncrement': 1.79366270479392e-05, 'stepTime': 0.965231776030981, 
+    'totalEnergy': 0.00127276584066749, 'cpuTime': 7501.59990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 53792, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.03085524405244})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.980656348420795, 
+    'timeIncrement': 1.79345037045677e-05, 'stepTime': 0.980656348420795, 
+    'totalEnergy': 0.00127301554022097, 'cpuTime': 7621.49980473518, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 54652, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.06588337978085})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 0.99609708916153, 
+    'timeIncrement': 1.79325289372733e-05, 'stepTime': 0.99609708916153, 
+    'totalEnergy': 0.0012732458210678, 'cpuTime': 7741.70000004768, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 55513, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.10222529225803})
+mdb.jobs['gran-test']._Message(STATUS, {'totalTime': 1.0, 
+    'timeIncrement': 1.79320350610729e-05, 'stepTime': 1.0, 
+    'totalEnergy': 0.00127330197059905, 'cpuTime': 7773.59990239143, 
+    'jobName': 'gran-test', 'step': 1, 'increment': 55731, 
+    'phase': EXPLICIT_PHASE, 'kineticEnergy': 1.11148943618848})
+mdb.jobs['gran-test']._Message(ODB_FRAME, {'phase': EXPLICIT_PHASE, 'step': 0, 
+    'frame': 20, 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(COMPLETED, {'phase': EXPLICIT_PHASE, 
+    'message': 'Phase complete', 'jobName': 'gran-test'})
+mdb.jobs['gran-test']._Message(JOB_COMPLETED, {
+    'time': 'Sat Feb 08 14:41:50 2014', 'jobName': 'gran-test'})
+# Save by Renato on 2014_02_08-15.14.46; build 6.12-1 2012_03_13-20.23.18 119612

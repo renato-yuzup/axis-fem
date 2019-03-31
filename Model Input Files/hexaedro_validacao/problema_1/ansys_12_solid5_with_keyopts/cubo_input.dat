@@ -1,0 +1,382 @@
+/batch
+/config,noeldb,1     ! force off writing results to database
+*get,_wallstrt,active,,time,wall
+! ANSYS input file written by Workbench version 12.0.1 Release
+! File used for geometry attach: C:\Users\leonardo.mazzariol.GMSIE.001\AppData\Local\Temp\WB_AQUARIO_2972_2\unsaved_project_files\dp0\SYS\DM\SYS.agdb
+/com,--- Data in consistent MKS units.
+/units,MKS
+/nopr
+/track,-1
+/wb,file,start              !  signify a WB generated input file
+/prep7
+! Turn off shape checking because checks already performed inside WB mesher.
+! See help system for more information.
+SHPP,OFF,,NOWARN
+/nolist
+etcon,set             ! allow ANSYS to choose best KEYOP's for 180x elements
+/com,*********** Nodes for the whole assembly ***********
+nblock,3
+(1i8,3e20.9e3)
+       1    1.000000000E+000    1.000000000E+000    1.000000000E+000
+       2    1.000000000E+000    1.000000000E+000    0.000000000E+000
+       3    1.000000000E+000    0.000000000E+000    0.000000000E+000
+       4    1.000000000E+000    8.881784197E-016    1.000000000E+000
+       5    0.000000000E+000    8.881784197E-016    1.000000000E+000
+       6    0.000000000E+000    0.000000000E+000    0.000000000E+000
+       7    0.000000000E+000    1.000000000E+000    0.000000000E+000
+       8    0.000000000E+000    1.000000000E+000    1.000000000E+000
+-1
+/wb,elem,start            !  set before creation of elements
+/com,*********** Elements for Body 1 "Solid" ***********
+et,1,185
+eblock,10
+(15i8)
+       1       1       1       1       0       1       2       3       4       8       7       6       5
+-1
+/wb,elem,end               !  done creating elements
+/com,*********** Send User Defined Coordinate System(s) ***********
+csys,0
+/com,*********** Set Reference Temperature ***********
+tref,22.
+/wb,mat,start              !  starting to send materials
+/com,*********** Send Materials ***********
+MP,DENS,1,7850.,	! kg m^-3
+MP,C,1,434.,	! J kg^-1 C^-1
+MP,KXX,1,60.5,	! W m^-1 C^-1
+MP,MURX,1,10000.,
+MP,RSVX,1,1.7e-007,	! kg m^3 A^-2 s^-3
+MP,EX,1,200000000000.,	! Pa
+MP,NUXY,1,0.3,
+
+/wb,mat,end                !  done sending materials
+! ****** Begin Command Snippet ******
+*set,matid,1
+!   Commands inserted into this file will be executed just after material definitions in /PREP7.
+!   The material number for this body is equal to the parameter "matid".
+
+!   Active UNIT system in Workbench when this object was created:  Metric (m, kg, N, s, V, A)
+
+et,1,5
+keyo,1,3,1 
+
+! ****** End   Command Snippet ******
+!************************* Model Summary ********************
+!Solid, Structural Steel, matid, 1
+!************************* End Model Summary ********************
+! get the diagonal of the bounding box. Needed later for other things
+*get,_xmin,node,,mnloc,x
+*get,_ymin,node,,mnloc,y
+*get,_zmin,node,,mnloc,z
+*get,_xmax,node,,mxloc,x
+*get,_ymax,node,,mxloc,y
+*get,_zmax,node,,mxloc,z
+_ASMDIAG=(_xmax-_xmin)*(_xmax-_xmin)+(_ymax-_ymin)*(_ymax-_ymin)+(_zmax-_zmin)*(_zmax-_zmin)
+_ASMDIAG=SQRT(_ASMDIAG)
+/wb,contact,start          !  starting to send contact
+/wb,contact,end            !  done creating contacts
+/golist
+/wb,load,start             !  starting to send loads
+/com,******* Constant Zero Displacement X *******
+CMBLOCK,_ZERODISPUX,NODE,       2
+(8i10)
+         6         7
+cmsel,s,_ZERODISPUX
+d,all,ux,0
+nsel,all
+/com,******* Constant Zero Displacement Y *******
+CMBLOCK,_ZERODISPUY,NODE,       1
+(8i10)
+         6
+cmsel,s,_ZERODISPUY
+d,all,uy,0
+nsel,all
+/com,******* Constant Zero Displacement Z *******
+CMBLOCK,_ZERODISPUZ,NODE,       4
+(8i10)
+         2         3         6         7
+cmsel,s,_ZERODISPUZ
+d,all,uz,0
+nsel,all
+nsel,all
+/com,*********** Define Vertex Force Using Follower Elements ***********
+et,2,201
+keyo,2,1,1           ! Keep the direction constant
+keyo,2,2,1           ! Apply Forces only, not moment
+mat,2
+real,2
+type,2
+en,2,5
+r,2
+rmod,2,1,1.0,              ! FX
+mat,3
+real,3
+type,2
+en,3,5
+r,3
+rmod,3,2,1.0,              ! FY
+mat,4
+real,4
+type,2
+en,4,5
+r,4
+rmod,4,3,1.0,              ! FZ
+
+*DIM,_loadvari33x,TABLE,2,1,1,TIME,
+! Time values
+_loadvari33x(1,0,1) = 0.
+_loadvari33x(2,0,1) = 1.
+! Load values
+_loadvari33x(1,1,1) = 0.
+_loadvari33x(2,1,1) = 0.
+
+
+*DIM,_loadvari33y,TABLE,2,1,1,TIME,
+! Time values
+_loadvari33y(1,0,1) = 0.
+_loadvari33y(2,0,1) = 1.
+! Load values
+_loadvari33y(1,1,1) = 0.
+_loadvari33y(2,1,1) = 0.
+
+
+*DIM,_loadvari33z,TABLE,2,1,1,TIME,
+! Time values
+_loadvari33z(1,0,1) = 0.
+_loadvari33z(2,0,1) = 1.
+! Load values
+_loadvari33z(1,1,1) = 0.
+_loadvari33z(2,1,1) = -12500.
+
+/com,*********** Define Vertex Force Using Follower Elements ***********
+et,5,201
+keyo,5,1,1           ! Keep the direction constant
+keyo,5,2,1           ! Apply Forces only, not moment
+mat,5
+real,5
+type,5
+en,5,8
+r,5
+rmod,5,1,1.0,              ! FX
+mat,6
+real,6
+type,5
+en,6,8
+r,6
+rmod,6,2,1.0,              ! FY
+mat,7
+real,7
+type,5
+en,7,8
+r,7
+rmod,7,3,1.0,              ! FZ
+
+*DIM,_loadvari35x,TABLE,2,1,1,TIME,
+! Time values
+_loadvari35x(1,0,1) = 0.
+_loadvari35x(2,0,1) = 1.
+! Load values
+_loadvari35x(1,1,1) = 0.
+_loadvari35x(2,1,1) = 0.
+
+
+*DIM,_loadvari35y,TABLE,2,1,1,TIME,
+! Time values
+_loadvari35y(1,0,1) = 0.
+_loadvari35y(2,0,1) = 1.
+! Load values
+_loadvari35y(1,1,1) = 0.
+_loadvari35y(2,1,1) = 0.
+
+
+*DIM,_loadvari35z,TABLE,2,1,1,TIME,
+! Time values
+_loadvari35z(1,0,1) = 0.
+_loadvari35z(2,0,1) = 1.
+! Load values
+_loadvari35z(1,1,1) = 0.
+_loadvari35z(2,1,1) = -12500.
+
+/com,*********** Define Vertex Force Using Follower Elements ***********
+et,8,201
+keyo,8,1,1           ! Keep the direction constant
+keyo,8,2,1           ! Apply Forces only, not moment
+mat,8
+real,8
+type,8
+en,8,1
+r,8
+rmod,8,1,1.0,              ! FX
+mat,9
+real,9
+type,8
+en,9,1
+r,9
+rmod,9,2,1.0,              ! FY
+mat,10
+real,10
+type,8
+en,10,1
+r,10
+rmod,10,3,1.0,              ! FZ
+
+*DIM,_loadvari37x,TABLE,2,1,1,TIME,
+! Time values
+_loadvari37x(1,0,1) = 0.
+_loadvari37x(2,0,1) = 1.
+! Load values
+_loadvari37x(1,1,1) = 0.
+_loadvari37x(2,1,1) = 0.
+
+
+*DIM,_loadvari37y,TABLE,2,1,1,TIME,
+! Time values
+_loadvari37y(1,0,1) = 0.
+_loadvari37y(2,0,1) = 1.
+! Load values
+_loadvari37y(1,1,1) = 0.
+_loadvari37y(2,1,1) = 0.
+
+
+*DIM,_loadvari37z,TABLE,2,1,1,TIME,
+! Time values
+_loadvari37z(1,0,1) = 0.
+_loadvari37z(2,0,1) = 1.
+! Load values
+_loadvari37z(1,1,1) = 0.
+_loadvari37z(2,1,1) = -12500.
+
+/com,*********** Define Vertex Force Using Follower Elements ***********
+et,11,201
+keyo,11,1,1           ! Keep the direction constant
+keyo,11,2,1           ! Apply Forces only, not moment
+mat,11
+real,11
+type,11
+en,11,4
+r,11
+rmod,11,1,1.0,              ! FX
+mat,12
+real,12
+type,11
+en,12,4
+r,12
+rmod,12,2,1.0,              ! FY
+mat,13
+real,13
+type,11
+en,13,4
+r,13
+rmod,13,3,1.0,              ! FZ
+
+*DIM,_loadvari39x,TABLE,2,1,1,TIME,
+! Time values
+_loadvari39x(1,0,1) = 0.
+_loadvari39x(2,0,1) = 1.
+! Load values
+_loadvari39x(1,1,1) = 0.
+_loadvari39x(2,1,1) = 0.
+
+
+*DIM,_loadvari39y,TABLE,2,1,1,TIME,
+! Time values
+_loadvari39y(1,0,1) = 0.
+_loadvari39y(2,0,1) = 1.
+! Load values
+_loadvari39y(1,1,1) = 0.
+_loadvari39y(2,1,1) = 0.
+
+
+*DIM,_loadvari39z,TABLE,2,1,1,TIME,
+! Time values
+_loadvari39z(1,0,1) = 0.
+_loadvari39z(2,0,1) = 1.
+! Load values
+_loadvari39z(1,1,1) = 0.
+_loadvari39z(2,1,1) = -12500.
+
+/gst,on,on
+fini
+*get,_numnode,node,0,count
+*get,_numelem,elem,0,count
+/go
+/wb,load,end               !  done creating loads
+/com,--- Number of total nodes = %_numnode%
+/com,--- Number of contact elements = 0
+/com,--- Number of spring elements = 0
+/com,--- Number of solid elements = 1
+/com,--- Number of total elements = %_numelem%
+*get,_wallbsol,active,,time,wall
+/com,****************************************************************************
+/com,*************************    SOLUTION       ********************************
+/com,****************************************************************************
+/solu
+antype,0                   ! static analysis
+solc,on,on                 ! Turn on solution control with ability to use contact time prediction
+!eqsl,sparse               ! using sparse solver which is default so no eqsl command needed
+resc,,none                 ! Do not keep any restart files
+cntr,print,1               ! print out contact info and also make no initial contact an error
+nldiag,cont,iter           ! print out contact info each equilibrium iteration
+/com,****************************************************
+/com,******************* SOLVE FOR LS 1 ****************
+esel,s,real,,2
+sfe,all,1,pres,1,%_loadvari33x%
+esel,s,real,,3
+sfe,all,1,pres,1,%_loadvari33y%
+esel,s,real,,4
+sfe,all,1,pres,1,%_loadvari33z%
+esel,s,real,,5
+sfe,all,1,pres,1,%_loadvari35x%
+esel,s,real,,6
+sfe,all,1,pres,1,%_loadvari35y%
+esel,s,real,,7
+sfe,all,1,pres,1,%_loadvari35z%
+esel,s,real,,8
+sfe,all,1,pres,1,%_loadvari37x%
+esel,s,real,,9
+sfe,all,1,pres,1,%_loadvari37y%
+esel,s,real,,10
+sfe,all,1,pres,1,%_loadvari37z%
+esel,s,real,,11
+sfe,all,1,pres,1,%_loadvari39x%
+esel,s,real,,12
+sfe,all,1,pres,1,%_loadvari39y%
+esel,s,real,,13
+sfe,all,1,pres,1,%_loadvari39z%
+esel,all
+/nopr
+/gopr
+nsub,1,1,1
+time,1.
+outres,erase
+outres,all,none
+outres,nsol,all
+outres,rsol,all
+outres,nload,all
+outres,strs,all
+outres,epel,all
+outres,eppl,all
+/nopr
+/gopr
+! *********** WB SOLVE COMMAND ***********
+! check interactive state
+*get,ANSINTER_,active,,int
+*if,ANSINTER_,ne,0,then
+/eof
+*endif
+solve
+/com,****************************************************
+/com,*************** FINISHED SOLVE FOR LS 1 *************
+*set,_DS_PROGRESS          ! turn off progress updates to avoid virus scanning bug
+*get,_wallasol,active,,time,wall
+/post1
+xmlo,parm
+/xml,parm,xml
+/gopr
+fini
+/gopr
+*get,_walldone,active,,time,wall
+_preptime=(_wallbsol-_wallstrt)*3600
+_solvtime=(_wallasol-_wallbsol)*3600
+_posttime=(_walldone-_wallasol)*3600
+_totaltim=(_walldone-_wallstrt)*3600
+/wb,file,end               ! done with WB generated input
